@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
+var fs = require('fs');
 app.use(bodyParser());
 
 //compileX
@@ -16,126 +17,77 @@ app.get('/' , function (req , res ) {
 });
 
 
-app.post('/compilecode' , function (req , res ) {
+app.post('/compilecode/:questionNum' , function (req , res, next ) {
+	var obj = JSON.parse(fs.readFileSync('questions.json', 'utf8'));
+	var inputs = obj.questions[req.params.questionNum].testInputs;
+	console.log(inputs[0]);
 
-	var code = req.body.code;
-	var input = req.body.input;
-    var inputRadio = req.body.inputRadio;
-    var lang = req.body.lang;
-    if((lang === "C") || (lang === "C++"))
-    {
-        if(inputRadio === "true")
-        {
-        	var envData = { OS : "windows" , cmd : "g++"};
-        	compiler.compileCPPWithInput(envData , code ,input , function (data) {
-        		if(data.error)
-        		{
-        			res.send(data.error);
-        		}
-        		else
-        		{
-        			res.send(data.output);
-        		}
-        	});
-	   }
-	   else
-	   {
+	var allInputs = [];
+	var allResults = [];
+	var code = req.body.code.replace(/(\\n)/gm, "\n");;
+	//console.log(code);
+	var envData = { OS : "windows"};
+	var i = 0;
+	for (i = 0; i < inputs.length; i++) {
+		var currentInput = inputs[i];
+		compiler.compilePythonWithInput(envData , code , currentInput , function(data){
+			allInputs.push(currentInput);
+			console.log(currentInput);
+			allResults.push(data);
+			if (allResults.length == inputs.length) {
+				console.log("done!");
+				//res.send(allResults);
+				res.json({
+					results: allResults,
+					inputs: allInputs
+				})
+			}
+		});
+	}
+	//res.send(allResults);
 
-	   	var envData = { OS : "windows" , cmd : "g++"};
-        	compiler.compileCPP(envData , code , function (data) {
-        	if(data.error)
-        	{
-        		res.send(data.error);
-        	}
-        	else
-        	{
-        		res.send(data.output);
-        	}
+	/*
+	res.json({
+    	results: allResults
+	});
+	*/
 
-            });
-	   }
-    }
-    if(lang === "Java")
-    {
-        if(inputRadio === "true")
-        {
-            var envData = { OS : "windows" };
-            console.log(code);
-            compiler.compileJavaWithInput( envData , code , function(data){
-                res.send(data);
-            });
-        }
-        else
-        {
-            var envData = { OS : "windows" };
-            console.log(code);
-            compiler.compileJavaWithInput( envData , code , input ,  function(data){
-                res.send(data);
-            });
 
-        }
 
-    }
-    if( lang === "Python")
-    {
-        if(inputRadio === "true")
-        {
-            var envData = { OS : "windows"};
-            compiler.compilePythonWithInput(envData , code , input , function(data){
-                res.send(data);
-            });
-        }
-        else
-        {
-            var envData = { OS : "windows"};
-            compiler.compilePython(envData , code , function(data){
-                res.send(data);
-            });
-        }
-    }
-    if( lang === "CS")
-    {
-        if(inputRadio === "true")
-        {
-            var envData = { OS : "windows"};
-            compiler.compileCSWithInput(envData , code , input , function(data){
-                res.send(data);
-            });
-        }
-        else
-        {
-            var envData = { OS : "windows"};
-            compiler.compileCS(envData , code , function(data){
-                res.send(data);
-            });
-        }
-
-    }
-    if( lang === "VB")
-    {
-        if(inputRadio === "true")
-        {
-            var envData = { OS : "windows"};
-            compiler.compileVBWithInput(envData , code , input , function(data){
-                res.send(data);
-            });
-        }
-        else
-        {
-            var envData = { OS : "windows"};
-            compiler.compileVB(envData , code , function(data){
-                res.send(data);
-            });
-        }
-
-    }
-
+	/*
+	if(inputRadio === "true") {
+		var envData = { OS : "windows"};
+		compiler.compilePythonWithInput(envData , code , input , function(data){
+			res.send(data);
+		});
+	} else {
+		var envData = { OS : "windows"};
+		compiler.compilePython(envData , code , function(data){
+			res.send(data);
+		});
+	}
+	*/
 });
 
 app.get('/fullStat' , function(req , res ){
+	/*
     compiler.fullStat(function(data){
         res.send(data);
     });
+	*/
+});
+
+// For getting all the local files
+app.get('/myApp.js', function(req, res) {
+  res.sendFile(__dirname + "/" + "myApp.js");
+});
+
+app.get('/myCtrl.js', function(req, res) {
+  res.sendFile(__dirname + "/" + "myCtrl.js");
+});
+
+app.get('/questions.json', function(req, res) {
+  res.sendFile(__dirname + "/" + "questions.json");
 });
 
 app.listen(8080);
