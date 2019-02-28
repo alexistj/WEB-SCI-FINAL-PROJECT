@@ -1,0 +1,25 @@
+{
+  "name": "startds",
+  "version": "1.0.0",
+  "description": "Web application for students to learn Data Structures concepts.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexistj/WEB-SCI-FINAL-PROJECT.git"
+  },
+  "author": "team JAJA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexistj/WEB-SCI-FINAL-PROJECT/issues"
+  },
+  "homepage": "https://github.com/alexistj/WEB-SCI-FINAL-PROJECT#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "path": "^0.12.7",
+    "request": "^2.88.0"
+  }
+}
