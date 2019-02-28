@@ -99,7 +99,7 @@
 }
 
 #gameBoxes .content{
-	padding-top: 50px;
+	padding-top: 40px;
 	padding-bottom: 20px;
 
 }
@@ -112,6 +112,7 @@
 
 .each .content .left {
 	padding-left: 30px;
+	padding-top: 14px;
 }
 
 .progressText{
