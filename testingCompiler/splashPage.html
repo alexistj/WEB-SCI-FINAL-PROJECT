@@ -1,0 +1,118 @@
+<html>
+<head>
+	<title>LearnDS</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/splashPage.css">
+	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans" rel="stylesheet">
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="assets/js/splashPage.js"></script>
+
+</head>
+<body>
+	
+	
+	<div id= "background">
+		<div id="title">
+			<h1 class="mainTitle">StartDS</h1>
+			<h2 class="subTitle">Learn. Plan. Suceed</h2>
+
+		</div >
+
+		
+		
+		<div id="loginContainer">
+			<div id="inputContainer">
+				<form id="loginForm"  method="POST">
+					<h2> Login to your account </h2>
+					<p>
+						
+						<label for="loginUsername">Username</label> 
+						<input id="loginUsername" name="loginUsername" type="text" placeholder="Username" value="Username" required> 
+					</p>
+					<p>
+						<label for="loginPassword">Password</label> 
+						<input id="loginPassword" name="loginPassword" type="password" placeholder="Your password" required>
+					</p>
+
+					<button type="submit" name="loginButton" > LOG IN</button>
+
+					<div class="hasAccount">
+						<span id="hideLogin">Already have an account? Log In</span>
+					</div>
+
+				</form>
+
+				<form id="registerForm"  method="POST">
+					<h2> Create your free account </h2>
+
+					<p>
+						
+						<label for="firstName">First Name</label> 
+						<input id="firstName" name="firstName" type="text" placeholder="First Name" value="First Name" required> 
+					</p>
+
+
+					<p>
+						
+						<label for="lastName">Last Name</label> 
+						<input id="lastName" name="lastName" type="text" placeholder="Last Name" value="Last Name" required> 
+					</p>
+
+					<p>
+						
+						<label for="email">Email</label> 
+						<input id="email" name="email" type="email" placeholder="Email" value="Email" required> 
+
+						
+					</p>
+
+
+					
+
+
+					<p>
+						
+						<label for="password">Password</label> 
+						<input id="password" name="password" type="password" placeholder="Your password" required>
+					</p>
+
+					<p>
+						<label for="password2">Confirm Password</label> 
+						<input id="password2" name="password2" type="password"  placeholder="Confirm password" required>
+					</p>
+
+					<button type="submit" name="registerButton"> SIGN UP</button>
+
+					<div class="hasAccount">
+						<span id="hideRegister"> Don't have an account? Sign Up</span>
+					</div>
+
+				</form>
+
+			</div>
+
+			
+		</div>
+
+		<div class='infoSection'>
+			<p>Want to learn concepts of Data Structures in a fun and interactive way? Our mini games will help get you started! Sign up now to track your progress and organize your study materials</p>
+
+			<p>Not ready to commit? Click below to access the games, but remember without an account you won't be able to keep track of your progress</p>
+			<a href="dashboard.html"> 
+			<button  class='explore'>EXPLORE</button>
+			</a>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+		$("#loginForm").hide();
+		$("#registerForm").show();
+
+	});
+	</script>
+</body>
+</html>

@@ -39,7 +39,17 @@
   			<h3>Code</h3>
   			<textarea rows="10" cols="100" id="code" name="code" style="border: 3px solid green;"></textarea>
   			<br/>
-  			<button type="button" ng-href="#here" ng-click="checkCode()">Submit</button>
+  			<button type="button" ng-href="#here" ng-click="checkCode()" style="margin: 5px;">Submit</button>
+        <table class="table" id="results">
+          <thead>
+            <tr>
+              <th scope="col">Case #</th>
+              <th scope="col">Input</th>
+              <th scope="col">Your Output</th>
+              <th scope="col">Expected</th>
+            </tr>
+          </thead>
+        </table>
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
