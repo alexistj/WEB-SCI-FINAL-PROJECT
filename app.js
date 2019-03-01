@@ -6,7 +6,8 @@ const app = express()
 const router = express.Router();
 const port = 3000
 
-router.get('/', (req, res) => res.sendFile(path.join(__dirname+'/splashPage.html')))
+router.get('/', (req, res) => res.sendFile(path.join(__dirname+'/splashPage.html')));
+router.get('/compiler', (req, res) => res.sendFile(path.join(__dirname+'/testingCompiler/index.html')));
 
 app.use('/', router); // Use router for creation of subpaths
 router.use(express.json());

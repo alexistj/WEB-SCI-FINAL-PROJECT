@@ -3,19 +3,17 @@ var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
 var fs = require('fs');
+const port = 8080
 app.use(bodyParser());
+app.use('/', express.static(__dirname));
+express.static(path.join(__dirname));
 
 //compileX
 var compiler = require('compilex');
 var option = {stats : true};
 compiler.init(option);
 
-app.get('/' , function (req , res ) {
-
-	res.sendfile( __dirname + "/index.html");
-
-});
-
+app.get('/', (req, res) => res.sendFile(path.join(__dirname+'/index.html')));
 
 app.post('/compilecode/:questionNum' , function (req , res, next ) {
 	var obj = JSON.parse(fs.readFileSync('questions.json', 'utf8'));
@@ -90,4 +88,4 @@ app.get('/questions.json', function(req, res) {
   res.sendFile(__dirname + "/" + "questions.json");
 });
 
-app.listen(8080);
+app.listen((process.env.port || 8080), () => console.log(`startDS listening on port ${port}!`))
