@@ -19,12 +19,13 @@
 	margin: 0;
 	background-color: #D65108;
 	padding: 10px 20px;
+	color: white;
 
 }
 
 .topBar .gameName h1{
 	margin: 0;
-	
+
 }
 
 #gameBoxes {
@@ -44,42 +45,42 @@
 	background-color: #F1E08A;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	
+
 }
 
 #gameBoxes .trees{
 	background-color: #6BA6FF;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	
+
 }
 
 #gameBoxes .hashTables{
 	background-color: #8E7CFF;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	
+
 }
 
 #gameBoxes .linkedL{
 	background-color: #A8FF73;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	
+
 }
 
 #gameBoxes .stacks{
 	background-color: #73FFE6;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	
+
 }
 
 #gameBoxes .queues{
 	background-color: #FFB673;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	
+
 }
 
 
@@ -87,15 +88,15 @@
 	background-color: black;
 	color: white;
 	padding: 5px;
-	
+
 }
 
 
 #gameBoxes .title h1{
-	
+
 	padding: 5px;
 	margin: 0;
-	
+
 }
 
 #gameBoxes .content{
