@@ -20,30 +20,32 @@ app.get('/' , function (req , res ) {
 app.post('/compilecode/:questionNum' , function (req , res, next ) {
 	var obj = JSON.parse(fs.readFileSync('questions.json', 'utf8'));
 	var inputs = obj.questions[req.params.questionNum].testInputs;
-	console.log(inputs[0]);
 
 	var allInputs = [];
 	var allResults = [];
 	var code = req.body.code.replace(/(\\n)/gm, "\n");;
 	//console.log(code);
 	var envData = { OS : "windows"};
+
 	var i = 0;
 	for (i = 0; i < inputs.length; i++) {
 		var currentInput = inputs[i];
 		compiler.compilePythonWithInput(envData , code , currentInput , function(data){
-			allInputs.push(currentInput);
-			console.log(currentInput);
+			//allInputs.push(currentInput);
 			allResults.push(data);
 			if (allResults.length == inputs.length) {
 				console.log("done!");
-				//res.send(allResults);
+				res.send(allResults);
+				/*
 				res.json({
 					results: allResults,
 					inputs: allInputs
-				})
+				});
+				*/
 			}
 		});
 	}
+
 	//res.send(allResults);
 
 	/*

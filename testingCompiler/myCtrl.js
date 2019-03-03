@@ -8,12 +8,6 @@ app.controller('myCtrl', ['$scope','$http', function($scope, $http) {
     });
 
     $scope.checkCode = function() {
-        /*
-        var text = '{ "employees" : [' +
-        '{ "firstName":"John" , "lastName":"Doe" },' +
-        '{ "firstName":"Anna" , "lastName":"Smith" },' +
-        '{ "firstName":"Peter" , "lastName":"Jones" } ]}';
-        */
 
         var editedText = document.getElementById("code").value.replace(/(\n)/gm, "\\n");
 
