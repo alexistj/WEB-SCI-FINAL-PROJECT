@@ -11,9 +11,8 @@ var option = {stats : true};
 compiler.init(option);
 
 app.get('/' , function (req , res ) {
-
+	// Uses our made HTML file for the frontend
 	res.sendfile( __dirname + "/index.html");
-
 });
 
 
@@ -27,56 +26,27 @@ app.post('/compilecode/:questionNum' , function (req , res, next ) {
 	//console.log(code);
 	var envData = { OS : "windows"};
 
-	var i = 0;
-	for (i = 0; i < inputs.length; i++) {
-		var currentInput = inputs[i];
-		compiler.compilePythonWithInput(envData , code , currentInput , function(data){
-			//allInputs.push(currentInput);
+	// Begins the compilation. There will always be 5 inputs, and this is to
+	// maintain it being synchronous
+	compiler.compilePythonWithInput(envData, code, inputs[0], function(data){
+		// Adds the data to the list of results to return
+		allResults.push(data);
+		compiler.compilePythonWithInput(envData, code, inputs[1], function(data){
 			allResults.push(data);
-			if (allResults.length == inputs.length) {
-				console.log("done!");
-				res.send(allResults);
-				/*
-				res.json({
-					results: allResults,
-					inputs: allInputs
+			compiler.compilePythonWithInput(envData, code, inputs[2], function(data){
+				allResults.push(data);
+				compiler.compilePythonWithInput(envData, code, inputs[3], function(data){
+					allResults.push(data);
+					compiler.compilePythonWithInput(envData, code, inputs[4], function(data){
+						allResults.push(data);
+
+						// Sends the results to Angular
+						res.send(allResults);
+					});
 				});
-				*/
-			}
+			});
 		});
-	}
-
-	//res.send(allResults);
-
-	/*
-	res.json({
-    	results: allResults
 	});
-	*/
-
-
-
-	/*
-	if(inputRadio === "true") {
-		var envData = { OS : "windows"};
-		compiler.compilePythonWithInput(envData , code , input , function(data){
-			res.send(data);
-		});
-	} else {
-		var envData = { OS : "windows"};
-		compiler.compilePython(envData , code , function(data){
-			res.send(data);
-		});
-	}
-	*/
-});
-
-app.get('/fullStat' , function(req , res ){
-	/*
-    compiler.fullStat(function(data){
-        res.send(data);
-    });
-	*/
 });
 
 // For getting all the local files

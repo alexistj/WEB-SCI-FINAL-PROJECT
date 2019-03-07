@@ -2,8 +2,8 @@
     "questions": [
         {
             "description": "Write a program that squares an input.",
-            "testInputs": [-5, 5, 0, 1, 10, 123],
-            "testOuputs": [25, 25, 0, 1, 100, 15129]
+            "testInputs": [-5, 0, 1, 10, 123],
+            "testOuputs": [25, 0, 1, 100, 15129]
         },
         {
             "description": "Write a program that multiplies an input by 10.",
@@ -12,8 +12,8 @@
         },
         {
             "description": "Write a program that adds 10 to an input.",
-            "testInputs": [-5, 5, 0, 1, 10, 123],
-            "testOuputs": [5, 15, 10, 11, 20, 133]
+            "testInputs": [-5, 0, 1, 10, 123],
+            "testOuputs": [5, 10, 11, 20, 133]
         }
     ]
 }
