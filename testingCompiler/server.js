@@ -18,16 +18,20 @@ app.get('/' , function (req , res ) {
 
 
 app.post('/compilecode/:questionNum' , function (req , res, next ) {
+	// Read the inputs directly from the JSON. The question number is in the URL
 	var obj = JSON.parse(fs.readFileSync('questions.json', 'utf8'));
 	var inputs = obj.questions[req.params.questionNum].testInputs;
 
 	var allResults = [];
-	console.log(req.body.code);
+	// Reformat the code for processing
 	var code = req.body.code.replace(/(\\n)/gm, "\n");
 
 
+	// Begins the compilation. There will always be 5 inputs, and this is to
+	// maintain it being synchronous
 	var envData = { OS : "windows" , cmd : "g++", options: {timeout:5000 } };
 	compiler.compileCPPWithInput(envData , code , inputs[0] , function (data) {
+		// Each of these adds the data to the list of results to return
 		allResults.push(data);
 		compiler.compileCPPWithInput(envData , code , inputs[1] , function (data) {
 			allResults.push(data);
@@ -38,6 +42,7 @@ app.post('/compilecode/:questionNum' , function (req , res, next ) {
 					compiler.compileCPPWithInput(envData , code , inputs[4] , function (data) {
 						allResults.push(data);
 
+						// Sends the results to Angular
 						res.send(allResults);
 					});
 				});
