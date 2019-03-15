@@ -3,6 +3,7 @@ var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var jsdom = require('jsdom');
 app.use(bodyParser());
 
 //compileX
@@ -21,7 +22,9 @@ app.post('/compilecode/:questionNum' , function (req , res, next ) {
 	var inputs = obj.questions[req.params.questionNum].testInputs;
 
 	var allResults = [];
-	var code = req.body.code.replace(/(\\n)/gm, "\n");;
+	console.log(req.body.code);
+	var code = req.body.code.replace(/(\\n)/gm, "\n");
+
 
 	var envData = { OS : "windows" , cmd : "g++", options: {timeout:5000 } };
 	compiler.compileCPPWithInput(envData , code , inputs[0] , function (data) {

@@ -5,11 +5,19 @@ app.controller('myCtrl', ['$scope','$http', function($scope, $http) {
         $scope.question = data.data.questions[$scope.questionNumber].description;
         $scope.testInputs = data.data.questions[$scope.questionNumber].testInputs;
         $scope.testOuputs = data.data.questions[$scope.questionNumber].testOuputs;
+
+
+
+        document.getElementById("code").innerHTML = "#include<iostream>\n#include <string>\n\nusing namespace std;\n\nint main() {\n";
+
+        document.getElementById("code").innerHTML += "    " + data.data.questions[$scope.questionNumber].inputType + " x;\n";
+        document.getElementById("code").innerHTML += "    cin >> x;\n\n    cout << x;\n    return 0;\n}";
+
     });
 
     $scope.checkCode = function() {
 
-        var editedText = document.getElementById("code").value.replace(/(\n)/gm, "\\n");
+        var editedText = document.getElementById("code").value.replace(/(\n)/gm, "\\n").replace(/(\")/gm, "\\\"");
 
         var text = '{ "code":"' + editedText + '" } ';
 
