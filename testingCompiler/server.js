@@ -20,27 +20,21 @@ app.post('/compilecode/:questionNum' , function (req , res, next ) {
 	var obj = JSON.parse(fs.readFileSync('questions.json', 'utf8'));
 	var inputs = obj.questions[req.params.questionNum].testInputs;
 
-	var allInputs = [];
 	var allResults = [];
 	var code = req.body.code.replace(/(\\n)/gm, "\n");;
-	//console.log(code);
-	var envData = { OS : "windows"};
 
-	// Begins the compilation. There will always be 5 inputs, and this is to
-	// maintain it being synchronous
-	compiler.compilePythonWithInput(envData, code, inputs[0], function(data){
-		// Adds the data to the list of results to return
+	var envData = { OS : "windows" , cmd : "g++", options: {timeout:5000 } };
+	compiler.compileCPPWithInput(envData , code , inputs[0] , function (data) {
 		allResults.push(data);
-		compiler.compilePythonWithInput(envData, code, inputs[1], function(data){
+		compiler.compileCPPWithInput(envData , code , inputs[1] , function (data) {
 			allResults.push(data);
-			compiler.compilePythonWithInput(envData, code, inputs[2], function(data){
+			compiler.compileCPPWithInput(envData , code , inputs[2] , function (data) {
 				allResults.push(data);
-				compiler.compilePythonWithInput(envData, code, inputs[3], function(data){
+				compiler.compileCPPWithInput(envData , code , inputs[3] , function (data) {
 					allResults.push(data);
-					compiler.compilePythonWithInput(envData, code, inputs[4], function(data){
+					compiler.compileCPPWithInput(envData , code , inputs[4] , function (data) {
 						allResults.push(data);
 
-						// Sends the results to Angular
 						res.send(allResults);
 					});
 				});
