@@ -1,5 +1,5 @@
 window.onload = function() {	
-	var game = new Phaser.Game(1000, 500, Phaser.CANVAS, "", {
+	var game = new Phaser.Game(1000, 1000, Phaser.CANVAS, "",{
 		preload: onPreload,
 		create: onCreate
 	});
@@ -58,13 +58,12 @@ window.onload = function() {
 			font:"bold 24px Arial"
 		});
 		for(var i=0;i<3;i++){
-					//  The Text is positioned at 0, 100
-		    
+				//  The Text is positioned at 0, 100
 			console.log(i)
-			var numberButton = game.add.button(game.world.centerX -150, 250+i*75,"buttons",checkAnswer,this).frame=i; 
+			var numberButton = game.add.button(250 +i*75, 50,"buttons",checkAnswer,this).frame=i; 
 		}
-		numberTimer =  game.add.sprite(game.world.centerX -150, 250,"timebar");
-		var text = game.add.text(game.world.centerX - 90, 260+0*75, "phaser 2.4 text bounds", style);
+		numberTimer =  game.add.sprite(250 +i*75, 50,"timebar");
+		var text = game.add.text(250 , 50, "phaser 2.4 text bounds", style);
 		    text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
     
 		nextNumber();
