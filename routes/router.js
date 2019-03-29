@@ -1,60 +1,80 @@
 var express = require('express');
-var router = express.Router();
-var User = require('../models/User');
+var router  = express.Router();
+var User    = require('../models/User');
+const jwt   = require('jsonwebtoken'); // used to create, sign, and verify tokens
 const path  = require('path');
 
-// loggedin middleware
-function isLoggedIn(req, res, next) {
-  if (req.session && req.session.userId) {
-    return next();
+function isAuthenticated(req, res, next) {
+
+  // check header or url parameters or post parameters for token
+  var token = req.body.token || req.query.token || req.headers['x-access-token'];
+
+  // decode token
+  if (token) {
+
+    // verifies secret and checks exp
+    jwt.verify(token, req.app.get('secret'), function(err, decoded) {       if (err) {
+        return res.json({ success: false, message: 'Failed to authenticate token.' });       } else {
+        // if everything is good, save to request for use in other routes
+        req.decoded = decoded;
+        next();
+      }
+    });
+
   } else {
-    var err = new Error('You must be logged in to view this page.');
-    err.status = 401;
-    return next(err);
+
+    // if there is no token
+    // return an error
+    return res.status(403).send({
+        success: false,
+        message: 'No token provided.'
+    });
+
   }
 }
 
 // GET route for reading data
 router.get('/', function (req, res, next) {
-  if (req.session.userId) {
-    console.log(req.session.userId);
-  }
-  return res.sendFile(path.join('../index.html'));
+  return res.sendFile(path.join(__dirname +'/../views/index.html'));
 });
 
 // GET route after registering
-router.get('/profile', isLoggedIn, function (req, res, next) {
-  return res.json(req.userId);
-});
-
-// GET /logout
-router.get('/logout', function(req, res, next) {
-  if (req.session) {
-    // delete session object
-    console.log(req.session);
-    req.session.destroy(function(err) {
-      if(err) {
-        return next(err);
-      } else {
-        console.log("Logged out");
-        return res.redirect('/');
-      }
-    });
+router.get('/dashboard/:userid', isAuthenticated, function (req, res, next) {
+  // return res.json(req.userId);
+  if(req.session.page_views){
+     req.session.page_views++;
+     res.send("You visited this page " + req.session.page_views + " times");
+     // return res.sendFile(path.join(__dirname +'/../views/dashboard.html'));
+  } else {
+     req.session.page_views = 1;
+     res.send("Welcome to this page for the first time!");
+     // return res.sendFile(path.join(__dirname +'/../views/dashboard.html'));
   }
 });
 
 // POST for LOGIN
 router.post('/login', function (req, res, next) {
-  if (req.body.logemail && req.body.logpassword) {
-    User.authenticate(req.body.logemail, req.body.logpassword, function (error, user) {
+
+  if (req.body.username && req.body.password) {
+    User.authenticate(req.body.username, req.body.password, function (error, user) {
       if (error || !user) {
-        var err = new Error('Wrong email or password.');
+        var err = new Error('Wrong username or password.');
         err.status = 401;
-        return next(err);
+        res.json({ success: false, message: 'Authentication failed. Wrong password.' });
+        // return next(err);
       } else {
-        req.session.userId = user._id;
-        return res.redirect("/");
-        // return res.json(user);
+        const payload = { userId: user._id  };
+        var token = jwt.sign(payload, req.app.get('secret'), {
+          expiresIn: '24h' // expires in 24 hours
+        });
+        console.log(token);
+        // return the information including token as JSON
+        res.json({
+          success: true,
+          message: 'Enjoy your token!',
+          token: token
+        });
+          // return res.json(user);
       }
     });
   }
@@ -62,24 +82,22 @@ router.post('/login', function (req, res, next) {
 
 // POST for registering
 router.post('/register', function (req, res, next) {
-  // confirm that user typed same password twice
-  if (req.body.password !== req.body.passwordConf) {
-    var err = new Error('Passwords do not match.');
-    err.status = 400;
-    res.send("passwords dont match");
-    return next(err);
-  }
+  // // confirm that user typed same password twice
+  // if (req.body.password !== req.body.passwordConf) {
+  //   var err = new Error('Passwords do not match.');
+  //   err.status = 400;
+  //   res.send("passwords dont match");
+  //   return next(err);
+  // }
 
   if (req.body.email &&
     req.body.username &&
-    req.body.password &&
-    req.body.passwordConf) {
+    req.body.password) {
 
     var userData = {
       email: req.body.email,
       username: req.body.username,
-      password: req.body.password,
-      passwordConf: req.body.passwordConf,
+      password: req.body.password
     }
 
     // use schema.create to insert data into the db
@@ -87,7 +105,7 @@ router.post('/register', function (req, res, next) {
       if (err) {
         return next(err)
       } else {
-        return res.redirect('/profile');
+        return res.json({ success: true });
       }
     });
 

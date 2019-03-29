@@ -2,11 +2,10 @@ const express    = require('express');
 const bodyParser = require('body-parser');
 const path       = require('path');
 const request    = require('request');
-const session    = require('express-session');
 const fs         = require('fs');
 const passport 	 = require('passport');
 const mongoose 	 = require('mongoose');
-const MongoStore = require('connect-mongo')(session);
+const cors       = require('cors');
 const port = 3000;
 
 // env variables
@@ -25,20 +24,14 @@ const db = mongoose.connection;
 //Initiate app
 const app = express();
 
+// Configure the app
+app.set('secret', process.env.SECRET); // secret variable
+
 // serve static files from current directory
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 app.use(express.static(path.join(__dirname)));
-
-// Configure the app
-app.use(session({
-  secret: process.env.SECRET,
-  resave: true,
-  saveUninitialized: false,
-  store: new MongoStore({
-    mongooseConnection: db
-  })
-}));
 
 // include routes
 var routes = require('./routes/router');
@@ -46,7 +39,7 @@ app.use('/', routes);
 
 process.on('uncaughtException', function (err) {
   // This should not happen
-  logger.error("Something unexpected happened. This should be handled more gracefully. The culprit is: ", err);
+  console.log("Something unexpected happened. This should be handled more gracefully. The culprit is: ", err);
 });
 
 // error handler
