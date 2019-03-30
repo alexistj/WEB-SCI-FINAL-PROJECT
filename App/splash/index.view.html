@@ -1,102 +1,85 @@
 <div id= "background">
-  <div id="title">
-    <h1 class="mainTitle">StartDS</h1>
-    <h2 class="subTitle">Learn. Plan. Suceed</h2>
+	<div id="title">
+		<h1 class="mainTitle">StartDS</h1>
+		<h2 class="subTitle">Learn. Plan. Suceed</h2>
+	</div>
 
-  </div >
+	<div id="loginContainer">
+		<div id="inputContainer">
 
-
-
-  <div id="loginContainer">
-    <div id="inputContainer">
-      <form id="loginForm"  method="POST">
-        <h2> Login to your account </h2>
-        <p>
-
-          <label for="loginUsername">Username</label>
-          <input id="loginUsername" name="loginUsername" type="text" placeholder="Username" value="Username" required>
-        </p>
-        <p>
-          <label for="loginPassword">Password</label>
-          <input id="loginPassword" name="loginPassword" type="password" placeholder="Your password" required>
-        </p>
-
-        <button type="submit" name="loginButton" > LOG IN</button>
-
-        <div class="hasAccount">
-          <span id="hideLogin">Already have an account? Log In</span>
-        </div>
-
-      </form>
-
-      <form id="registerForm"  method="POST">
-        <h2> Create your free account </h2>
-
-        <p>
-
-          <label for="firstName">First Name</label>
-          <input id="firstName" name="firstName" type="text" placeholder="First Name" value="First Name" required>
+      <form id="loginForm" name="loginForm" ng-submit="loginForm.$valid && vm.login()" ng-show="showLogin" novalidate>
+				<h2> Login to your account </h2>
+				<p>
+					<label for="loginUsername">Username</label>
+					<input id="loginUsername" name="loginUsername" ng-model="vm.username" type="text" placeholder="Username" value="Username" required>
+          <div ng-messages="loginForm.$submitted && loginForm.username.$error" class="help-block">
+              <div ng-message="required">Username is required</div>
+          </div>
         </p>
 
 
-        <p>
-
-          <label for="lastName">Last Name</label>
-          <input id="lastName" name="lastName" type="text" placeholder="Last Name" value="Last Name" required>
+				<p ng-class="{ 'has-error': loginForm.$submitted && loginForm.password.$invalid }">
+					<label for="loginPassword">Password</label>
+					<input id="loginPassword" name="loginPassword" type="password" placeholder="Your password" class="form-control" ng-model="vm.password" required>
+          <div ng-messages="loginForm.$submitted && loginForm.password.$error" class="help-block">
+              <div ng-message="required">Password is required</div>
+          </div>
         </p>
 
-        <p>
+				<button ng-disabled="vm.loading" type="submit" name="loginButton"> LOG IN</button>
+          <div class="hasAccount">
+            <span id="hideLogin" ng-click="showLogin=false">Don't have an account? Sign Up</span>
+          </div>
+        <div ng-if="vm.error" class="alert alert-danger">{{vm.error}}</div>
+			</form>
 
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" placeholder="Email" value="Email" required>
+			</br>
 
+			<form id="registerForm"  name="registerForm" ng-submit="registerForm.$valid && vm.register()" ng-hide="showLogin" novalidate>
+				<h2> Create your free account </h2>
+				<p>
+					<label for="registerUsername">Username</label>
+					<input id="registerUsername" name="registerUsername" ng-model="vm.registerUsername" type="text" placeholder="startDS99" value="startDS99" required>
+				</p>
+				<p>
+					<label for="registerEmail">Email</label>
+					<input id="registerEmail" name="registerEmail" ng-model="vm.registerEmail"  type="email" placeholder="Email" value="Email" required>
+				</p>
+				<p>
+					<label for="registerPassword">Password</label>
+					<input id="registerPassword" name="registerPassword" ng-model="vm.registerPassword" type="password" placeholder="Your password" required>
+				</p>
+				<p>
+					<label for="confirmPassword">Confirm Password</label>
+					<input id="confirmPassword" name="confirmPassword" ng-model="vm.confirmPassword" type="password"  placeholder="Confirm password" required>
+					<span ng-show="vm.registerPassword != vm.confirmPassword">Your passwords must match.</span>
+				</p>
 
-        </p>
+				<button type="submit" name="registerButton" ng-disabled="vm.registerPassword != vm.confirmPassword || vm.loading"> SIGN UP</button>
 
+				<div class="hasAccount">
+					<span id="hideRegister" ng-click="showLogin = true"> Already have an account? Log In</span>
+				</div>
+				<div ng-if="vm.error" class="alert alert-danger">{{vm.error}}</div>
+			</form>
 
+		</div>
+	</div>
 
+	<div class='infoSection'>
+		<p>Want to learn concepts of Data Structures in a fun and interactive way? Our mini games will help get you started! Sign up now to track your progress and organize your study materials</p>
 
-
-        <p>
-
-          <label for="password">Password</label>
-          <input id="password" name="password" type="password" placeholder="Your password" required>
-        </p>
-
-        <p>
-          <label for="password2">Confirm Password</label>
-          <input id="password2" name="password2" type="password"  placeholder="Confirm password" required>
-        </p>
-
-        <button type="submit" name="registerButton"> SIGN UP</button>
-
-        <div class="hasAccount">
-          <span id="hideRegister"> Don't have an account? Sign Up</span>
-        </div>
-
-      </form>
-
-    </div>
-
-
-  </div>
-
-  <div class='infoSection'>
-    <p>Want to learn concepts of Data Structures in a fun and interactive way? Our mini games will help get you started! Sign up now to track your progress and organize your study materials</p>
-
-    <p>Not ready to commit? Click below to access the games, but remember without an account you won't be able to keep track of your progress</p>
-    <a href="/dashboard">
-    <button  class='explore'>EXPLORE</button>
-    </a>
-  </div>
+		<p>Not ready to commit? Click below to access the games, but remember without an account you won't be able to keep track of your progress</p>
+		<a href="/dashboard">
+		<button  class='explore'>EXPLORE</button>
+		</a>
+	</div>
 </div>
+  <!-- <script type="text/javascript">
+		$(document).ready(function(){
 
+		$("#loginForm").hide();
+		$("#registerForm").show();
 
-<script type="text/javascript">
-  $(document).ready(function(){
-
-  $("#loginForm").hide();
-  $("#registerForm").show();
-
-});
-</script>
+	});
+	</script> -->

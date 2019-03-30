@@ -83,24 +83,27 @@ router.post('/login', function (req, res, next) {
 // POST for registering
 router.post('/register', function (req, res, next) {
   // // confirm that user typed same password twice
-  // if (req.body.password !== req.body.passwordConf) {
-  //   var err = new Error('Passwords do not match.');
-  //   err.status = 400;
-  //   res.send("passwords dont match");
-  //   return next(err);
-  // }
+  if (req.body.password !== req.body.passwordConf) {
+    var err = new Error('Passwords do not match.');
+    err.status = 400;
+    res.send("passwords dont match");
+    return next(err);
+  }
 
   if (req.body.email &&
     req.body.username &&
-    req.body.password) {
+    req.body.password &&
+    req.body.passwordConf) {
 
     var userData = {
       email: req.body.email,
       username: req.body.username,
-      password: req.body.password
+      password: req.body.password,
+      passwordConf: req.body.passwordConf
     }
 
     // use schema.create to insert data into the db
+    console.log(userData);
     User.create(userData, function (err, user) {
       if (err) {
         return next(err)

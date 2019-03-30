@@ -34,7 +34,7 @@
         function register() {
             console.log("called sign up");
             vm.loading = true;
-            AuthenticationService.Register(vm.email, vm.username, vm.password, function (result) {
+            AuthenticationService.Register(vm.email, vm.username, vm.password, vm.passwordConf, function (result) {
                 if (result === true) {
                     vm.loading = false;
                     $state.go('login');

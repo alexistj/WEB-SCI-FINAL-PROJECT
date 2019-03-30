@@ -36,8 +36,8 @@
                 });
         }
 
-        function Register(email, username, password, callback) {
-            $http.post(API + '/register', { email: email, username: username, password: password })
+        function Register(email, username, password, passwordConf, callback) {
+            $http.post(API + '/register', { email: email, username: username, password: password, passwordConf: passwordConf })
                 .success(function (response) {
                     // login successful if there's a token in the response
                     if (response.success) {

@@ -5,7 +5,7 @@
         .module('app')
         .controller('Splash.IndexController', Controller);
 
-    function Controller($state, AuthenticationService) {
+    function Controller($state, $scope, AuthenticationService) {
         var vm = this;
 
         vm.login = login;
@@ -16,6 +16,7 @@
         function initController() {
             // reset login status
             AuthenticationService.Logout();
+            // $scope.showLogin = false;
         };
 
         function login() {
@@ -34,7 +35,7 @@
         function register() {
             console.log("called sign up");
             vm.loading = true;
-            AuthenticationService.Register(vm.email, vm.username, vm.password, function (result) {
+            AuthenticationService.Register(vm.registerEmail, vm.registerUsername, vm.registerPassword, vm.confirmPassword, function (result) {
                 if (result === true) {
                     vm.loading = false;
                     $state.go('login');
