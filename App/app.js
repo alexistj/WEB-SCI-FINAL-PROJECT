@@ -10,22 +10,40 @@
         // default route
         $urlRouterProvider.otherwise("/");
 
+        // .state('dashboard', {
+        //     url: '/dashbaord/:userId',
+        //     css: '',
+        //     templateUrl: 'splash/index.view.html',
+        //     controller: 'Splash.IndexController',
+        //     controllerAs: 'vm'
+        //   })
+
         // app routes
         $stateProvider
             .state('splash', {
-                url: '/splash',
+                url: '/',
+                css: '',
                 templateUrl: 'splash/index.view.html',
                 controller: 'Splash.IndexController',
                 controllerAs: 'vm'
               })
-            .state('home', {
-                url: '/',
-                templateUrl: 'home/index.view.html',
-                controller: 'Home.IndexController',
+            .state('dashboard', {
+                url: '/dashboard',
+                css: '',
+                templateUrl: 'dashboard/index.view.html',
+                controller: 'Dashboard.IndexController',
                 controllerAs: 'vm'
-            })
+              })
+            // .state('home', {
+            //     url: '/',
+            //     css: '',
+            //     templateUrl: 'home/index.view.html',
+            //     controller: 'Home.IndexController',
+            //     controllerAs: 'vm'
+            // })
             .state('login', {
                 url: '/login',
+                css: '',
                 templateUrl: 'login/index.view.html',
                 controller: 'Login.IndexController',
                 controllerAs: 'vm'
@@ -33,6 +51,7 @@
     }
 
     function run($rootScope, $http, $location, $localStorage) {
+
         // keep user logged in after page refresh
         if ($localStorage.currentUser) {
             $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;

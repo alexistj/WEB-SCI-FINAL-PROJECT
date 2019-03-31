@@ -1,0 +1,225 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title> -->
+	<!-- <link rel="stylesheet" type="text/css" href="assets/css/dashboard.css"> -->
+	 <!-- <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script> -->
+
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+
+
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /> -->
+
+
+    <!-- Include Angular from CDN -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.1/angular.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script> -->
+
+
+
+    <!-- Bootstrap from CDN -->
+    <!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+<!-- </head>
+<body> -->
+	<div class="topBar">
+		<div class="gameName">
+			<h1>StartDS</h1>
+		</div>
+		<div ng-show="vm.loggedIn" class="welcomeMSG">
+			<h1>Welcome, {{ vm.username }} </h1>
+		</div>
+
+	</div>
+	<div id="gameBoxes">
+
+		<div class="container">
+			<div class="row">
+				<div class = "col-md-4 each">
+					<div class="array">
+						<div class="title">
+							<h1>Arrays</h1>
+						</div>
+						<div class= "content">
+							<div class="row">
+								<div ng-show="vm.loggedIn" class="col-md-9 left">
+									<div class="w3-white w3-round-xlarge">
+									  <div class="w3-grey w3-round-xlarge progress" style="height:24px;width:30%">
+
+									  </div>
+									</div>
+									<p class="progressText" id="completeText0"></p>
+								</div>
+								<div class="col-md-3 right">
+									<a href="/games/compiler">
+										<i class="fa fa-play" aria-hidden="true"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class = "col-md-4 each">
+					<div class="trees">
+						<div class="title">
+							<h1>Trees</h1>
+
+						</div>
+						<div class= "content">
+							<div class="row">
+								<div ng-show="vm.loggedIn" class="col-md-9 left">
+									<div class="w3-white w3-round-xlarge">
+									  <div class="w3-grey w3-round-xlarge progress" style="height:24px;width:50%">
+
+									  </div>
+									</div>
+									<p class="progressText" id="completeText1"></p>
+								</div>
+								<div class="col-md-3 right">
+									<a href="/games/compiler">
+										<i class="fa fa-play" aria-hidden="true"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class = "col-md-4 each">
+					<div class="hashTables">
+						<div class="title">
+							<h1>Hash Tables</h1>
+						</div>
+						<div class= "content">
+							<div class="row">
+								<div ng-show="vm.loggedIn" class="col-md-9 left">
+									<div class="w3-white w3-round-xlarge">
+									  <div class="w3-grey w3-round-xlarge progress" style="height:24px;width:70%">
+									  </div>
+									</div>
+									<p class="progressText" id="completeText2"></p>
+								</div>
+								<div class="col-md-3 right">
+									<a href="/games/compiler">
+										<i class="fa fa-play" aria-hidden="true"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class = "col-md-4 each">
+					<div class="linkedL">
+						<div class="title">
+							<h1>Linked List</h1>
+						</div>
+						<div class= "content">
+							<div class="row">
+								<div ng-show="vm.loggedIn" class="col-md-9 left">
+									<div class="w3-white w3-round-xlarge">
+									  <div class="w3-grey w3-round-xlarge progress" style="height:24px;width:40%">
+
+									  </div>
+									</div>
+									<p class="progressText" id="completeText3"></p>
+								</div>
+								<div class="col-md-3 right">
+									<a href="/games/compiler">
+										<i class="fa fa-play" aria-hidden="true"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class = "col-md-4 each">
+					<div class="stacks">
+						<div class="title">
+							<h1>Stacks</h1>
+						</div>
+						<div class= "content">
+							<div class="row">
+								<div ng-show="vm.loggedIn" class="col-md-9 left">
+									<div class="w3-white w3-round-xlarge">
+									  <div class="w3-grey w3-round-xlarge progress" style="height:24px;width:30%">
+
+									  </div>
+									</div>
+									<p class="progressText" id="completeText4"></p>
+								</div>
+								<div class="col-md-3 right">
+									<a href="/games/compiler">
+										<i class="fa fa-play" aria-hidden="true"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class = "col-md-4 each">
+					<div class="queues">
+						<div class="title">
+							<h1>Queues</h1>
+						</div>
+						<div class= "content">
+							<div class="row">
+								<div ng-show="vm.loggedIn" class="col-md-9 left">
+									<div class="w3-white w3-round-xlarge">
+									  <div class="w3-grey w3-round-xlarge progress" style="height:24px;width:10%">
+
+									  </div>
+									</div>
+									<p class="progressText" id="completeText5">test</p>
+								</div>
+
+								<div class="col-md-3 right">
+									<a href="/games/compiler">
+										<i class="fa fa-play" aria-hidden="true"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		var allSections = document.getElementsByClassName('progress');
+		//var test = allSections.style.width;
+		//console.log(test);
+		console.log(allSections);
+		for (var i = 0; i < allSections.length; ++i) {
+			var addTextID = "completeText";
+			addTextID += i;
+			console.log(addTextID);
+			var percentageMSG = allSections[i].style.width + " completed";
+			console.log(percentageMSG);
+			document.getElementById(addTextID).innerHTML = percentageMSG;
+		    //var item = allSections[i];
+
+		}
+
+	});
+
+</script>
+
+<!-- Bootstrap and Angular depend on jQuery, so lets add it here -->
+<!-- <script src="https://code.jquery.com/jquery-1.12.0.js"></script> -->
+
+<!-- Latest compiled and minified Bootstrap JavaScript -->
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+<!-- </html> -->

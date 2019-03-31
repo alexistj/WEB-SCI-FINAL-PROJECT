@@ -105,12 +105,19 @@
 
 }
 
-.playIcon {
-	width: 50px;
-	height: 50px;
-	vertical-align:middle
+.fa .fa-play {
+	color: black;
+	width: 70px;
+	height: 70px;
 }
-
+a {
+  text-decoration: none;
+	color: black;
+}
+a:hover, a:focus, a:active {
+  color: black;
+  text-decoration: none;
+}
 .each .content .left {
 	padding-left: 30px;
 	padding-top: 14px;

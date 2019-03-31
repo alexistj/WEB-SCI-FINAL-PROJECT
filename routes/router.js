@@ -56,25 +56,26 @@ router.get('/dashboard/:userid', isAuthenticated, function (req, res, next) {
 router.post('/login', function (req, res, next) {
 
   if (req.body.username && req.body.password) {
+
+    // authenticate the user
     User.authenticate(req.body.username, req.body.password, function (error, user) {
       if (error || !user) {
         var err = new Error('Wrong username or password.');
         err.status = 401;
         res.json({ success: false, message: 'Authentication failed. Wrong password.' });
-        // return next(err);
+        return next(err);
       } else {
         const payload = { userId: user._id  };
         var token = jwt.sign(payload, req.app.get('secret'), {
           expiresIn: '24h' // expires in 24 hours
         });
-        console.log(token);
+
         // return the information including token as JSON
         res.json({
           success: true,
           message: 'Enjoy your token!',
           token: token
         });
-          // return res.json(user);
       }
     });
   }
@@ -103,7 +104,6 @@ router.post('/register', function (req, res, next) {
     }
 
     // use schema.create to insert data into the db
-    console.log(userData);
     User.create(userData, function (err, user) {
       if (err) {
         return next(err)
