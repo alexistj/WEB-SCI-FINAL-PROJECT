@@ -6,7 +6,6 @@ const fs         = require('fs');
 const passport 	 = require('passport');
 const mongoose 	 = require('mongoose');
 const cors       = require('cors');
-const MongoClient = require('mongodb').MongoClient;
 const port = 3000;
 
 // env variables

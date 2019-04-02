@@ -16,7 +16,6 @@
         function initController() {
             // reset login status
             AuthenticationService.Logout();
-            // $scope.showLogin = false;
         };
 
         function login() {
@@ -24,7 +23,7 @@
             vm.loading = true;
             AuthenticationService.Login(vm.username, vm.password, function (result) {
                 if (result === true) {
-                    $state.go('home');
+                    $state.go('dashboard');
                 } else {
                     vm.error = 'Username or password is incorrect';
                     vm.loading = false;

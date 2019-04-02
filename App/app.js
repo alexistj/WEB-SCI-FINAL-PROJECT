@@ -35,7 +35,7 @@
                 controllerAs: 'vm'
               })
             // .state('home', {
-            //     url: '/',
+            //     url: '/home',
             //     css: '',
             //     templateUrl: 'home/index.view.html',
             //     controller: 'Home.IndexController',

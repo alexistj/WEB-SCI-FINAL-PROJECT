@@ -31,7 +31,11 @@
 		</div>
 		<div ng-show="vm.loggedIn" class="welcomeMSG">
 			<h1>Welcome, {{ vm.username }} </h1>
+			<p ng-click="vm.logout()">Logout</p>
 		</div>
+		<!-- <div ng-show="!vm.loggedIn" class="welcomeMSG">
+			<p><a href="#/splash">Login or Sign-Up</a></p>
+		</div> -->
 
 	</div>
 	<div id="gameBoxes">
@@ -201,13 +205,13 @@
 		var allSections = document.getElementsByClassName('progress');
 		//var test = allSections.style.width;
 		//console.log(test);
-		console.log(allSections);
+		// console.log(allSections);
 		for (var i = 0; i < allSections.length; ++i) {
 			var addTextID = "completeText";
 			addTextID += i;
-			console.log(addTextID);
+			// console.log(addTextID);
 			var percentageMSG = allSections[i].style.width + " completed";
-			console.log(percentageMSG);
+			// console.log(percentageMSG);
 			document.getElementById(addTextID).innerHTML = percentageMSG;
 		    //var item = allSections[i];
 

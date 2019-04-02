@@ -43,6 +43,7 @@
                         $http.defaults.headers.common.Authorization = 'Bearer ' + response.token;
 
                         // execute callback with true to indicate successful login
+                        console.log("Successfully logged in ", $localStorage.currentUser);
                         callback(true);
                     } else {
                         // execute callback with false to indicate failed login
