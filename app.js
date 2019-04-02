@@ -6,6 +6,7 @@ const fs         = require('fs');
 const passport 	 = require('passport');
 const mongoose 	 = require('mongoose');
 const cors       = require('cors');
+const MongoClient = require('mongodb').MongoClient;
 const port = 3000;
 
 // env variables
@@ -14,12 +15,15 @@ require('dotenv').config();
 //Configure mongoose's promise to global promise
 mongoose.promise = global.Promise;
 
-// Configure Mongooose
-mongoose.connect('mongodb://localhost:27017/startDS',
+// Configure Mongooose and MongoDBAtlas connection
+const uri = `mongodb+srv://${ process.env.DBUSER }:${ process.env.DBPASSWORD }@webscience-kme8m.mongodb.net/test?retryWrites=true`;
+mongoose.connect(uri,
   {useNewUrlParser: true,
    useFindAndModify : false,
-   useCreateIndex : true});
+   useCreateIndex : true,
+   dbName: 'startDS'});
 const db = mongoose.connection;
+
 
 //Initiate app
 const app = express();
