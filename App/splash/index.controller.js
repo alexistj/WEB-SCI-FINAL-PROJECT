@@ -16,7 +16,7 @@
         function initController() {
             // reset login status
             if ($localStorage.currentUser) {
-              $location.path( "/dashboard" );
+              $state.go( "dashboard" );
             }
         };
 
@@ -39,7 +39,7 @@
             AuthenticationService.Register(vm.registerEmail, vm.registerUsername, vm.registerPassword, vm.confirmPassword, function (result) {
                 if (result === true) {
                     vm.loading = false;
-                    $state.go('login');
+                    $state.go('splash');
                 } else {
                     vm.error = 'Ensure all fields are filled out';
                     vm.loading = false;

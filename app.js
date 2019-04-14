@@ -15,7 +15,7 @@ require('dotenv').config();
 mongoose.promise = global.Promise;
 
 // Configure Mongooose and MongoDBAtlas connection
-const uri = `mongodb+srv://${ process.env.DBUSER }:${ process.env.DBPASSWORD }@webscience-kme8m.mongodb.net/test?retryWrites=true`;
+const uri = `mongodb+srv://${ process.env.DBUSER }:${ process.env.DBPASSWORD }@cluster0-yvtgu.mongodb.net/test?retryWrites=true`;
 mongoose.connect(uri,
   {useNewUrlParser: true,
    useFindAndModify : false,

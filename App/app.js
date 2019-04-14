@@ -8,7 +8,7 @@
 
     function config($stateProvider, $urlRouterProvider) {
         // default route
-        $urlRouterProvider.otherwise("/");
+        // $urlRouterProvider.otherwise("/");
 
         // .state('dashboard', {
         //     url: '/dashbaord/:userId',
@@ -34,20 +34,20 @@
                 controller: 'Dashboard.IndexController',
                 controllerAs: 'vm'
               })
-            // .state('home', {
-            //     url: '/home',
-            //     css: '',
-            //     templateUrl: 'home/index.view.html',
-            //     controller: 'Home.IndexController',
-            //     controllerAs: 'vm'
-            // })
-            .state('login', {
-                url: '/login',
+            .state('topics', {
+                url: '/topics',
                 css: '',
-                templateUrl: 'login/index.view.html',
-                controller: 'Login.IndexController',
+                templateUrl: 'topics/topicMain/index.view.html',
+                controller: 'TopicMain.IndexController',
                 controllerAs: 'vm'
-            });
+              })
+            .state('topicArray', {
+                url: '/topics/arrays',
+                css: '',
+                templateUrl: 'topics/topicArray/index.view.html',
+                controller: 'TopicArray.IndexController',
+                controllerAs: 'vm'
+              });
     }
 
     function run($rootScope, $http, $location, $localStorage) {

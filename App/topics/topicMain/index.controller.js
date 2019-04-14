@@ -3,12 +3,12 @@
 
     angular
         .module('app')
-        .controller('Dashboard.IndexController', Controller);
+        .controller('TopicMain.IndexController', Controller);
 
     function Controller($state, $scope, $localStorage, AuthenticationService) {
         var vm = this;
-        vm.logout = logout;
         vm.login = login;
+        vm.logout = logout;
 
         initController();
 
@@ -25,7 +25,6 @@
         };
 
         function login() {
-            console.log("called login");
             vm.loading = true;
             console.log(vm.username, vm.password);
             AuthenticationService.Login(vm.username, vm.password, function (result) {

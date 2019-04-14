@@ -1,0 +1,57 @@
+	<nav class="navbar navbar-expand-lg navbar-custom">
+	  <a class="navbar-brand" href="#/">StartDS</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item">
+	        <a class="nav-link" href="#/dashboard">Dashboard<span class="sr-only"></span></a>
+	      </li>
+	      <li class="nav-item active">
+					<a class="nav-link" href="#/topics">Topics<span class="sr-only">(current)</span></a>
+	      </li>
+	    </ul>
+			<ul ng-show="vm.loggedIn" class="navbar-nav ml-auto">
+				<li class="nav-item active">
+				 <a class="nav-link"> Welcome, {{ vm.username }} </a>
+			 </li>
+			 <button class="btn btn-danger my-2 my-sm-0">Logout</button>
+			</ul>
+			<ul ng-show="!vm.loggedIn" class="navbar-nav ml-auto">
+				<li class="nav-item">
+				 <form class="form-inliane my-0 my-lg-1">
+					<input class="form-control mr-sm-3" type="text" placeholder="Username" aria-label="Username">
+					<input class="form-control mr-sm-3" type="password" placeholder="Password" aria-label="Password">
+					<button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+					<button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+				</form>
+			 </li>
+			</ul>
+	  </div>
+	</nav>
+
+	<h1>Arrays</h1>
+	<div class="jumbotron">
+		Arrays are quite possibly the most basic data structure available. You can think of
+		an array as a large box with many subsections, and each section has some sort of data within it.
+		This is a representation of how an array will look to the computer:
+	</div>
+	<img />
+	<div class="jumbotron">
+		There are a couple
+	 of important things to note about this structure. First of all, all of the elements inside
+	 the array are next to each other. Second, the first element in the array is denoted as array[0].
+	 Almost every language will start off the first index at zero. Finally, all the elements in the
+	 array need to be the same data type (in C++). So, you can’t have array[0] be an integer and array[1] be a string.
+	 So, why use arrays? Well, accessing an element in the array is super fast, since every element
+	 has a number attached to it, so it takes the computer almost no time to access it.
+	 Having that number attached to all elements also maintains order in the array. Also,
+	 the simplicity of these structures keeps everything at a set length, which can be
+	 helpful. However, being a set length also comes with some drawbacks.
+	 Adding new elements requires the computer to copy the current array into a new,
+	 bigger array, which can take a while especially if the array is particularly big.
+	 The same logic applies for removing elements as well.
+	</div>
+</body>
