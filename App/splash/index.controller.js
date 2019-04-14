@@ -5,7 +5,7 @@
         .module('app')
         .controller('Splash.IndexController', Controller);
 
-    function Controller($state, $scope, AuthenticationService) {
+    function Controller($state, $scope, $location, $localStorage, AuthenticationService) {
         var vm = this;
 
         vm.login = login;
@@ -15,7 +15,9 @@
 
         function initController() {
             // reset login status
-            AuthenticationService.Logout();
+            if ($localStorage.currentUser) {
+              $location.path( "/dashboard" );
+            }
         };
 
         function login() {

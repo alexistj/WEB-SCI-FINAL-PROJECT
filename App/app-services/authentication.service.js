@@ -6,7 +6,7 @@
         .constant('API', 'http://localhost:3000')
         .factory('AuthenticationService', Service);
 
-    function Service($http, $localStorage, API) {
+    function Service($http, $location, $localStorage, API) {
         var service = {};
 
         // Function variables
@@ -73,6 +73,7 @@
             // remove user from local storage and clear http auth header
             delete $localStorage.currentUser;
             $http.defaults.headers.common.Authorization = '';
+            $location.path( "/" );
             console.log("logged out!");
         }
     }

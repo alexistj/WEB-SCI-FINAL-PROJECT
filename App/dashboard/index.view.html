@@ -27,15 +27,15 @@
 <body> -->
 	<div class="topBar">
 		<div class="gameName">
-			<h1>StartDS</h1>
+			<a href="#/splash"><h1>StartDS</h1></a>
 		</div>
 		<div ng-show="vm.loggedIn" class="welcomeMSG">
 			<h1>Welcome, {{ vm.username }} </h1>
 			<p ng-click="vm.logout()">Logout</p>
 		</div>
-		<!-- <div ng-show="!vm.loggedIn" class="welcomeMSG">
+		<div ng-show="!vm.loggedIn" class="welcomeMSG">
 			<p><a href="#/splash">Login or Sign-Up</a></p>
-		</div> -->
+		</div>
 
 	</div>
 	<div id="gameBoxes">
