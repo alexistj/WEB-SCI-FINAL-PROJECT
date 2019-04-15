@@ -8,7 +8,7 @@
 
     function config($stateProvider, $urlRouterProvider) {
         // default route
-        // $urlRouterProvider.otherwise("/");
+         $urlRouterProvider.otherwise("/");
 
         // .state('dashboard', {
         //     url: '/dashbaord/:userId',
@@ -46,6 +46,14 @@
                 css: '',
                 templateUrl: 'topics/topicArray/index.view.html',
                 controller: 'TopicArray.IndexController',
+                controllerAs: 'vm'
+              })
+
+            .state('test1', {
+                url: '/test1',
+                css: '',
+                templateUrl: 'dragNdrop/test1/index.view.html',
+                controller: 'Test1.IndexController',
                 controllerAs: 'vm'
               });
     }
