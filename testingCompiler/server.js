@@ -23,44 +23,6 @@ MongoClient.connect(CONNECTION_URL, { useNewUrlParser: true }, (error, client) =
     database = client.db(DATABASE_NAME);
     console.log("Connected to `" + DATABASE_NAME + "`!");
 
-	/*
-	var myobj = [
-		{
-            "description": "Write a program that squares an input.",
-            "testInputs": ["-5", "0", "1", "10", "123"],
-            "testOuputs": ["25", "0", "1", "100", "15129"],
-            "inputType": "int",
-			"num": 0
-        },
-        {
-            "description": "Write a program that multiplies an input by 10.",
-            "testInputs": ["-3", "3", "9", "10", "0"],
-            "testOuputs": ["-30", "30", "90", "100", "0"],
-            "inputType": "int",
-			"num": 1
-        },
-        {
-            "description": "Write a program that adds 10 to an input.",
-            "testInputs": ["-5", "0", "1", "10", "123"],
-            "testOuputs": ["5", "10", "11", "20", "133"],
-            "inputType": "int",
-			"num": 2
-        },
-        {
-            "description": "Write a program that appends \"Hi \" to the beginning of the string and an exclamation point at the end.",
-            "testInputs": ["Justin", "Alexis", "Jenny", "Aaron"],
-            "testOuputs": ["Hi Justin!", "Hi Alexis!", "Hi Jenny!", "Hi Aaron!"],
-            "inputType": "string",
-			"num": 3
-        }
-	];
-
-	database.collection("compilerQuestions").insertMany(myobj, function(err, res) {
-    	if (err) throw err;
-    	console.log("Number of documents inserted: " + res.insertedCount);
-  	});
-	*/
-
 	app.get('/' , function (req , res ) {
 		// Uses our made HTML file for the frontend
 		res.sendfile( __dirname + "/index.html");
