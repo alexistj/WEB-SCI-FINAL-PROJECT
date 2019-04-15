@@ -1,3 +1,4 @@
 /testingCompiler/node_modules
 .env
 /testingCompiler/temp
+/node_modules

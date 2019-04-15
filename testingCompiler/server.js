@@ -4,7 +4,10 @@ var app = express();
 const MongoClient = require("mongodb").MongoClient;
 var bodyParser = require('body-parser');
 var fs = require('fs');
+const port = 8080
 app.use(bodyParser());
+app.use('/', express.static(__dirname));
+express.static(path.join(__dirname));
 
 // Mongo connection
 const CONNECTION_URL = "mongodb+srv://admin:adminpassword@cluster0-f0kkf.mongodb.net/test?retryWrites=true";
@@ -88,4 +91,4 @@ app.get('/questions.json', function(req, res) {
   res.sendFile(__dirname + "/" + "questions.json");
 });
 
-app.listen(8080);
+app.listen((process.env.port || 8080), () => console.log(`startDS listening on port ${port}!`))

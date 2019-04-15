@@ -1,0 +1,192 @@
+html, body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	font-family: 'Nunito Sans', sans-serif;
+
+}
+
+#background{
+	background-color:#0075C4;
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+
+#loginContainer *{
+	color: #fff;
+	font-weight: normal;
+	line-height: 1em;
+	box-sizing: border-box;
+	z-index: 10;
+
+}
+
+#loginContainer {
+	width: 80%;
+	margin: 0 auto;
+	position: relative;
+	max-width: 1024px;
+	padding-top: 80px;
+	z-index: 10;
+}
+
+#inputContainer {
+	width: 500px;
+	padding: 45px;
+	float:right;
+	background: grey;
+	border-radius: 20px;
+	/*border-left: 1px solid #999*/
+}
+
+#inputContainer h2 {
+	text-align: center;
+	font-size: 30px;
+	color: black;
+	font-weight: bold;
+}
+
+#inputContainer input[type="text"],
+#inputContainer input[type="email"],
+#inputContainer input[type="password"]{
+	display: block;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #fff;
+    height: 27px;
+    line-height: 27px;
+    width: 100%;
+}
+
+#inputContainer label {
+	display: block;
+    color: white;
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+
+#inputContainer button {
+	background-color: transparent;
+    border: 1px solid #fff;
+    border-radius: 250px;
+    color: #fff;
+    display: block;
+    font-size: 14px;
+    letter-spacing: 1px;
+    margin: 20px auto;
+    height: 50px;
+    width: 100%;
+}
+
+#inputContainer button:hover {
+	cursor: pointer;
+	background-color: #D65108;
+
+}
+
+#inputContainer .errorMessage {
+	display: block;
+    color: #fd5555;
+    font-size: 15px;
+    font-style: italic;
+}
+
+.hasAccount span{
+	font-weight: bold;
+    font-size: 12px;
+}
+.hasAccount span:hover{
+	cursor: pointer;
+}
+
+
+.hasAccount {
+	text-align: center;
+}
+
+#title {
+	background: #D65108;
+	padding: 20px 0 20px 50px;
+	margin-top: 100px;
+	z-index: 1;
+	position: absolute;
+	width: 100%;
+
+}
+
+.mainTitle {
+
+	font-size: 40px;
+	margin-bottom: 10px;
+	color: white;
+}
+
+.subTitle {
+	font-size: 25px;
+	color: #ff8f51;
+	margin-top: 0;
+}
+
+
+#LoginSignUp{
+	z-index: 100;
+	position: absolute;
+	float: right;
+	padding-top: 40px;
+
+
+}
+
+
+.infoSection {
+	position: absolute;
+	margin-top: 300px;
+	width: 40%;
+	padding-left: 50px;
+	font-size: 18px;
+}
+
+
+/* cool button css animation */
+.explore {
+  background: #D65108;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+
+
+.explore:hover{
+  background: #fff;
+  color: #D65108;
+}
+
+.explore:before, .explore:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #D65108;
+  transition:400ms ease all;
+}
+.explore:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+
+.explore:hover:before, .explore:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
