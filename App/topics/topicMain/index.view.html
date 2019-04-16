@@ -1,40 +1,5 @@
-	<nav class="navbar navbar-expand-lg navbar-custom">
-		<a class="navbar-brand" href="#/">StartDS</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
+<navbar></navbar>
 
-		<div class="collapse navbar-collapse">
-			<ul class="navbar-nav mr-auto">
-				<li class="nav-item">
-					<a class="nav-link" href="#/dashboard">Dashboard<span class="sr-only"></span></a>
-				</li>
-				<li class="nav-item active">
-					<a class="nav-link" href="#/topics">Topics<span class="sr-only">(current)</span></a>
-				</li>
-			</ul>
-			<ul ng-show="vm.loggedIn" class="navbar-nav ml-auto">
-				<li class="nav-item active">
-				 <a class="nav-link"> Welcome, {{ vm.username }} </a>
-			 </li>
-			 <button class="btn btn-danger my-2 my-sm-0" ng-click="vm.logout();" >Logout</button>
-			</ul>
-			<ul ng-show="!vm.loggedIn" class="navbar-nav ml-auto">
-				<form class="form-inline">
-				  <div class="form-group mb-2">
-				    <input required class="form-control mr-sm-3" type="text" ng-model="vm.username" placeholder="Username" aria-label="Username">
-				  </div>
-				  <div class="form-group mx-sm-3 mb-2">
-						<input required class="form-control mr-sm-3" type="password" ng-model="vm.password" placeholder="Password" aria-label="Password">
-				  </div>
-					<div class="form-group mx-sm-3 mb-2">
-					<button class="btn btn-success my-2 my-sm-0" type="submit" ng-click="vm.login();">Login</button>
-					<a href="#/" class="btn btn-success btn-sm-0" style="margin-left: 10px;" role="button">Sign-Up</a>
-				</form>
-			 </li>
-			</ul>
-		</div>
-	</nav>
 
 	<div id="gameBoxes">
 
@@ -285,29 +250,18 @@
 
 <script type="text/javascript">
 
-	$(document).ready(function(){
-		var allSections = document.getElementsByClassName('progress');
-		//var test = allSections.style.width;
-		//console.log(test);
-		// console.log(allSections);
-		for (var i = 0; i < allSections.length; ++i) {
-			var addTextID = "completeText";
-			addTextID += i;
-			// console.log(addTextID);
-			var percentageMSG = allSections[i].style.width + " completed";
-			// console.log(percentageMSG);
-			document.getElementById(addTextID).innerHTML = percentageMSG;
-		    //var item = allSections[i];
+	// $(document).ready(function(){
+	// 	var allSections = document.getElementsByClassName('progress');
+	// 	var test = allSections.style.width;
+	// 	for (var i = 0; i < allSections.length; ++i) {
+	// 		var addTextID = "completeText";
+	// 		addTextID += i;
+	// 		var percentageMSG = allSections[i].style.width + " completed";
+	// 		document.getElementById(addTextID).innerHTML = percentageMSG;
+	// 	    var item = allSections[i];
+	//
+	// 	}
 
-		}
-
-	});
+	// });
 
 </script>
-
-<!-- Bootstrap and Angular depend on jQuery, so lets add it here -->
-<!-- <script src="https://code.jquery.com/jquery-1.12.0.js"></script> -->
-
-<!-- Latest compiled and minified Bootstrap JavaScript -->
-<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
-<!-- </html> -->
