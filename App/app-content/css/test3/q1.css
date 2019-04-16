@@ -1,36 +1,8 @@
 
  
-#content{
-  background-color: #f99d5d;
-  margin: 80px 70px;
-  text-align: center;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
- 
-/* Header/footer boxes */
- 
-.wideBox {
-  clear: both;
-  text-align: center;
-  margin: 70px;
-  padding: 10px;
-  background: #ebedf2;
-  border: 1px solid #333;
-  background-color: #40a2ffbd;
-}
- 
-.wideBox h1 {
-  font-weight: bold;
-  margin: 20px;
-  color: #666;
-  font-size: 1.5em;
-}
- 
 /* Slots for final card positions */
  
-.T1Q1 #cardSlots {
+.T3Q1 #cardSlots {
   margin: 0 auto 3em auto;
   background: #007bff;
   float: right;
@@ -38,14 +10,30 @@
  
 /* The initial pile of unsorted cards */
  
-.T1Q1 #cardPile {
+.T3Q1 #cardPile {
   margin: 0 auto;
   background: #D65108;
   float: left;
 }
  
- .T1Q1 #cardSlots, .T1Q1 #cardPile {
-  width: 47%;
+.T3Q1 #cardSlots {
+  width: 930px;
+  height: 380px;
+  padding: .85em;
+  border: 2px solid #333;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -moz-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  background: url(../../img/test3/q1.png);
+  background-size:contain; ;                      /* <------ */
+    background-position:  center;
+}
+
+.T3Q1 #cardPile {
+  width: 26%;
   height: 80%;
   padding: .85em;
   border: 2px solid #333;
@@ -59,70 +47,96 @@
  
 /* Individual cards and slots */
  
- .T1Q1 #cardSlots div,  .T1Q1 #cardPile div {
+
+
+.T3Q1 #cardPile div {
   float: left;
-  width: 48%;
-  height: 180px;
+  width: 103px;
+  height: 72px;
   padding: 5px;
   border: 2px solid #333;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
   margin: 10px 0 0 10px;
-  background: #fff;
 }
 
- .T1Q1 img{
+.T3Q1 img{
   width: 245px;
-}
-
-.loadButton {
-  text-align: center;
-
 }
  
 /*#cardSlots div:first-child, #cardPile div:first-child {
   margin-left: 0;
 }*/
  
- .T1Q1 #cardSlots div.hovered {
+.T3Q1 #cardSlots div.hovered {
   background: #aaa;
 }
  
- .T1Q1 #cardSlots div {
-  border-style: dashed;
-}
+
  
- .T1Q1 #cardPile div {
-  background: #055000;
+.T3Q1 #cardPile div {
   color: #fff;
   font-size: 1em;
   text-shadow: 0 0 3px #000;
   text-align: center;
 }
  
- .T1Q1 #cardPile div.ui-draggable-dragging {
+.T3Q1 #cardPile div.ui-draggable-dragging {
   -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
   -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
   box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
 }
  
-/* Individually coloured cards */
- 
- #card1.correct,
- #card2.correct,
- #card3.correct, 
- #card4.correct, 
- #card5.correct, 
- #card6.correct, 
- #card7.correct, 
- #card8.correct, 
- #card9.correct, 
- #card10.correct {
 
-  background: #149614e0; 
+
+.T3Q1 #boxes {
+    padding-top: 10px;
+    padding-left: 20px;
+    float: left;
+
+
+}
+
+.T3Q1 .slot {
+  width:103px;
+  height: 72px;
+  display: inline-block;
+  border-style: dashed;
+  margin: 0px 140px 0px 0px;
+  border-radius: 10px;
+}
+
+.T3Q1 .slotLast {
+  width: 95px;
+  height: 95px;
+  display:inline-block;
+  border-style: dashed;
+  padding: 0px 0px  0px 0px;
 }
  
+
+.T3Q1 .row {
+  height: 90px;
+}
+
+.T3Q1 .greenPile {
+  background: #055000;
+
+}
+
+.T3Q1 .greenPile.correct{
+  background: #149614e0; 
+}
+
+.T3Q1 .redPile {
+  background: red;
+
+}
+
+.T3Q1 .redPile.correct{
+  background: #ff0000c4; 
+}
  
 /* "You did it!" message */
 #successMessage {

@@ -1,4 +1,5 @@
 var correctCards = 0;
+//$( init );
 
 $('#successMessage').hide();
 $('#successMessage').css( {
@@ -9,56 +10,85 @@ $('#successMessage').css( {
 } );
 
 
-//$( init );
-
-function init() {
-
- // document.getElementById('loadReset').innerHTML = '<i class="fa fa-spinner fa-spin"></i>Loading';
-
-  // Reset the game
-  correctCards = 0;
-  $('#cardPile').html( '' );
-  $('#cardSlots').html( '' );
+function initT3Q1() {
 
 
   // Hide the success message
-  $('#successMessage').hide();
-  $('#successMessage').css( {
-    left: '580px',
-    top: '250px',
-    width: 0,
-    height: 0
-  } );
-
+  
   // Reset the game
   correctCards = 0;
   $('#cardPile').html( '' );
-  $('#cardSlots').html( '' );
+  //$('#cardSlots').html( '' );
+
+  var eachRow = document.getElementsByClassName('row');
+console.log(eachRow.size);
+  for (var x=0; x<5; x++){
+    console.log("enter");
+    eachRow[x].innerHTML = "";
+  }
 
   // Create the pile of shuffled cards
-  var numbers = [ 8,7,4,2,1,3,5,6];
-  var terms = ['Accessing data beyond the array bounds', 'Uninitialized memory', 'Infinite loop', 'Compile error: type mismatch','Does not contain an error', 'Memory leak', 'Math error (incorrect answer)', 'Syntax error'];
+  var key = [3, 0, 4, 6, -1, -1, -1];
+  var terms = ['Depth-first search', 'Breadth-first search', 'Pre-order traversal' ,'In-order traversal', 'Post-order traversal','Narrower and taller', 'Wider and shorter'];
 
-  for ( var i=0; i<8; i++ ) {
-    $('<div>' + terms[i] + '</div>').data( 'number', numbers[i] ).attr( 'id', 'card'+numbers[i] ).appendTo( '#cardPile' ).draggable( {
+
+   /* a) depth-first search
+d) in-order traversal
+g) wider and shorter
+b) breadth-first search
+e) post-order traversal
+c) pre-order traversal
+f) narrower and taller*/
+
+  for ( var i=0; i<7; i++ ) {
+    $('<div class=greenPile>' + terms[i] +'</div>').data( 'number', i ).attr( 'id', 'card1' ).appendTo( '#cardPile' ).draggable( {
       
       stack: '#cardPile div',
       cursor: 'move',
       revert: true
     } );
+
+  
   }
+
+  
+
+
+/*<div class='row'>
+        <div class='slot'>
+        
+        </div>
+        <div class='slot'>
+          
+        </div >
+
+        <div class='slotLast'>
+          
+        </div >
+      </div>*/
 
 
   // Create the card slots
-  for ( var i=1; i<=8; i++ ) {
-    $('<div><img src="app-content/img/test1/q1/num' + i+'.png">' + '</div>').data( 'number', i ).appendTo( '#cardSlots' ).droppable( {
+  for ( var i=1; i<=4; i++ ) {
+
+    var row=  document.getElementsByClassName("row")[i-1];
+    console.log(row);
+
+    $('<div class="slot"></div>').data( 'number', key[i-1] ).appendTo( row ).droppable( {
       accept: '#cardPile div',
       hoverClass: 'hovered',
       drop: handleCardDrop
-    } );
-  }
+    });
 
-  document.getElementById('loadReset').innerHTML = 'Reset';
+  
+
+    
+    /*$('<div class="row"> </div>').data( 'number', i ).appendTo( '#boxes' ).droppable( {
+      accept: '#cardPile div',
+      hoverClass: 'hovered',
+      drop: handleCardDrop
+    } );*/
+  }
 
 }
 
