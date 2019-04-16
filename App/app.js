@@ -50,10 +50,25 @@
               })
 
             .state('test1', {
-                url: '/test1',
+                url: '/topics/test1',
                 css: '',
-                templateUrl: 'dragNdrop/test1/index.view.html',
+                templateUrl: 'topics/test1/index.view.html',
                 controller: 'Test1.IndexController',
+                controllerAs: 'vm'
+              })
+
+            .state('test2', {
+                url: '/topics/test2',
+                css: '',
+                templateUrl: 'topics/test2/q1/index.view.html',
+                controller: 'Test2Q1.IndexController',
+                controllerAs: 'vm'
+              })
+            .state('test3-1', {
+                url: '/topics/test3-1',
+                css: '',
+                templateUrl: 'topics/test3/q1/index.view.html',
+                controller: 'Test3Q1.IndexController',
                 controllerAs: 'vm'
               });
     }
