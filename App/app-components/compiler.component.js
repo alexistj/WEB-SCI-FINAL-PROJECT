@@ -30,8 +30,6 @@
           controller: function($http) {
             this.input = false;
 
-            console.log(this);
-
             this.getQuestion = function() {
               $http.get('API' + '/retrieveQuestion/' + this.topic + "/" + this.questionNum).then(function(data) {
 
