@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-custom">
+  <nav class="navbar navbar-expand-lg navbar-custom">
     <a class="navbar-brand" href="#/">StartDS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -17,80 +17,76 @@
         <li class="nav-item active">
          <a class="nav-link"> Welcome, {{ vm.username }} </a>
        </li>
-       <button class="btn btn-danger my-2 my-sm-0" ng-click="vm.logout();" >Logout</button>
+       <button class="btn btn-danger my-2 my-sm-0">Logout</button>
       </ul>
       <ul ng-show="!vm.loggedIn" class="navbar-nav ml-auto">
-        <form class="form-inline">
-          <div class="form-group mb-2">
-            <input required class="form-control mr-sm-3" type="text" ng-model="vm.username" placeholder="Username" aria-label="Username">
-          </div>
-          <div class="form-group mx-sm-3 mb-2">
-            <input required class="form-control mr-sm-3" type="password" ng-model="vm.password" placeholder="Password" aria-label="Password">
-          </div>
-          <div class="form-group mx-sm-3 mb-2">
-          <button class="btn btn-success my-2 my-sm-0" type="submit" ng-click="vm.login();">Login</button>
-          <a href="#/" class="btn btn-success btn-sm-0" style="margin-left: 10px;" role="button">Sign-Up</a>
+        <li class="nav-item">
+         <form class="form-inliane my-0 my-lg-1">
+          <input class="form-control mr-sm-3" type="text" placeholder="Username" aria-label="Username">
+          <input class="form-control mr-sm-3" type="password" placeholder="Password" aria-label="Password">
+          <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
+          <button class="btn btn-success my-2 my-sm-0" type="submit">Login</button>
         </form>
        </li>
       </ul>
     </div>
   </nav>
 
-<div class="wideBox">
-  <h1>Trees Short Answers</h1>
-  <p>For each of the statements below, write a single letter corresponding to the phrase that fills in the bold ??? to make
-the statement true. No letter is used more than once. Each incorrect answer will decrease your score by 4 points
-(but cannot make your score on this problem negative).</p>
-</div>
-
-<div>
-  <button onclick="initT3Q1()">RESET</button>
-</div>
-
-<div id="content" class='T3Q1'>
-
-  <div id="cardPile">
-
+  <div class="wideBox">
+    <h1>Trees Short Answers</h1>
+    <p>For each of the statements below, write a single letter corresponding to the phrase that fills in the bold ??? to make
+  the statement true. No letter is used more than once. Each incorrect answer will decrease your score by 4 points
+  (but cannot make your score on this problem negative).</p>
   </div>
-  <div id="cardSlots"> 
 
-    <div id=boxes>
-      <div class='row'>
-        
+  <div>
+    <button onclick="initT3Q1()">RESET</button>
+  </div>
+
+  <div id="content" class='T3Q1'>
+
+    <div id="cardPile">
+
+    </div>
+    <div id="cardSlots"> 
+
+      <div id=boxes>
+        <div class='row'>
+          
+        </div>
+
+        <div class='row'>
+          
+        </div>
+
+        <div class='row'>
+          
+        </div>
+
+
+        <div class='row'>
+         
+        </div>
+
+        <div class='row'>
+          
+        </div>
+
+
+
+
+
+
       </div>
-
-      <div class='row'>
-        
-      </div>
-
-      <div class='row'>
-        
-      </div>
-
-
-      <div class='row'>
-       
-      </div>
-
-      <div class='row'>
-        
-      </div>
-
-
-
-
-
 
     </div>
 
-  </div>
+    <div id="successMessage">
+      <h2>Congratulations!</h2>
+      <button onclick="initT3Q1()">Play Again</button>
+    </div>
 
-  <div id="successMessage">
-    <h2>Congratulations!</h2>
-    <button onclick="initT3Q1()">Play Again</button>
   </div>
-
-</div>
 
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" />
