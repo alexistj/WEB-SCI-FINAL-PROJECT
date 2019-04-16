@@ -23,6 +23,13 @@ mongoose.connect(uri,
    dbName: 'startDS'});
 const db = mongoose.connection;
 
+mongoose.connect(uri,
+  {useNewUrlParser: true,
+   useFindAndModify : false,
+   useCreateIndex : true,
+   dbName: 'compilerQuestions'});
+const dbQuestions = mongoose.connection;
+
 
 //Initiate app
 const app = express();
@@ -60,6 +67,52 @@ require('./config/passport');
 const compiler = require('compilex');
 var option = {stats : true};
 compiler.init(option);
+
+
+app.get('/retrieveQuestion/:topic/:questionNum', function(req,res) {
+    var count = parseInt(req.params.questionNum, 10);
+    var query = { num: count };
+    dbQuestions.collection(req.params.topic).find(query).toArray(function(err, result) {
+        if (err) throw err;
+        res.send(result);
+    });
+});
+
+app.post('/compilecode/:topic/:questionNum' , function (req , res, next ) {
+
+    var count = parseInt(req.params.questionNum, 10);
+    var query = { num: count };
+    dbQuestions.collection(req.params.topic).find(query).toArray(function(err, result) {
+        if (err) throw err;
+        var allResults = [];
+        // Reformat the code for processing
+        var code = req.body.code.replace(/(\\n)/gm, "\n");
+
+
+        // Begins the compilation. There will always be 5 inputs, and this is to
+        // maintain it being synchronous
+        var envData = { OS : "windows" , cmd : "g++", options: {timeout:5000 } };
+        compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][0] , function (data) {
+            // Each of these adds the data to the list of results to return
+            allResults.push(data);
+            compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][1] , function (data) {
+                allResults.push(data);
+                compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][2] , function (data) {
+                    allResults.push(data);
+                    compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][3] , function (data) {
+                        allResults.push(data);
+                        compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][4] , function (data) {
+                            allResults.push(data);
+
+                            // Sends the results to Angular
+                            res.send(allResults);
+                        });
+                    });
+                });
+            });
+        });
+    });
+});
 
 
 // router.get('/', (req, res) => res.sendFile(path.join(__dirname+'/splashPage.html')));
