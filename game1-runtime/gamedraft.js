@@ -134,15 +134,18 @@ window.onload = function() {
              
               //console.log(url);
              console.log(window.localStorage);
-             /* $.ajax({
-                    type: "GET",
-                    url: "http://localhost:3000/sendScore/"+userId+"/" +score + "/",
-                    dataType: "json",
-                    async:true,
-                    success: function(responseData, status){
-                        
-                    }
-              });*/
+             if(window.localStorage.hasOwnProperty("ngStorage-currentUser")){
+                 
+                $.ajax({
+                        type: "POST",
+                        url: "http://localhost:3000/runtime/sendScore/"+JSON.parse(window.localStorage.getItem('ngStorage-currentUser')).id+"/" +score ,
+                        async:true,
+                        success: function(){
+                            console.log("Send score success");
+
+                        }
+                  });
+             }
              
 			   game.input.onDown.add(this.restartGame, this);	
                game.stage.backgroundColor = "#4488AA";
