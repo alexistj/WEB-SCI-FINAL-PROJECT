@@ -34,6 +34,8 @@
   margin: 0 auto 3em auto;
   background: #007bff;
   float: right;
+  display: none;
+
 }
  
 /* The initial pile of unsorted cards */
@@ -42,6 +44,7 @@
   margin: 0 auto;
   background: #D65108;
   float: left;
+  display: none;
 }
  
  .T1Q1 #cardSlots, .T1Q1 #cardPile {
@@ -134,11 +137,10 @@
   z-index: 100;
   background: #dfd;
   border: 2px solid #333;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
+  
   border-radius: 10px;
-  -moz-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
-  -webkit-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+  
   box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
-  padding: 20px;
+  padding: 25px;
+  text-align: center;
 }

@@ -11,6 +11,7 @@ $('#successMessage').css( {
 
 
 function initT3Q1() {
+$('#successMessage').hide();
 
 
   // Hide the success message
@@ -21,9 +22,8 @@ function initT3Q1() {
   //$('#cardSlots').html( '' );
 
   var eachRow = document.getElementsByClassName('row');
-console.log(eachRow.size);
+
   for (var x=0; x<5; x++){
-    console.log("enter");
     eachRow[x].innerHTML = "";
   }
 
@@ -72,7 +72,7 @@ f) narrower and taller*/
   for ( var i=1; i<=4; i++ ) {
 
     var row=  document.getElementsByClassName("row")[i-1];
-    console.log(row);
+
 
     $('<div class="slot"></div>').data( 'number', key[i-1] ).appendTo( row ).droppable( {
       accept: '#cardPile div',
@@ -89,6 +89,14 @@ f) narrower and taller*/
       drop: handleCardDrop
     } );*/
   }
+
+  var pileDiv = document.getElementById("cardPile");
+  var slotDiv = document.getElementById("cardSlots");
+
+  //console.log(pileDiv);
+
+  $(pileDiv).fadeIn("slow");
+  $(slotDiv).fadeIn("slow");
 
 }
 
@@ -113,11 +121,21 @@ function handleCardDrop( event, ui ) {
   // If all the cards have been placed correctly then display a message
   // and reset the cards for another go
 
-  if ( correctCards == 8 ) {
+  
+
+  if ( correctCards == 4 ) {
+    var contentDiv = document.getElementById("content");
+
+
+  var showPosition = contentDiv.offsetTop +50;
+  showPosition += 'px';
+
+  console.log(showPosition);
+
     $('#successMessage').show();
     $('#successMessage').animate( {
-      left: '380px',
-      top: '200px',
+      
+      top: showPosition,
       width: '400px',
       height: '100px',
       opacity: 1
