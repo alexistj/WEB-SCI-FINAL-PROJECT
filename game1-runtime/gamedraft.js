@@ -33,12 +33,12 @@ window.onload = function() {
     var i=0;
     questions[0] = level1Q;
     answers[0] = level1A;
-    var game  = new Phaser.Game(800,800);
+    var game  = new Phaser.Game(800,600);
     
     
     
   //Check the question answer
-    function checkAnswer(button){
+   function checkAnswer(button){
         if(!isGameOver){
             console.log(button.frame);
             console.log(randomAnswer);
@@ -80,10 +80,31 @@ window.onload = function() {
     Play.prototype = {
        
             preload: function(){
+                game.load.spritesheet('runner', 'JungleAssetPack/Character/sprites/runSprite.png', 23, 36, 8);
+                
                 game.load.spritesheet("buttons", "newbuttons.png", 128,36);
+                
+                game.load.image('mountains', 'country-platform-files/layers/country-platform-back-resize.PNG');
+                
+                game.load.image('trees', 'country-platform-files/layers/country-platform-forest-resize.PNG');
+                
+                
+                 game.load.image('trail', 'country-platform-files/layers/country-platform-resize.PNG');
+                
+                
+                
+                
             },
             create: function(){
-              game.stage.backgroundColor = "#4488AA";
+                
+                
+                this.add.image(0,0, 'mountains');
+                this.add.image(0,250, 'trees');
+                this.add.image(0,300, 'trees');
+                 this.add.image(0,360, 'trees');
+                this.add.image(0,400, 'trail');
+           
+                game.stage.backgroundColor = "#8CAFE7";
                 //Question location 
                 questionText = game.add.text(200,75,questions[0][0],{
                     font:"bold 20px Arial",
@@ -91,11 +112,14 @@ window.onload = function() {
                     wordWrap: true,
                     backgroundColor: "white"
                 });
+               
 
                 //Score Location
                 scoreText = game.add.text(10,10,"Score:"+score.toString(),{
                     font:"bold 24px Arial"
                 });
+                
+                
 
                 //Life Location
                 lifeText = game.add.text(650,10,"Lives:"+life.toString(),{
@@ -116,6 +140,14 @@ window.onload = function() {
                 button5 = game.add.button(350, 300, "buttons", checkAnswer, this).frame = 5;
                 //Stack
                 button6 = game.add.button(500, 300, "buttons" ,checkAnswer, this).frame = 6;
+                
+                
+                 var runner = game.add.sprite(300, 540, 'runner');
+                
+                 var walk = runner.animations.add('walk');
+                
+                 runner.animations.play('walk', 20, true);
+                
             }
       
     }
@@ -123,13 +155,35 @@ window.onload = function() {
     
     var GameOver = function(game){}
 	GameOver.prototype = {
+        
+         preload: function(){
+                game.load.spritesheet('runner', 'JungleAssetPack/Character/sprites/runSprite.png', 23, 36, 8);
+                
+                game.load.spritesheet("buttons", "newbuttons.png", 128,36);
+                
+                game.load.image('mountains', 'country-platform-files/layers/country-platform-back-resize.PNG');
+                
+                game.load.image('trees', 'country-platform-files/layers/country-platform-forest-resize.PNG');
+                
+                game.load.spritesheet("gameOButton", "restartLeadButton.PNG", 128,36);
+                
+                game.load.image('trail', 'country-platform-files/layers/country-platform-resize.PNG');
+                
+                
+            },
 	     create: function(){
+              this.add.image(0,0, 'mountains');
+                this.add.image(0,250, 'trees');
+                this.add.image(0,300, 'trees');
+                 this.add.image(0,360, 'trees');
+                this.add.image(0,400, 'trail');
+           
 	          var style = {
 	               font: "32px Monospace",
-	               fill: "#00ff00",
+	               fill: "#000000",
 	               align: "center"
 	          }
-	          var text = game.add.text(game.width / 2, game.height / 2, "Game Over\n\nYour score: " + score.toString() + "\n\nTap to restart", style);
+	          var text = game.add.text(game.width / 2, game.height / 2, "Game Over\nYour score: " + score.toString(), style);
 	          text.anchor.set(0.5);
              
               //console.log(url);
@@ -146,15 +200,22 @@ window.onload = function() {
                         }
                   });
              }
+                
              
-			   game.input.onDown.add(this.restartGame, this);	
-               game.stage.backgroundColor = "#4488AA";
+               this.add.button(90, 200, "gameOButton", this.restartGame, this).frame = 0;
+               this.add.button(150, 200, "gameOButton", showLeader, this).frame = 1;
+			   //game.input.onDown.add(this.restartGame, this);	
+               game.stage.backgroundColor = "#8CAFE7";
 	     },
     		restartGame: function(){
           	score = 0;
             life = 3;
           	game.state.start("Play");  	
-     	}		
+     	},
+        showLeader: function(){
+            
+        }
+        
 	} 
     
     
