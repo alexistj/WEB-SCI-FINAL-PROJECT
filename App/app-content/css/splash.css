@@ -43,7 +43,7 @@ html, body {
 #inputContainer h2 {
 	text-align: center;
 	font-size: 30px;
-	color: black;
+	color: white;
 	font-weight: bold;
 }
 
@@ -68,10 +68,11 @@ html, body {
 
 
 #inputContainer button {
-	background-color: transparent;
+	/* background-color: transparent; */
+		background-color: #D65108;
     border: 1px solid #fff;
     border-radius: 250px;
-    color: #fff;
+    /* color: #fff; */
     display: block;
     font-size: 14px;
     letter-spacing: 1px;
@@ -117,16 +118,17 @@ html, body {
 }
 
 .mainTitle {
-
 	font-size: 40px;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 	color: white;
 }
 
 .subTitle {
 	font-size: 25px;
-	color: #ff8f51;
+	color: #EFA00B;
 	margin-top: 0;
+	font-weight: bold;
+	font-family: Inconsolata, serif;
 }
 
 
@@ -135,8 +137,6 @@ html, body {
 	position: absolute;
 	float: right;
 	padding-top: 40px;
-
-
 }
 
 
