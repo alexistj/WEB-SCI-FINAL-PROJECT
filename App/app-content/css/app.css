@@ -2,10 +2,13 @@
   margin: auto;
   width: 50%;
 }
-textarea {
-  width: 100%;
-  height: 200px;
-  font-size: 10px;
+.topic-title {
+  background: black;
+  font-size: 40px;
+  color: white;
+  text-align: center;
+  margin: 20px;
+  margin-bottom: 60px;
 }
 .boxsizingBorder {
     -webkit-box-sizing: border-box;
@@ -15,8 +18,12 @@ textarea {
 #dashboard-content {
   margin-top: 100px;
 }
+#dashboard-content textarea {
+  width: 100%;
+  height: 200px;
+  font-size: 10px;
+}
 .tab-content {
-    border: 1px solid black;
     padding: 10px;
     background: white;
 }

@@ -3,15 +3,17 @@
 
     angular
         .module('app')
-        .controller('TopicMain.IndexController', Controller);
+        .controller('TopicTrees.IndexController', Controller);
 
-    function Controller($state, $scope, $localStorage, AuthenticationService) {
+    function Controller($state, $scope, $location, $localStorage, AuthenticationService) {
         var vm = this;
+
         initController();
 
         function initController() {
 
         };
+
     }
 
 })();

@@ -48,7 +48,20 @@
                 controller: 'TopicArray.IndexController',
                 controllerAs: 'vm'
               })
-
+            .state('topicTrees', {
+                url: '/topics/trees',
+                css: '',
+                templateUrl: 'topics/topicTrees/index.view.html',
+                controller: 'TopicTrees.IndexController',
+                controllerAs: 'vm'
+              })
+            .state('topicLinkedLists', {
+                  url: '/topics/linkedLists',
+                  css: '',
+                  templateUrl: 'topics/topicLinkedLists/index.view.html',
+                  controller: 'TopicLinkedLists.IndexController',
+                  controllerAs: 'vm'
+                })
             .state('test1', {
                 url: '/topics/test1',
                 css: '',

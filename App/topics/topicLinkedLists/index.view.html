@@ -1,0 +1,37 @@
+<navbar></navbar>
+
+
+	<div class="container">
+
+		<h1 class="topic-title">Linked Lists</h1>
+
+		<div class="media">
+			<div class="media-body">
+				<h5 class="topic-sub-title mt-0 mb-1">What are they?</h5>
+				Linked lists are very similar to arrays in terms of functionality. You access elements by calling its index, elements are ordered, there is a size, etc.
+				However, when you go deeper into the construction of lists as opposed to arrays, you’ll see that they are very different internally. This is a representation of how a list will look to the computer:
+
+			</div>
+		</div>
+		<br />
+		<div class="media">
+			<div class="media-body">
+				<h5 class="topic-sub-title mt-0 mb-1">How do they work?</h5>
+				As you can see, instead of having every element next to each other, elements are a bit more spread out.
+				So, how does this work? Every element has what’s called a pointer. Pointers reference other elements, and that’s how the list comes together.
+				Let’s say we have 5 elements, numbered 1 through 5. The number 3 would have a pointer that indicates that 4 is the next one in the list, 4 would indicate that 5 is next in the list, and 5 would indicate that it is the final element.
+
+			</div>
+		</div>
+		<br />
+		<div class="media">
+			<div class="media-body">
+				<h5 class="topic-sub-title mt-0 mb-1">Why and When to use them?</h5>
+				So, how do linked lists compare to arrays? Unlike arrays, we can’t access elements very quickly. If you want the 4th element in the list, you start at the first one and follow the trail.
+				Arrays can access elements almost instantaneously on the other hand. However, adding elements to a list is much faster than adding elements to an array, since all you need to do is switch up the pointers. For example, if you want to add a 6 between 3 and 4, just make 3 point to 6 and 6 point to 4.
+
+			</div>
+		</div>
+
+		<compiler topic='trees' question-num='2'></compiler>
+	</div>
