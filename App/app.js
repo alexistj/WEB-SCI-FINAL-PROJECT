@@ -90,6 +90,13 @@
                 templateUrl: 'topics/test3/q1/index.view.html',
                 controller: 'Test3Q1.IndexController',
                 controllerAs: 'vm'
+              })
+            .state('runtime', {
+                url: '/games/runtime',
+                css: '',
+                templateUrl: 'games/game1-runtime/index.view.html',
+                controller: 'runtime.IndexController',
+                controllerAs: 'vm'
               });
     }
 
