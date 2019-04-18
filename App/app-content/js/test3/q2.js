@@ -184,8 +184,8 @@ function handleCardDropT3Q2( event, ui ) {
     $('#successMessage').animate( {
       left: '380px',
       top: '200px',
-      width: '400px',
-      height: '100px',
+      width: '450px',
+      height: '150px',
       opacity: 1
     } );
   }

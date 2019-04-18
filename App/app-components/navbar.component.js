@@ -20,6 +20,9 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="#/topics">Topics<span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="#/games">Games<span class="sr-only">(current)</span></a>
+                </li>
               </ul>
               <ul ng-show="$ctrl.loggedIn" class="navbar-nav ml-auto">
                 <li class="nav-item active">

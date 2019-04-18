@@ -62,6 +62,13 @@
                   controller: 'TopicLinkedLists.IndexController',
                   controllerAs: 'vm'
                 })
+            .state('games', {
+                url: '/games',
+                css: '',
+                templateUrl: 'games/gamesMain/index.view.html',
+                controller: 'GamesMain.IndexController',
+                controllerAs: 'vm'
+              })
             .state('test1', {
                 url: '/topics/test1',
                 css: '',

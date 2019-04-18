@@ -132,7 +132,7 @@ function handleCardDropT3Q1( event, ui ) {
       
       top: showPosition,
       width: '450px',
-      height: '100px',
+      height: '150px',
       opacity: 1
     } );
   }
