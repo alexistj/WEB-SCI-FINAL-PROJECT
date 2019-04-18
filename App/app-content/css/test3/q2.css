@@ -1,55 +1,16 @@
-/* Add some margin to the page and set a default font and colour */
-html {
+#T3Q2 {
+  display: none;
 
-  background-color: #f99d5d;
-  font-family: 'Josefin Sans', sans-serif;
+
 }
- 
-body {
-  margin: 30px;
-  font-family: 'Josefin Sans', sans-serif;
-  line-height: 1.8em;
-  color: #333;
-}
- 
-/* Give headings their own font */
- 
-h1, h2, h3, h4 {
-  font-family: 'Josefin Sans', sans-serif;
-}
- 
-/* Main content area */
- 
-#content {
-  margin: 80px 0px;
+
+#T3Q2 #content {
   text-align: center;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  user-select: none;
-}
- 
-/* Header/footer boxes */
- 
-.wideBox {
-  clear: both;
-  text-align: center;
-  margin: 70px;
-  padding: 10px;
-  background: #ebedf2;
-  border: 1px solid #333;
-  background-color: #40a2ffbd;
-}
- 
-.wideBox h1 {
-  font-weight: bold;
-  margin: 20px;
-  color: #666;
-  font-size: 1.5em;
 }
  
 /* Slots for final card positions */
  
-#cardSlots {
+#T3Q2 #cardSlots {
   margin: 0 auto 3em auto;
   background: #007bff;
   float: right;
@@ -57,13 +18,13 @@ h1, h2, h3, h4 {
  
 /* The initial pile of unsorted cards */
  
-#cardPile {
+#T3Q2 #cardPile {
   margin: 0 auto;
   background: #D65108;
   float: left;
 }
  
-#cardSlots {
+#T3Q2 #cardSlots {
   width: 930px;
   height: 300px;
   padding: .85em;
@@ -74,13 +35,14 @@ h1, h2, h3, h4 {
   -moz-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
   -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
   box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
-  background: url(q2.png);
+  background: url(../../img/test3/q2.png);
   /*background-color: white;*/
   background-size:contain; ;                      /* <------ */
-    background-position:  center;
+  background-position:  center;
+  display: none;
 }
 
-#cardPile {
+#T3Q2 #cardPile {
   width: 26%;
   height: 80%;
   padding: .85em;
@@ -91,16 +53,17 @@ h1, h2, h3, h4 {
   -moz-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
   -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
   box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  display: none;
 }
  
 /* Individual cards and slots */
  
 
 
-#cardPile div {
+#T3Q2 #cardPile div {
   float: left;
-  width: 125px;
-  height: 45px;
+  width: 130px;
+  height: 50px;
   padding: 5px;
   border: 2px solid #333;
   -moz-border-radius: 10px;
@@ -109,7 +72,7 @@ h1, h2, h3, h4 {
   margin: 10px 0 0 10px;
 }
 
-img{
+#T3Q2 img{
   width: 245px;
 }
  
@@ -117,20 +80,20 @@ img{
   margin-left: 0;
 }*/
  
-#cardSlots div.hovered {
+#T3Q2 #cardSlots div.hovered {
   background: #aaa;
 }
  
 
  
-#cardPile div {
+#T3Q2 #cardPile div {
   color: #fff;
-  font-size: 28px;
+  font-size: 25px;
   text-shadow: 0 0 3px #000;
   text-align: center;
 }
  
-#cardPile div.ui-draggable-dragging {
+#T3Q2 #cardPile div.ui-draggable-dragging {
   -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
   -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
   box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
@@ -145,7 +108,7 @@ img{
 
 }
 
-.slot {
+#T3Q2 .slot {
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -153,7 +116,7 @@ img{
   margin: 0px 128px 0px 0px;
 }
 
-.slotLast {
+#T3Q2 .slotLast {
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -161,7 +124,7 @@ img{
   padding: 0px 0px  0px 0px;
 }
 
-.slotLevel2 {
+#T3Q2 .slotLevel2 {
   width: 130px;
   height: 50px;
   display: inline-block;
@@ -171,43 +134,29 @@ img{
 }
  
 
-.row {
-  height: 115px;
+#T3Q2 .row {
+  height: 100px;
+  display: inherit;
 }
 
-.greenPile {
+#T3Q2 .row div {
+  background-color: white;
+}
+
+#T3Q2 .greenPile {
   background: #055000;
 
 }
 
-.greenPile.correct{
+#T3Q2 .greenPile.correct{
   background: #149614e0; 
 }
 
-.redPile {
+#T3Q2 .redPile {
   background: red;
 
 }
 
-.redPile.correct{
+#T3Q2 .redPile.correct{
   background: #ff0000c4; 
-}
- 
-/* "You did it!" message */
-#successMessage {
-  position: absolute;
-  left: 580px;
-  top: 250px;
-  width: 0;
-  height: 0;
-  z-index: 100;
-  background: #dfd;
-  border: 2px solid #333;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  -moz-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
-  -webkit-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
-  box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
-  padding: 20px;
 }

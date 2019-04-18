@@ -1,7 +1,7 @@
 var correctCards = 0;
 
-$('#successMessage').hide();
-  $('#successMessage').css( {
+$('.T2Q1 #successMessage').hide();
+  $('.T2Q1 #successMessage').css( {
     left: '580px',
     top: '250px',
     width: 0,
@@ -11,13 +11,12 @@ $('#successMessage').hide();
 
 function initTest2Q1() {
 
-  //document.getElementById("cardSlots").style.background = "url(app-content/img/test2/q1/q1.png)";
-  // Hide the success message
-  $('#successMessage').hide();
+  
+  $('.T2Q1 #successMessage').hide();
 
   // Reset the game
   correctCards = 0;
-  $('#cardPile').html( '' );
+  $('.T2Q1 #cardPile').html( '' );
   //$('#cardSlots').html( '' );
 
   var eachRow = document.getElementsByClassName('row');
@@ -32,23 +31,23 @@ function initTest2Q1() {
   var terms = ['Accessing data beyond the array bounds', 'Uninitialized memory', 'Infinite loop', 'Compile error: type mismatch','Does not contain an error', 'Memory leak', 'Math error (incorrect answer)', 'Syntax error'];
 
   for ( var i=0; i<5; i++ ) {
-    $('<div class=greenPile> O(1) </div>').data( 'number', 1 ).attr( 'id', 'card1' ).appendTo( '#cardPile' ).draggable( {
+    $('<div class=greenPile> O(1) </div>').data( 'number', 1 ).attr( 'id', 'card1' ).appendTo( '.T2Q1 #cardPile' ).draggable( {
       
-      stack: '#cardPile div',
+      stack: '.T2Q1 #cardPile div',
       cursor: 'move',
       revert: true
     } );
 
-    $('<div class=greenPile> O(1) </div>').data( 'number', 1 ).attr( 'id', 'card1' ).appendTo( '#cardPile' ).draggable( {
+    $('<div class=greenPile> O(1) </div>').data( 'number', 1 ).attr( 'id', 'card1' ).appendTo( '.T2Q1 #cardPile' ).draggable( {
       
-      stack: '#cardPile div',
+      stack: '.T2Q1 #cardPile div',
       cursor: 'move',
       revert: true
     } );
 
-    $('<div class=redPile> O(n) </div>').data( 'number', 0 ).attr( 'id', 'card1' ).appendTo( '#cardPile' ).draggable( {
+    $('<div class=redPile> O(n) </div>').data( 'number', 0 ).attr( 'id', 'card1' ).appendTo( '.T2Q1 #cardPile' ).draggable( {
       
-      stack: '#cardPile div',
+      stack: '.T2Q1 #cardPile div',
       cursor: 'move',
       revert: true
     } );
@@ -78,21 +77,21 @@ function initTest2Q1() {
     console.log(row);
 
     $('<div class="slot"></div>').data( 'number', key[i-1][0] ).appendTo( row ).droppable( {
-      accept: '#cardPile div',
+      accept: '.T2Q1 #cardPile div',
       hoverClass: 'hovered',
-      drop: handleCardDrop
+      drop: handleCardDropT1Q1
     });
 
     $('<div class="slot"></div>').data( 'number', key[i-1][1] ).appendTo( row ).droppable( {
-      accept: '#cardPile div',
+      accept: '.T2Q1 #cardPile div',
       hoverClass: 'hovered',
-      drop: handleCardDrop
+      drop: handleCardDropT1Q1
     });
 
     $('<div class="slotLast"></div>').data( 'number', key[i-1][2] ).appendTo( row ).droppable( {
-      accept: '#cardPile div',
+      accept: '.T2Q1 #cardPile div',
       hoverClass: 'hovered',
-      drop: handleCardDrop
+      drop: handleCardDropT1Q1
     });
     /*$('<div class="row"> </div>').data( 'number', i ).appendTo( '#boxes' ).droppable( {
       accept: '#cardPile div',
@@ -112,7 +111,8 @@ function initTest2Q1() {
 
 }
 
-function handleCardDrop( event, ui ) {
+function handleCardDropT1Q1( event, ui ) {
+  console.log('enter');
   var slotNumber = $(this).data( 'number' );
   var cardNumber = ui.draggable.data( 'number' );
 
@@ -128,26 +128,39 @@ function handleCardDrop( event, ui ) {
     ui.draggable.position( { of: $(this), my: 'left top', at: 'left top' } );
     ui.draggable.draggable( 'option', 'revert', false );
     correctCards++;
+    console.log(correctCards);
   } 
   
   // If all the cards have been placed correctly then display a message
   // and reset the cards for another go
 
-  if ( correctCards == 15 ) {
+  if ( correctCards == 1 ) {
 
     var contentDiv = document.getElementById("content");
     var showPosition = contentDiv.offsetTop +50;
     showPosition += 'px';
 
 
-    $('#successMessage').show();
-    $('#successMessage').animate( {
+    $('.T2Q1 #successMessage').show();
+    $('.T2Q1 #successMessage').animate( {
       
       top: showPosition,
-      width: '400px',
-      height: '100px',
+      width: '450px',
+      height: '150px',
       opacity: 1
     } );
   }
+
+}
+
+
+function nextQuestion(HideName, ShowName){
+  //console.log(name);
+  var hideName = document.getElementById(HideName);
+  $(hideName).hide();
+
+  var showName = document.getElementById(ShowName);
+  $(showName).show();
+
 
 }

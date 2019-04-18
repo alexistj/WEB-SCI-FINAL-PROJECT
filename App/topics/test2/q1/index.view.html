@@ -1,74 +1,115 @@
   <navbar></navbar>
 
 
-  <div class="wideBox">
-    <h1>Time Complexity Problem</h1>
-    <p>For each of the functions, write the time complexity assuming there are n elements stored in the container. If there
-  is a difference between C++98 and C++11, you should assume C++11. For the singly-linked list, assume that we
-  only have the head pointer and no other member variables. For the singly-linked list, assume that erase() is given
-  a pointer to the node we want to erase and a pointer to the node before the one we want to erase.</p>
-  </div>
+  
 
+  <div class='T2Q1' id= 'T2Q1'>
 
+    <div class="wideBox">
+      <h1>Time Complexity Problem</h1>
+      <p>For each of the functions, write the time complexity assuming there are n elements stored in the container. If there
+    is a difference between C++98 and C++11, you should assume C++11. For the singly-linked list, assume that we
+    only have the head pointer and no other member variables. For the singly-linked list, assume that erase() is given
+    a pointer to the node we want to erase and a pointer to the node before the one we want to erase.</p>
+    </div>
 
-  <div id=startGame>
-    <div onclick="initTest2Q1()" class="button">
-      <p class="btnText">READY?</p>
-      <div class="btnTwo">
-        <p class="btnText2">GO!</p>
+    <div id=startGame>
+      <div onclick="initTest2Q1()" class="button">
+        <p class="btnText">READY?</p>
+        <div class="btnTwo">
+          <p class="btnText2">GO!</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div id="content" class='T2Q1'>
+    <div id="content" >
 
-    <div id="cardPile">
+      <div id="cardPile">
+
+      </div>
+      <div id="cardSlots">
+
+        <div id=boxes>
+          <div class='row'>
+
+          </div>
+
+          <div class='row'>
+
+          </div>
+
+          <div class='row'>
+
+          </div>
+
+
+          <div class='row'>
+
+          </div>
+
+          <div class='row'>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+      <div id="successMessage">
+        <h2>Congratulations!</h2>
+        <button onclick="initTest2Q1()">Play Again</button>
+        <button onclick="nextQuestion('T2Q1','T2Q2')">Next Question</button>
+      </div>
 
     </div>
-    <div id="cardSlots">
+  </div>
 
-      <div id=boxes>
-        <div class='row'>
 
+
+  <div class='T2Q2' id='T2Q2'>
+   
+
+    <div class="wideBox">
+      <h1>Common Memory Errors</h1>
+      <h2>Match the error with memory error type</h2>
+    </div>
+
+    <div id=startGame>
+      <div onclick="initTest2Q2()" class="button">
+        <p class="btnText">READY?</p>
+        <div class="btnTwo">
+          <p class="btnText2">GO!</p>
         </div>
-
-        <div class='row'>
-
-        </div>
-
-        <div class='row'>
-
-        </div>
+      </div>
+    </div>
 
 
-        <div class='row'>
+    <div id="content">
 
-        </div>
+      <div id="cardPile">
 
-        <div class='row'>
+      </div>
+      <div id="cardSlots"> </div>
 
-        </div>
-
-
-
-
-
-
+      <div id="successMessage">
+        <h2>Congratulations!</h2>
+        <button onclick="initTest2Q2()">Play Again</button>
       </div>
 
     </div>
 
-    <div id="successMessage">
-      <h2>Congratulations!</h2>
-      <button onclick="initTest2Q1()">Play Again</button>
-    </div>
+
+      
 
   </div>
+  
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" />
   <script type="text/javascript" src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" />
 
   <script src="app-content/js/test2/q1.js"></script>
+  <script src="app-content/js/test2/q2.js"></script>
 
 
 </body>

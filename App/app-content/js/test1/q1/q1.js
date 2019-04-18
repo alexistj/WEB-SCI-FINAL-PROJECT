@@ -100,8 +100,8 @@ function handleCardDrop( event, ui ) {
     $('#successMessage').animate( {
       
       top: showPosition,
-      width: '400px',
-      height: '100px',
+      width: '450px',
+      height: '150px',
       opacity: 1
     } );
   }

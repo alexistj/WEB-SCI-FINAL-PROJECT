@@ -1,24 +1,19 @@
 var correctCards = 0;
 //$( init );
 
-$('#successMessage').hide();
-$('#successMessage').css( {
-  left: '580px',
-  top: '250px',
-  width: 0,
-  height: 0
-} );
+$('#T3Q1 #successMessage').hide();
+
 
 
 function initT3Q1() {
-$('#successMessage').hide();
+$('#T3Q1 #successMessage').hide();
 
 
   // Hide the success message
   
   // Reset the game
   correctCards = 0;
-  $('#cardPile').html( '' );
+  $('#T3Q1 #cardPile').html( '' );
   //$('#cardSlots').html( '' );
 
   var eachRow = document.getElementsByClassName('row');
@@ -41,7 +36,7 @@ c) pre-order traversal
 f) narrower and taller*/
 
   for ( var i=0; i<7; i++ ) {
-    $('<div class=greenPile>' + terms[i] +'</div>').data( 'number', i ).attr( 'id', 'card1' ).appendTo( '#cardPile' ).draggable( {
+    $('<div class=greenPile>' + terms[i] +'</div>').data( 'number', i ).attr( 'id', 'card1' ).appendTo( '#T3Q1 #cardPile' ).draggable( {
       
       stack: '#cardPile div',
       cursor: 'move',
@@ -75,9 +70,9 @@ f) narrower and taller*/
 
 
     $('<div class="slot"></div>').data( 'number', key[i-1] ).appendTo( row ).droppable( {
-      accept: '#cardPile div',
+      accept: '#T3Q1 #cardPile div',
       hoverClass: 'hovered',
-      drop: handleCardDrop
+      drop: handleCardDropT3Q1
     });
 
   
@@ -100,7 +95,7 @@ f) narrower and taller*/
 
 }
 
-function handleCardDrop( event, ui ) {
+function handleCardDropT3Q1( event, ui ) {
   var slotNumber = $(this).data( 'number' );
   var cardNumber = ui.draggable.data( 'number' );
 
@@ -136,10 +131,25 @@ function handleCardDrop( event, ui ) {
     $('#successMessage').animate( {
       
       top: showPosition,
-      width: '400px',
+      width: '450px',
       height: '100px',
       opacity: 1
     } );
   }
 
 }
+
+
+function nextQuestion(HideName, ShowName){
+  //console.log(name);
+  var hideName = document.getElementById(HideName);
+  $(hideName).hide();
+
+  var showName = document.getElementById(ShowName);
+  $(showName).show();
+
+
+}
+
+
+
