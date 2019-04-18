@@ -21,7 +21,6 @@
         };
 
         function login() {
-            console.log("called login");
             vm.loading = true;
             AuthenticationService.Login(vm.username, vm.password, function (result) {
                 if (result === true) {
@@ -34,14 +33,15 @@
         };
 
         function register() {
-            console.log("called sign up");
             vm.loading = true;
             AuthenticationService.Register(vm.registerEmail, vm.registerUsername, vm.registerPassword, vm.confirmPassword, function (result) {
                 if (result === true) {
                     vm.loading = false;
-                    $state.go('splash');
+                    vm.username = vm.registerUsername;
+                    vm.password = vm.registerPassword;
+                    vm.login();
                 } else {
-                    vm.error = 'Ensure all fields are filled out';
+                    vm.error = 'Ensure all fields are filled out properly';
                     vm.loading = false;
                 }
             });
