@@ -7,6 +7,7 @@ const passport 	 = require('passport');
 const mongoose 	 = require('mongoose');
 const cors       = require('cors');
 const port = 3000;
+const {c, cpp, node, python, java} = require('compile-run');
 
 
 // env variables
@@ -92,31 +93,104 @@ app.post('/compilecode/:topic/:questionNum' , function (req , res, next ) {
         var allResults = [];
 
         // Reformat the code for processing
-        console.log(code);
         var code = req.body.code.replace(/(\\n)/gm, "\n");
 
+        // Create test cases from the retrieved document
+        var tests = []
+        for (var i=0; i < result[0]["testInputs"].length; i++) {
+         tests.push( {
+              input: result[0]["testInputs"][i],
+              expected: result[0]["testOutputs"][i]
+          });
+        };
+
+        // Function to run code
+        async function runCodeWithInput(test) {
+
+          // Run C++ code with input asynchronously
+          // The code will return a promise when it is finished running
+          await cpp.runSource(code, { stdin: test.input }, (err, result) => {
+            if(err){
+                  new Promise(resolve => setTimeout(resolve, 300));
+              }
+              else{
+                  allResults.push( { test: test , result: result });
+                  new Promise(resolve => setTimeout(resolve, 300));
+              }
+          });
+        }
+
+
+        async function processTests(array) {
+
+          // map array to promises
+          const promises = array.map(runCodeWithInput);
+
+          // wait until all promises are resolved
+          await Promise.all(promises);
+
+          // Send the code results to the user once complete
+          res.send(allResults);
+        }
+
+        // Run all test inputs on the code
+        processTests(tests);
+
+        // console.log(code);
+        // console.log(result[0]["testInputs"][0]);
+        // cpp.runSource(code, { stdin: result[0]["testInputs"][0]}, (err, result) => {
+        //   if(err){
+        //         console.log(err);
+        //         res.send(err);
+        //     }
+        //     else{
+        //         console.log(result);
+        //         allResults.push(result);
+        //         // res.send(allResults);
+        //     }
+        // });
+        // for (var i; i < result[0]["testInputs"].length; i++) {
+        //   cpp.runSource(code, { stdin: result[0]["testInputs"][i]}, (err, result) => {
+        //     if(err){
+        //           console.log(err);
+        //           res.send(err);
+        //       }
+        //       else{
+        //           console.log(result);
+        //           allResults.push(result);
+        //       }
+        //   });
+        // }
+        // resultPromise
+        //     .then(result => {
+        //         console.log(result);
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     });
 
         // Begins the compilation. There will always be 5 inputs, and this is to
         // maintain it being synchronous
-        var envData = { OS : "windows" , cmd : "g++", options: {timeout:5000 } };
-        compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][0] , function (data) {
-            // Each of these adds the data to the list of results to return
-            allResults.push(data);
-            compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][1] , function (data) {
-                allResults.push(data);
-                compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][2] , function (data) {
-                    allResults.push(data);
-                    compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][3] , function (data) {
-                        allResults.push(data);
-                        compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][4] , function (data) {
-                            allResults.push(data);
-                            console.log(allResults);
-                            res.send(allResults)
-                        });
-                    });
-                });
-            });
-        });
+        // var envData = { OS : "windows" , cmd : "g++", options: {timeout:5000 } };
+        // var envData = { OS : "linux" , cmd : "gcc" };
+        // compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][0] , function (data) {
+        //     // Each of these adds the data to the list of results to return
+        //     allResults.push(data);
+        //     compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][1] , function (data) {
+        //         allResults.push(data);
+        //         compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][2] , function (data) {
+        //             allResults.push(data);
+        //             compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][3] , function (data) {
+        //                 allResults.push(data);
+        //                 compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][4] , function (data) {
+        //                     allResults.push(data);
+        //                     console.log(allResults);
+        //                     res.send(allResults)
+        //                 });
+        //             });
+        //         });
+        //     });
+        // });
     });
 });
 

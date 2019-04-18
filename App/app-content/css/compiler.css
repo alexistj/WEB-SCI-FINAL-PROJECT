@@ -16,6 +16,12 @@
   font-weight: normal;
   color: black;
   font-family: Inconsolata, serif;
+  background: url(http://i.imgur.com/2cOaJ.png);
+  background-color: white;
+  background-repeat: no-repeat;
+  padding-left: 35px;
+  padding-top: 10px;
+  border-color:#ccc;
 }
 .tab-pane {
   padding: 10px;
