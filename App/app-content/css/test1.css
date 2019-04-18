@@ -8,7 +8,14 @@
   -webkit-user-select: none;
   user-select: none;
 }
+
+.overlay{
+      background-color: rgba(0,0,0,0.3);
+}
  
+.overlay:hover {
+   background-color: rgba(0,0,0,0);
+}
 /* Header/footer boxes */
  
 .wideBox {
