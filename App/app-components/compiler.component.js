@@ -8,10 +8,8 @@
             topic: '@',
             questionNum: '@'
           },
-
           template: `
           <div class="compiler-container">
-
 
             <div id="compiler-question" ng-show="description.question"  class="media">
               <div class="media-body">
@@ -137,6 +135,7 @@
                     var results = response.data;
 
                     var table = document.getElementById("results-table");
+                    document.getElementById("input").html = "";
                     table.innerHTML = "";
                     for (var i = 0; i < results.length; i++) {
                       var test = results[i].test;
