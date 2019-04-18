@@ -28,6 +28,18 @@
 
 }
 
+.overlay{
+      background-color: rgba(0,0,0,0.3);
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+}
+
+.overlay:hover {
+   background-color: rgba(0,0,0,0);
+   border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
 #gameBoxes .gameTitle {
 	border-bottom: 5px solid #de723a;
     
