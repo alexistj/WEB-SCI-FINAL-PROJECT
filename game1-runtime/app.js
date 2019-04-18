@@ -27,26 +27,35 @@ var app = angular.module("myApp", []).config(function($sceProvider) {
         else if($scope.answer == "Vector") {
             numAns=1;
         }
-        else if($scope.answer == "Hashmap") {
+        else if($scope.answer == "Singly Linked List") {
            numAns=2 ;    
         }    
-        else if($scope.answer == "SSL") {
+        else if($scope.answer == "Doubly Linked List") {
             numAns=3 ;    
         } 
-        else if($scope.answer == "DDL") {
+        else if($scope.answer == "Hash Map") {
             numAns=4 ;    
         }
+        else if($scope.answer == "Queue") {
+            numAns=5 ;    
+        }
+        else if($scope.answer == "Stack") {
+            numAns=6 ;    
+        }
             
-         console.log(url);   
-        var url= "http://localhost:3000/runtime/postQuestions/"+$scope.question+"/"+numAns+"/";
-       // $.getJSON(url, function(){});
-        console.log(url);
+        var req = {"q":$scope.question,"a": numAns};
+           
+   
         $.ajax({
                     type: "POST",
-                    url: "http://localhost:3000/runtime/postQuestions/"+$scope.question+"/"+numAns+"/",
+                    url: "http://localhost:3000/runtime/postQuestions/",
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify(req),
                     success: function(responseData, status){
-                        console.log("SUCCESSSSSS");
-                    }});
+                        alert("Question successfully added!");
+                        console.log(responseData);
+                    }
+        });
                         
       }
     };

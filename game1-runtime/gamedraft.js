@@ -1,13 +1,10 @@
 window.onload = function() {
 
-
-
-    
     var isGameOver = false;
     var questions = [];
-    var level1Q = ['I need a basket, where I can orgainize the contents to a spot (index) but I have all the time in the world so I dont care if searching in my basket takes a bit longer', 'I gotta get my items quickly, I do NOT have time to search for my stuff all the time,so please give me a container that works in my time! Make it snappy!', "I got this FAT plate of pancakes, but I'm a little confused on how to eat them. What structure should I use to eat these pancakes.*Hint last in first out* ","I have a long line at my shop. I want to quickly serve my customers first come first serverd, then guide them out of the line. What structure should I use?" ];
+   // var level1Q = ['I need a basket, where I can orgainize the contents to a spot (index) but I have all the time in the world so I dont care if searching in my basket takes a bit longer', 'I gotta get my items quickly, I do NOT have time to search for my stuff all the time,so please give me a container that works in my time! Make it snappy!', "I got this FAT plate of pancakes, but I'm a little confused on how to eat them. What structure should I use to eat these pancakes?*Hint last in first out* ","I have a long line at my shop. I want to quickly serve my customers first come first serverd, then guide them out of the line. What structure should I use?" ];
     
-    var level2Q = ["The train is coming! I need to just find the first empty seat in passengers rails carts, so im not looking back at any of the previous carts, only going to the NEXT. Which data structure is the best for this type of search? ", ""];
+   // var level2Q = ["The train is coming! I need to just find the first empty seat in passengers rails carts, so im not looking back at any of the previous carts, only going to the NEXT. Which data structure is the best for this type of search? ", ""];
 
   
    
@@ -31,45 +28,68 @@ window.onload = function() {
     var button;
     var life = 3;
     var i=0;
-    questions[0] = level1Q;
-    answers[0] = level1A;
+    var j=0;
+   // questions[0] = level1Q;
+    //answers[0] = level1A;
     var game  = new Phaser.Game(800,600);
     
     
     
   //Check the question answer
    function checkAnswer(button){
-        if(!isGameOver){
-            console.log(button.frame);
-            console.log(randomAnswer);
-            if(button.frame===randomAnswer){
-                console.log(button.frame)
-                score+=Math.floor((350+counter)/4);
-                console.log(score);
-                scoreText.text = "Score: "+score.toString();
-                nextQuestion(randomQ);
 
+       // console.log(button.frame);
+     //    console.log(randomAnswer);
+        if(button.frame==questions[i].a ){
+             i++;
+            console.log(button.frame)
+            score+=Math.floor((350+counter)/4);
+            console.log(score);
+            scoreText.text = "Score: "+score.toString();
+            nextQuestion(questions);
+
+        }
+        else{ 
+             i++;
+            if(life > 1){
+                life = life-1;
+                lifeText.text = "Lives:"+life.toString();
+
+                 nextQuestion(questions);
             }
-            else{ 
-                if(life > 1){
-                    life = life-1;
-                    lifeText.text = "Lives:"+life.toString();
-
-                     nextQuestion(randomQ);
-                }
-                else{
-                    life = life-1;
-                    lifeText.text = "Lives:"+life.toString();
-                    game.state.start("GameOver");
-                }
+            else{
+                life = life-1;
+                lifeText.text = "Lives:"+life.toString();
+                game.state.start("GameOver");
             }
         }
    }
    function nextQuestion(randomQ){  
+       
+       if (i == 5){
+             var data= $.parseJSON($.ajax({
+                        type: "GET",
+                        url: "http://localhost:3000/runtime/getQuestions/" ,
+                        dataType: "json",
+                        async:false
+                        
+                }).responseText);
+
+            j=0;
+           questions =[]
+            while ( j < data.length){
+
+                            questions.push(data[j]);
+                              //console.log(questions);
+                            j++;
+            }
+            console.log(questions);
+            i=0;
+             
+       }
         scoreText.text = "Score: "+score.toString();
-        randomQ = game.rnd.between(0,2); 
-        randomAnswer = answers[0][randomQ];
-        questionText.text = questions[0][randomQ];
+      
+        questionText.text = questions[i].q;
 
     }
     
@@ -97,7 +117,22 @@ window.onload = function() {
             },
             create: function(){
                 
+                 var data= $.parseJSON($.ajax({
+                        type: "GET",
+                        url: "http://localhost:3000/runtime/getQuestions/" ,
+                        dataType: "json",
+                        async:false
+                        
+                }).responseText);
                 
+                while ( j < data.length){
+                                
+                                questions.push(data[j]);
+                                  //console.log(questions);
+                                j++;
+                }
+                console.log(questions);
+             
                 this.add.image(0,0, 'mountains');
                 this.add.image(0,250, 'trees');
                 this.add.image(0,300, 'trees');
@@ -106,7 +141,7 @@ window.onload = function() {
            
                 game.stage.backgroundColor = "#8CAFE7";
                 //Question location 
-                questionText = game.add.text(200,75,questions[0][0],{
+                questionText = game.add.text(200,75,questions[i].q,{
                     font:"bold 20px Arial",
                     wordWrapWidth: 400,
                     wordWrap: true,
@@ -183,7 +218,7 @@ window.onload = function() {
 	               fill: "#000000",
 	               align: "center"
 	          }
-	          var text = game.add.text(game.width / 2, game.height / 2, "Game Over\nYour score: " + score.toString(), style);
+	          var text = game.add.text(game.width / 2, game.height / 2, "Game Over\nYour score: " + score.toString() +"\n Tap the screen to restart", style);
 	          text.anchor.set(0.5);
              
               //console.log(url);
@@ -201,10 +236,7 @@ window.onload = function() {
                   });
              }
                 
-             
-               this.add.button(90, 200, "gameOButton", this.restartGame, this).frame = 0;
-               this.add.button(150, 200, "gameOButton", showLeader, this).frame = 1;
-			   //game.input.onDown.add(this.restartGame, this);	
+			   game.input.onDown.add(this.restartGame, this);	
                game.stage.backgroundColor = "#8CAFE7";
 	     },
     		restartGame: function(){

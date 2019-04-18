@@ -9,6 +9,7 @@ const cors       = require('cors');
 const port = 3000;
 
 
+
 // env variables
 require('dotenv').config();
 
@@ -34,6 +35,15 @@ instance2.connect(uri,
    useCreateIndex : true,
    dbName: 'compilerQuestions'});
 const dbQuestions = instance2.connection;
+
+
+var instance3 = new Mongoose();
+instance3.connect(uri,
+  {useNewUrlParser: true,
+   useFindAndModify : false,
+   useCreateIndex : true,
+   dbName: 'runtime'});
+const dbRuntime = instance3.connection;
 
 
 //Initiate app
@@ -95,7 +105,6 @@ app.post('/compilecode/:topic/:questionNum' , function (req , res, next ) {
         console.log(code);
         var code = req.body.code.replace(/(\\n)/gm, "\n");
 
-
         // Begins the compilation. There will always be 5 inputs, and this is to
         // maintain it being synchronous
         var envData = { OS : "windows" , cmd : "g++", options: {timeout:5000 } };
@@ -125,8 +134,9 @@ app.post('/compilecode/:topic/:questionNum' , function (req , res, next ) {
 
 app.get('/runtime/getQuestions', function(req,res) {
     
-    dbRuntime.collection("questions").aggregate([{ $sample: { size: 5 } }]).toArray(function(err, result) {
+    dbRuntime.collection("questions").aggregate( [ { $sample: { size: 5 } } ]).toArray(function(err, result) {
         if (err) throw err;
+        console.log(result);
         res.send(result);
     });
 })
@@ -141,10 +151,11 @@ app.post('/runtime/sendScore/:userId/:score', function(req,res) {
 });
 
 
-app.post('/runtime/postQuestions/:question/:answer', function(req,res) {
-    var info = req.params;
+app.post('/runtime/postQuestions', function(req,res) {
+    var info = JSON.parse(JSON.stringify(req.body));
     console.log(info);
-    dbRuntime.collection("questions").insertOne({ q: info.question, a: info.answer },function(err, info){
+    console.log(info.q);
+    dbRuntime.collection("questions").insertOne({q:info.q, a: info.a},function(err, info){
         if (err) throw err;
         res.send("question successfully added");
     });
