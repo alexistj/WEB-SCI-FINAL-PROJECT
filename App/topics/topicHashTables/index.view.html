@@ -1,0 +1,43 @@
+<navbar></navbar>
+
+
+	<div class="container">
+
+		<h1 class="topic-title">Hash Tables</h1>
+
+		<div class="media">
+			<div class="media-body">
+				<h5 class="topic-sub-title mt-0 mb-1">What are they?</h5>
+				Hash tables are one of the best data structures that exist, as they can perform many functions extremely quickly. Hash tables work by having a
+				key-value binding. Similarly to how arrays and linked lists have a key-value binding (the index 0-length is the key, value is the element),
+				hash tables have one too, but the keys don’t need to be between 0 and the size of the structure. In fact, they don’t even have to be integers.
+			</div>
+		</div>
+		<br />
+		<div class="media">
+			<div class="media-body">
+				<h5 class="topic-sub-title mt-0 mb-1">How do they work?</h5>
+				The way it works is that the hash table comes with what’s called a hashing algorithm.
+				It’s a complex mathematical equation that turns the key into a number, which indicates where the element is located.
+				So, let’s say we have the string “hi” as a key. An extremely basic (and not very good) hashing algorithm could work by taking the
+				index of the letters and adding them up, so “hi” would translate to 8+9=17. The hash table would then look in the 17th index, and the value would be there.
+
+				So, what if the hashing algorithm returns the same value? Using the example algorithm, “hi” and “eeea” would have the same result.
+				In this case, you’d have a list at each element, and the list would hold all the key-value pairs there, so at the 17th index would be
+				“hi” and its value as well as “eeea” and its value. You would then run through that list until you found your key. Still pretty fast, but
+				a good hashing algorithm will minimize how often this needs to happen.
+			</div>
+		</div>
+		<br />
+		<div class="media">
+			<div class="media-body">
+				<h5 class="topic-sub-title mt-0 mb-1">Why and When to use them?</h5>
+				So, hash tables are even faster than binary search trees for searching, and for adding / deleting elements.
+				This is because the hashing algorithm is constant time, meaning it doesn’t take longer as the size of the table grows.
+				Also, making your own custom hashing algorithm is usually not a good idea, since there are many established and very
+				good hashing algorithms that you should use instead.
+			</div>
+		</div>
+
+		<compiler topic='trees' question-num='2'></compiler>
+	</div>

@@ -210,7 +210,7 @@ app.post('/compilecode/:topic/:questionNum' , function (req , res, next ) {
 
 
 app.get('/runtime/getQuestions', function(req,res) {
-    
+
     dbRuntime.collection("questions").aggregate( [ { $sample: { size: 5 } } ]).toArray(function(err, result) {
         if (err) throw err;
         console.log(result);

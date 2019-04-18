@@ -1,5 +1,5 @@
 
- 
+
 #content{
   background-color: #f99d5d;
   margin: 80px 70px;
@@ -9,15 +9,16 @@
   user-select: none;
 }
 
+
 .overlay{
       background-color: rgba(0,0,0,0.3);
 }
- 
+
 .overlay:hover {
    background-color: rgba(0,0,0,0);
 }
 /* Header/footer boxes */
- 
+
 .wideBox {
   clear: both;
   text-align: center;
@@ -27,16 +28,20 @@
   border: 1px solid #333;
   background-color: #40a2ffbd;
 }
- 
+
 .wideBox h1 {
   font-weight: bold;
   margin: 20px;
-  color: #666;
+  color: black;
   font-size: 1.5em;
 }
- 
+
+.wideBox p {
+  color: black;
+}
+
 /* Slots for final card positions */
- 
+
 .T1Q1 #cardSlots {
   margin: 0 auto 3em auto;
   background: #007bff;
@@ -44,16 +49,16 @@
   display: none;
 
 }
- 
+
 /* The initial pile of unsorted cards */
- 
+
 .T1Q1 #cardPile {
   margin: 0 auto;
   background: #D65108;
   float: left;
   display: none;
 }
- 
+
  .T1Q1 #cardSlots, .T1Q1 #cardPile {
   width: 47%;
   height: 80%;
@@ -66,9 +71,9 @@
   -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
   box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
 }
- 
+
 /* Individual cards and slots */
- 
+
  .T1Q1 #cardSlots div,  .T1Q1 #cardPile div {
   float: left;
   width: 48%;
@@ -90,19 +95,19 @@
   text-align: center;
 
 }
- 
+
 /*#cardSlots div:first-child, #cardPile div:first-child {
   margin-left: 0;
 }*/
- 
+
  .T1Q1 #cardSlots div.hovered {
   background: #aaa;
 }
- 
+
  .T1Q1 #cardSlots div {
   border-style: dashed;
 }
- 
+
  .T1Q1 #cardPile div {
   background: #055000;
   color: #fff;
@@ -110,30 +115,30 @@
   text-shadow: 0 0 3px #000;
   text-align: center;
 }
- 
+
  .T1Q1 #cardPile div.ui-draggable-dragging {
   -moz-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
   -webkit-box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
   box-shadow: 0 0 .5em rgba(0, 0, 0, .8);
 }
- 
+
 /* Individually coloured cards */
- 
+
  #card1.correct,
  #card2.correct,
- #card3.correct, 
- #card4.correct, 
- #card5.correct, 
- #card6.correct, 
- #card7.correct, 
- #card8.correct, 
- #card9.correct, 
+ #card3.correct,
+ #card4.correct,
+ #card5.correct,
+ #card6.correct,
+ #card7.correct,
+ #card8.correct,
+ #card9.correct,
  #card10.correct {
 
-  background: #149614e0; 
+  background: #149614e0;
 }
- 
- 
+
+
 /* "You did it!" message */
 #successMessage {
   position: absolute;
@@ -144,9 +149,9 @@
   z-index: 100;
   background: #dfd;
   border: 2px solid #333;
-  
+
   border-radius: 10px;
-  
+
   box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
   padding: 35px;
   text-align: center;
