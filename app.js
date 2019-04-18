@@ -8,14 +8,18 @@ const mongoose 	 = require('mongoose');
 const cors       = require('cors');
 const port = 3000;
 
+
 // env variables
 require('dotenv').config();
 
 //Configure mongoose's promise to global promise
+var Mongoose = require('mongoose').Mongoose;
 mongoose.promise = global.Promise;
 
 // Configure Mongooose and MongoDBAtlas connection
 const uri = `mongodb+srv://${ process.env.DBUSER }:${ process.env.DBPASSWORD }@cluster0-yvtgu.mongodb.net/test?retryWrites=true`;
+
+
 mongoose.connect(uri,
   {useNewUrlParser: true,
    useFindAndModify : false,
@@ -23,14 +27,13 @@ mongoose.connect(uri,
    dbName: 'startDS'});
 const db = mongoose.connection;
 
-const dbQuestions = db.useDb('compilerQuestions');
-const dbRuntime = db.useDb('runtime');
-// mongoose.connect(uri,
-//   {useNewUrlParser: true,
-//    useFindAndModify : false,
-//    useCreateIndex : true,
-//    dbName: 'compilerQuestions'});
-// const dbQuestions = mongoose.connection;
+var instance2 = new Mongoose();
+instance2.connect(uri,
+  {useNewUrlParser: true,
+   useFindAndModify : false,
+   useCreateIndex : true,
+   dbName: 'compilerQuestions'});
+const dbQuestions = instance2.connection;
 
 
 //Initiate app
@@ -87,7 +90,9 @@ app.post('/compilecode/:topic/:questionNum' , function (req , res, next ) {
     dbQuestions.collection(req.params.topic).find(query).toArray(function(err, result) {
         if (err) throw err;
         var allResults = [];
+
         // Reformat the code for processing
+        console.log(code);
         var code = req.body.code.replace(/(\\n)/gm, "\n");
 
 
@@ -105,9 +110,8 @@ app.post('/compilecode/:topic/:questionNum' , function (req , res, next ) {
                         allResults.push(data);
                         compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][4] , function (data) {
                             allResults.push(data);
-
-                            // Sends the results to Angular
-                            res.send(allResults);
+                            console.log(allResults);
+                            res.send(allResults)
                         });
                     });
                 });
@@ -120,7 +124,7 @@ app.post('/compilecode/:topic/:questionNum' , function (req , res, next ) {
 
 
 app.get('/runtime/getQuestions', function(req,res) {
-    
+
     dbRuntime.collection("questions").aggregate([{ $sample: { size: 5 } }]).toArray(function(err, result) {
         if (err) throw err;
         res.send(result);

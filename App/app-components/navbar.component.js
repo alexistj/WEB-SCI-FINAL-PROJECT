@@ -5,9 +5,6 @@
         .module('app')
         .constant('API', 'http://localhost:3000')
         .component('navbar', {
-          bindings: {
-          },
-
           template: `
             <nav class="navbar navbar-expand-lg navbar-custom">
               <a class="navbar-brand" href="#/">StartDS</a>
@@ -17,7 +14,7 @@
 
             <div class="collapse navbar-collapse">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
+                <li class="nav-item active">
                   <a class="nav-link" ng-show="$ctrl.loggedIn" href="#/dashboard">Dashboard<span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item active">
@@ -33,14 +30,14 @@
               <ul ng-show="!$ctrl.loggedIn" class="navbar-nav ml-auto">
                 <form class="form-inline">
                   <div class="form-group mb-2">
-                    <input required class="form-control mr-sm-3" type="text" ng-model="$ctrl.username" placeholder="Username" aria-label="Username">
+                    <input required class="form-control mr-sm-2" type="text" ng-model="$ctrl.username" placeholder="Username" aria-label="Username">
                   </div>
                   <div class="form-group mx-sm-3 mb-2">
-                    <input required class="form-control mr-sm-3" type="password" ng-model="$ctrl.password" placeholder="Password" aria-label="Password">
+                    <input required class="form-control mr-sm-2" type="password" ng-model="$ctrl.password" placeholder="Password" aria-label="Password">
                   </div>
                   <div class="form-group mx-sm-3 mb-2">
-                  <button class="btn btn-success my-2 my-sm-0" type="submit" ng-click="$ctrl.login();">Login</button>
-                  <a href="#/" class="btn btn-success btn-sm-0" style="margin-left: 10px;" role="button">Sign-Up</a>
+                  <button class="btn btn-success" type="submit" ng-click="$ctrl.login();">Login</button>
+                  <a href="#/" class="btn btn-success " style="margin-left: 10px;" role="button">Sign-Up</a>
                 </form>
                </li>
               </ul>

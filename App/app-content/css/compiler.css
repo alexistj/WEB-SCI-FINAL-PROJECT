@@ -1,0 +1,39 @@
+.compiler-container {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  padding: 50px;
+}
+#compiler-question {
+  margin-bottom: 30px;
+}
+#code, #input {
+  width: 100%;
+  height: 75%;
+  font-size: 15px;
+  font-weight: normal;
+  color: black;
+  font-family: Inconsolata, serif;
+}
+.tab-pane {
+  padding: 10px;
+  color: white;
+  height: 100%;
+  background: #0075C4;
+}
+.compiler-container .tab-content {
+    color: white;
+    background: #0075C4;
+    padding: 10px;
+    width: 100%;
+    height: 500px;
+}
+.table {
+  color: black;
+  background-color: white;
+}
+#results-table td {
+  font-family: Inconsolata, serif;
+}

@@ -1,0 +1,33 @@
+<navbar></navbar>
+
+
+	<div class="container">
+
+		<h1 class="topic-title">Trees</h1>
+
+		<div class="media">
+			<div class="media-body">
+				<h5 class="topic-sub-title mt-0 mb-1">What are they?</h5>
+				There are many different types of trees, but we’ll just focus on binary trees. As the name implies, each node has at most two different children. Here’s an example of a tree:
+			</div>
+		</div>
+		<br />
+		<div class="media">
+			<div class="media-body">
+				<h5 class="topic-sub-title mt-0 mb-1">How do they work?</h5>
+				Let’s deconstruct this tree. First of all, quick terminology recap: a “node” is an element, which is each of the circles with the number inside, and a “child” indicates a node that is underneath another one, so the lines indicate that the lower node is a child of the upper node. So, every single node has at most 2 children, and you’ll notice that each child on the left is always smaller than the parent node, while the node on the right is always larger than the parent node. This is extremely helpful when it comes to searching. Let’s say that we want to find the number 8. Go through it and note how many iterations it took. What if this was a linked list or an array? The only way to find it would be to look through every value, which is inefficient.
+		So, these types of trees are great for searching for elements, but these trees are not great for set orders. If you wanted to track some people who were waiting in line, the order of each element would matter, but not necessarily based on the value. Trees would be inappropriate for this kind of function.
+
+			</div>
+		</div>
+		<br />
+		<div class="media">
+			<div class="media-body">
+				<h5 class="topic-sub-title mt-0 mb-1">Why and When to use them?</h5>
+				While there are no preset binary search trees in C++, we can still emulate the kind of algorithm that it employs. Let’s say we want to play a guessing game with the user: The user thinks of a number between 1 and 100, and the computer tries to guess it as quickly as possible.
+				The easy way to do this would be to keep asking the user about numbers between 1-100 until the computer eventually got it right. However, this is a much more efficient algorithm:
+			</div>
+		</div>
+
+		<compiler topic='trees' question-num='2'></compiler>
+	</div>

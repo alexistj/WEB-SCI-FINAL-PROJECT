@@ -11,14 +11,6 @@
 
         function initController() {
 
-            // vm.loggedIn = false;
-            //
-            // // set the user for the page if they're loggin in
-            // if ($localStorage.currentUser) {
-            //   vm.loggedIn = true;
-            //   vm.username = $localStorage.currentUser.username;
-            //   console.log(vm.username, "is logged in on Dashboard");
-            // }
         };
     }
 
