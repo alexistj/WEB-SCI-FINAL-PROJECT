@@ -5,27 +5,26 @@
         .module('app')
         .controller('Test1.IndexController', Controller);
 
-    function Controller($state, $scope, $localStorage, AuthenticationService) {
+    function Controller($state, $scope, $location, $localStorage, AuthenticationService) {
         var vm = this;
-        vm.logout = logout;
-        vm.login = login;
+
+        // vm.login = login;
+        // vm.register = register;
 
         initController();
 
         function initController() {
-
+            // reset login status
             vm.loggedIn = false;
 
-            // set the user for the page if they're loggin in
             if ($localStorage.currentUser) {
               vm.loggedIn = true;
               vm.username = $localStorage.currentUser.username;
-              console.log(vm.username, "is logged in on Dashboard");
+              console.log($localStorage.currentUser);
             }
         };
 
         function login() {
-            console.log("called login");
             vm.loading = true;
             console.log(vm.username, vm.password);
             AuthenticationService.Login(vm.username, vm.password, function (result) {
@@ -37,10 +36,20 @@
                 }
             });
         };
-
-        function logout() {
-          AuthenticationService.Logout();
-        }
+        //
+        // function register() {
+        //     console.log("called sign up");
+        //     vm.loading = true;
+        //     AuthenticationService.Register(vm.registerEmail, vm.registerUsername, vm.registerPassword, vm.confirmPassword, function (result) {
+        //         if (result === true) {
+        //             vm.loading = false;
+        //             $state.go('login');
+        //         } else {
+        //             vm.error = 'Ensure all fields are filled out';
+        //             vm.loading = false;
+        //         }
+        //     });
+        // };
     }
 
 })();

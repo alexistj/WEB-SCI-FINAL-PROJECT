@@ -13,7 +13,7 @@ function initTest2Q1() {
 
   //document.getElementById("cardSlots").style.background = "url(app-content/img/test2/q1/q1.png)";
   // Hide the success message
-  
+  $('#successMessage').hide();
 
   // Reset the game
   correctCards = 0;
@@ -101,6 +101,15 @@ function initTest2Q1() {
     } );*/
   }
 
+  var pileDiv = document.getElementById("cardPile");
+  var slotDiv = document.getElementById("cardSlots");
+
+  console.log(pileDiv);
+
+  $(pileDiv).fadeIn("slow");
+  $(slotDiv).fadeIn("slow");
+
+
 }
 
 function handleCardDrop( event, ui ) {
@@ -124,11 +133,17 @@ function handleCardDrop( event, ui ) {
   // If all the cards have been placed correctly then display a message
   // and reset the cards for another go
 
-  if ( correctCards == 8 ) {
+  if ( correctCards == 15 ) {
+
+    var contentDiv = document.getElementById("content");
+    var showPosition = contentDiv.offsetTop +50;
+    showPosition += 'px';
+
+
     $('#successMessage').show();
     $('#successMessage').animate( {
-      left: '380px',
-      top: '200px',
+      
+      top: showPosition,
       width: '400px',
       height: '100px',
       opacity: 1

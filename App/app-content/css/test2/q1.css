@@ -26,12 +26,13 @@
   -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
   box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
   background: url(../../img/test2/q1/q1.png);
-  background-size:contain; ;    
+  background-size:contain; ;  
+  display: none;  
   
 }
 
 .T2Q1 #cardPile {
-  width: 26%;
+  width: 27%;
   height: 80%;
   padding: .85em;
   border: 2px solid #333;
@@ -41,6 +42,7 @@
   -moz-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
   -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
   box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  display: none;
 }
  
 /* Individual cards and slots */
@@ -49,8 +51,8 @@
 
 .T2Q1 #cardPile div {
   float: left;
-  width: 87px;
-  height: 87px;
+  width: 95px;
+  height: 95px;
   padding: 5px;
   border: 2px solid #333;
   -moz-border-radius: 10px;
@@ -116,6 +118,7 @@
   display: inline-block;
   border-style: dashed;
   margin: 0px 140px 0px 0px;
+  border-radius: 10px;
 }
 
 .T2Q1 .slotLast {
@@ -149,21 +152,3 @@
   background: #ff0000c4; 
 }
  
-/* "You did it!" message */
-#successMessage {
-  position: absolute;
-  left: 580px;
-  top: 250px;
-  width: 0;
-  height: 0;
-  z-index: 100;
-  background: #dfd;
-  border: 2px solid #333;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  border-radius: 10px;
-  -moz-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
-  -webkit-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
-  box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
-  padding: 20px;
-}

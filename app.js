@@ -120,5 +120,29 @@ app.post('/compilecode/:topic/:questionNum' , function (req , res, next ) {
     });
 });
 
+
+
+
+app.get('/runtime/getQuestions', function(req,res) {
+
+    dbRuntime.collection("questions").aggregate([{ $sample: { size: 5 } }]).toArray(function(err, result) {
+        if (err) throw err;
+        res.send(result);
+    });
+})
+
+app.post('/runtime/sendScore/:userId/:score', function(req,res) {
+    var info = req.params;
+    console.log(info);
+    dbRuntime.collection("leaderBoard").insertOne({ userId: info.userId, score: info.score },function(err, info){
+        if (err) throw err;
+        res.send("score successfully added");
+    });
+});
+
+
+
+
+
 //  Serve static files like CSS to Express
 app.listen((process.env.port || 3000), () => console.log(`startDS listening on port ${port}!`))

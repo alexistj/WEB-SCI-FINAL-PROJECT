@@ -58,7 +58,15 @@ function init() {
     } );
   }
 
-  document.getElementById('loadReset').innerHTML = 'Reset';
+  var pileDiv = document.getElementById("cardPile");
+  var slotDiv = document.getElementById("cardSlots");
+
+  //console.log(pileDiv);
+
+  $(pileDiv).fadeIn("slow");
+  $(slotDiv).fadeIn("slow");
+
+  //document.getElementById('loadReset').innerHTML = 'Reset';
 
 }
 
@@ -84,10 +92,14 @@ function handleCardDrop( event, ui ) {
   // and reset the cards for another go
 
   if ( correctCards == 8 ) {
+    var contentDiv = document.getElementById("content");
+    var showPosition = contentDiv.offsetTop +50;
+    showPosition += 'px';
+
     $('#successMessage').show();
     $('#successMessage').animate( {
-      left: '380px',
-      top: '200px',
+      
+      top: showPosition,
       width: '400px',
       height: '100px',
       opacity: 1

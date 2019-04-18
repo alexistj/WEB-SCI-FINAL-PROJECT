@@ -30,6 +30,7 @@
   background: url(../../img/test3/q1.png);
   background-size:contain; ;                      /* <------ */
     background-position:  center;
+    display: none;
 }
 
 .T3Q1 #cardPile {
@@ -43,6 +44,7 @@
   -moz-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
   -webkit-box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
   box-shadow: 0 0 .3em rgba(0, 0, 0, .8);
+  display: none;
 }
  
 /* Individual cards and slots */
@@ -155,4 +157,62 @@
   -webkit-box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
   box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
   padding: 20px;
+}
+
+#startGame{
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  background: white;
+  padding: 10px;
+  width: 250px;
+  margin: 0 auto;
+  position: relative;
+  top: 50%;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.25);
+  border-radius: 2px;
+}
+
+
+.button {
+  background: #0175c4;
+  margin : 20px auto;
+  width : 200px;
+  height : 50px;
+  overflow: hidden;
+  text-align : center;
+  transition : .2s;
+  cursor : pointer;
+  border-radius: 3px;
+  box-shadow: 0px 1px 2px rgba(0,0,0,.2);
+}
+.btnTwo {
+  position : relative;
+  width : 200px;
+  height : 100px;
+  margin-top: -100px;
+  padding-top: 2px;
+  background : #d65107;
+  left : -250px;
+  transition : .3s;
+}
+.btnText {
+  color : white;
+  transition : .3s;
+  padding-top: 10px;
+
+}
+.btnText2 {
+  margin-top : 53px;
+  margin-right : -130px;
+  color : #FFF;
+}
+.button:hover .btnTwo{ /*When hovering over .button change .btnTwo*/
+  left: -130px;
+}
+.button:hover .btnText{ /*When hovering over .button change .btnText*/
+  margin-left : 65px;
+}
+.button:active { /*Clicked and held*/
+  box-shadow: 0px 5px 6px rgba(0,0,0,0.3);
 }

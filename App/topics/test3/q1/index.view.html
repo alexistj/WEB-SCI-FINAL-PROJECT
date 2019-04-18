@@ -1,60 +1,68 @@
-<navbar></navbar>
+  <navbar></navbar>
 
-<div class="wideBox">
-  <h1>Trees Short Answers</h1>
-  <p>For each of the statements below, write a single letter corresponding to the phrase that fills in the bold ??? to make
-the statement true. No letter is used more than once. Each incorrect answer will decrease your score by 4 points
-(but cannot make your score on this problem negative).</p>
-</div>
-
-<div>
-  <button onclick="initT3Q1()">RESET</button>
-</div>
-
-<div id="content" class='T3Q1'>
-
-  <div id="cardPile">
-
+  <div class="wideBox">
+    <h1>Trees Short Answers</h1>
+    <p>For each of the statements below, write a single letter corresponding to the phrase that fills in the bold ??? to make
+  the statement true. No letter is used more than once. Each incorrect answer will decrease your score by 4 points
+  (but cannot make your score on this problem negative).</p>
   </div>
-  <div id="cardSlots">
 
-    <div id=boxes>
-      <div class='row'>
+  <div id=startGame>
+    <div onclick="initT3Q1()" class="button">
+      <p class="btnText">READY?</p>
+      <div class="btnTwo">
+        <p class="btnText2">GO!</p>
+      </div>
+   </div>
+  </div>
+
+  <div id="content" class='T3Q1'>
+
+    <div id="cardPile">
+
+    </div>
+    <div id="cardSlots"> 
+
+      <div id=boxes>
+        <div class='row'>
+          
+        </div>
+
+        <div class='row'>
+          
+        </div>
+
+        <div class='row'>
+          
+        </div>
+
+
+        <div class='row'>
+         
+        </div>
+
+        <div class='row'>
+          
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+
 
       </div>
-
-      <div class='row'>
-
-      </div>
-
-      <div class='row'>
-
-      </div>
-
-
-      <div class='row'>
-
-      </div>
-
-      <div class='row'>
-
-      </div>
-
-
-
-
-
 
     </div>
 
-  </div>
+    <div id="successMessage">
+      <h2>Congratulations!</h2>
+      <button onclick="initT3Q1()">Play Again</button>
+    </div>
 
-  <div id="successMessage">
-    <h2>Congratulations!</h2>
-    <button onclick="initT3Q1()">Play Again</button>
   </div>
-
-</div>
 
 
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" />
