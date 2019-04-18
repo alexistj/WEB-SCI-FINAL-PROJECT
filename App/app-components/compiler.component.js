@@ -94,7 +94,7 @@
                   $scope.description={"question": data.data[0].description};
                   $scope.question = data.data[0].description;
                   $scope.testInputs = data.data[0].testInputs;
-                  $scope.testOuputs = data.data[0].testOuputs;
+                  $scope.testOutputs = data.data[0].testOutputs;
 
                   // Add starter code to the text area
                   document.getElementById("code").innerHTML = "#include<iostream>\n#include <string>\n\nusing namespace std;\n\nint main() {\n";
@@ -116,7 +116,7 @@
                     var expect = document.createElement("td");
                     input.innerHTML = $scope.testInputs[i] ;
                     out.innerHTML = "";
-                    expect.innerHTML = $scope.testOuputs[i];
+                    expect.innerHTML = $scope.testOutputs[i];
                     resultRow.appendChild(rowHead);
                     resultRow.appendChild(input);
                     resultRow.appendChild(out);
@@ -132,15 +132,15 @@
                 var editedText = document.getElementById("code").value.replace(/(\n)/gm, "\\n").replace(/(\")/gm, "\\\"");
                 var text = '{ "code":"' + editedText + '" } ';
 
-                $http.post(API + '/compilecode/' + this.topic + "/" + this.questionNum, text).then(function(data) {
+                $http.post(API + '/compilecode/' + this.topic + "/" + this.questionNum, text).then(function(response) {
                     $scope.error = null;
-                    var results = data.data;
-
-                    console.log(data);
+                    var results = response.data;
 
                     var table = document.getElementById("results-table");
                     table.innerHTML = "";
                     for (var i = 0; i < results.length; i++) {
+                      var test = results[i].test;
+                      var result = results[i].result;
                       document.getElementById("input").innerHTML += $scope.testInputs[i] + "\n";
                       var resultRow = document.createElement("tr");
                       var rowHead = document.createElement("th");
@@ -148,13 +148,13 @@
                       var input = document.createElement("td");
                       var out = document.createElement("td");
                       var expect = document.createElement("td");
-                      input.innerHTML = $scope.testInputs[i] ;
-                      if (results[i].error) {
-                        $scope.error = { "error": results[i].error} ;
+                      input.innerHTML = test.input;
+                      if (result.stderr.length > 0) {
+                        $scope.error = { "error": result.stderr} ;
                         break;
                       }
-                      out.innerHTML = results[i];
-                      expect.innerHTML = $scope.testOuputs[i];
+                      out.innerHTML = result.stdout;
+                      expect.innerHTML = test.expected;
                       resultRow.appendChild(rowHead);
                       resultRow.appendChild(input);
                       resultRow.appendChild(out);
