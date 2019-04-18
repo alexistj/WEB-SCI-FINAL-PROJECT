@@ -1,21 +1,17 @@
 var correctCards = 0;
-$( init );
 
-function init() {
+$('#T3Q2 #successMessage').hide();
+
+function initT3Q2() {
 
 
   // Hide the success message
-  $('#successMessage').hide();
-  $('#successMessage').css( {
-    left: '580px',
-    top: '250px',
-    width: 0,
-    height: 0
-  } );
+  $('#T3Q2 #successMessage').hide();
+  
 
   // Reset the game
   correctCards = 0;
-  $('#cardPile').html( '' );
+  $('#T3Q2 #cardPile').html( '' );
   //$('#cardSlots').html( '' );
 
   var eachRow = document.getElementsByClassName('row');
@@ -23,7 +19,7 @@ function init() {
 
 
   for (var x=0; x<3; x++){
-    console.log("enter");
+    //console.log("enter");
     eachRow[x].innerHTML = "";
   }
 
@@ -41,7 +37,7 @@ c) pre-order traversal
 f) narrower and taller*/
 
   for ( var i=0; i<7; i++ ) {
-    $('<div class=greenPile>' + terms[i] +'</div>').data( 'number', i ).attr( 'id', 'card1' ).appendTo( '#cardPile' ).draggable( {
+    $('<div class=greenPile>' + terms[i] +'</div>').data( 'number', i ).attr( 'id', 'card1' ).appendTo( '#T3Q2 #cardPile' ).draggable( {
       
       stack: '#cardPile div',
       cursor: 'move',
@@ -71,17 +67,23 @@ var keyIndex = 0;
 
   // Create the card slots
   for ( var i=0; i<3; i++ ) {
+console.log('here');
+    var row = $('#T3Q2 .row');
+    //console.log(row1);
 
-    
-    var row=  document.getElementsByClassName("row")[i];
+    console.log('here');
+    //var row=  document.getElementsByClassName("row")[i];
+
+    console.log('one');
     console.log(row);
 
+
     if (i==0){
-console.log(keyIndex);
-      $('<div class="slotLast"></div>').data( 'number', key[keyIndex] ).appendTo( row ).droppable( {
-        accept: '#cardPile div',
+
+      $('<div class="slotLast"></div>').data( 'number', key[keyIndex] ).appendTo( row[i] ).droppable( {
+        accept: '#T3Q2 #cardPile div',
         hoverClass: 'hovered',
-        drop: handleCardDrop
+        drop: handleCardDropT3Q2
       });
       keyIndex++;
 
@@ -91,29 +93,29 @@ console.log(keyIndex);
 
         if (z == (2*i) -1) {
           console.log(keyIndex);
-          $('<div class="slotLast"></div>').data( 'number', key[keyIndex] ).appendTo( row ).droppable( {
-            accept: '#cardPile div',
+          $('<div class="slotLast"></div>').data( 'number', key[keyIndex] ).appendTo( row[i] ).droppable( {
+            accept: '#T3Q2 #cardPile div',
             hoverClass: 'hovered',
-            drop: handleCardDrop
+            drop: handleCardDropT3Q2
           });
           keyIndex++;
 
         } else if (i==1) {
 
-          $('<div class="slotLevel2"></div>').data( 'number', key[keyIndex] ).appendTo( row ).droppable( {
-            accept: '#cardPile div',
+          $('<div class="slotLevel2"></div>').data( 'number', key[keyIndex] ).appendTo( row[i] ).droppable( {
+            accept: '#T3Q2 #cardPile div',
             hoverClass: 'hovered',
-            drop: handleCardDrop
+            drop: handleCardDropT3Q2
           });
           keyIndex++;
 
         } else {
           console.log(keyIndex);
 
-          $('<div class="slot"></div>').data( 'number', key[keyIndex] ).appendTo( row ).droppable( {
-            accept: '#cardPile div',
+          $('<div class="slot"></div>').data( 'number', key[keyIndex] ).appendTo( row[i] ).droppable( {
+            accept: '#T3Q2 #cardPile div',
             hoverClass: 'hovered',
-            drop: handleCardDrop
+            drop: handleCardDropT3Q2
           });
           keyIndex++;
         }
@@ -123,6 +125,20 @@ console.log(keyIndex);
       }
 
     }
+
+    var row2=  document.getElementsByClassName("row")[i];
+
+     console.log('two');
+    console.log(row2);
+
+
+    var pileDiv = document.getElementById("cardPile");
+    var slotDiv = document.getElementById("cardSlots");
+
+    //console.log(pileDiv);
+    //pileDiv.style.display = 'block';
+    $('#T3Q2 #cardPile').fadeIn("slow");
+    $('#T3Q2 #cardSlots').fadeIn("slow");
 
 
 
@@ -142,7 +158,7 @@ console.log(keyIndex);
 
 }
 
-function handleCardDrop( event, ui ) {
+function handleCardDropT3Q2( event, ui ) {
   var slotNumber = $(this).data( 'number' );
   var cardNumber = ui.draggable.data( 'number' );
 
