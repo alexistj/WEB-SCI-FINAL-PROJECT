@@ -124,7 +124,7 @@ app.post('/compilecode/:topic/:questionNum' , function (req , res, next ) {
 
 
 app.get('/runtime/getQuestions', function(req,res) {
-
+    
     dbRuntime.collection("questions").aggregate([{ $sample: { size: 5 } }]).toArray(function(err, result) {
         if (err) throw err;
         res.send(result);
@@ -137,6 +137,16 @@ app.post('/runtime/sendScore/:userId/:score', function(req,res) {
     dbRuntime.collection("leaderBoard").insertOne({ userId: info.userId, score: info.score },function(err, info){
         if (err) throw err;
         res.send("score successfully added");
+    });
+});
+
+
+app.post('/runtime/postQuestions/:question/:answer', function(req,res) {
+    var info = req.params;
+    console.log(info);
+    dbRuntime.collection("questions").insertOne({ q: info.question, a: info.answer },function(err, info){
+        if (err) throw err;
+        res.send("question successfully added");
     });
 });
 
