@@ -11,6 +11,7 @@
           template: `
           <div class="compiler-container">
 
+
             <div id="compiler-question" ng-show="description.question"  class="media">
               <div class="media-body">
                 <h5 class="mt-0 mb-1">Example:</h5>

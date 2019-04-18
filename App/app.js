@@ -55,11 +55,32 @@
                 controller: 'TopicTrees.IndexController',
                 controllerAs: 'vm'
               })
+              .state('topicHashTables', {
+                  url: '/topics/hashTables',
+                  css: '',
+                  templateUrl: 'topics/topicHashTables/index.view.html',
+                  controller: 'TopicHashTables.IndexController',
+                  controllerAs: 'vm'
+                })
             .state('topicLinkedLists', {
                   url: '/topics/linkedLists',
                   css: '',
                   templateUrl: 'topics/topicLinkedLists/index.view.html',
                   controller: 'TopicLinkedLists.IndexController',
+                  controllerAs: 'vm'
+                })
+            .state('topicStacks', {
+                  url: '/topics/stacks',
+                  css: '',
+                  templateUrl: 'topics/topicStacks/index.view.html',
+                  controller: 'TopicStacks.IndexController',
+                  controllerAs: 'vm'
+                })
+            .state('topicQueues', {
+                  url: '/topics/queues',
+                  css: '',
+                  templateUrl: 'topics/topicQueues/index.view.html',
+                  controller: 'TopicQueues.IndexController',
                   controllerAs: 'vm'
                 })
             .state('games', {
@@ -89,6 +110,13 @@
                 css: '',
                 templateUrl: 'topics/test3/q1/index.view.html',
                 controller: 'Test3Q1.IndexController',
+                controllerAs: 'vm'
+              })
+            .state('runtime', {
+                url: '/games/runtime',
+                css: '',
+                templateUrl: 'games/game1-runtime/index.view.html',
+                controller: 'runtime.IndexController',
                 controllerAs: 'vm'
               });
     }
