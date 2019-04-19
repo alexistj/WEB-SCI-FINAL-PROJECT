@@ -247,7 +247,7 @@ app.get('/runtime/getleaderboard', function(req,res) {
 })
 
 
-app.post('/runtime/getScores/:username', function(req,res) {
+app.get('/runtime/getScores/:username', function(req,res) {
     
     console.log("Hellllloooooo");
     dbRuntime.collection("leaderBoard").find( { "username": req.params.username } ).sort({score:-1}).limit(10).toArray(function(err, result) {
@@ -256,7 +256,7 @@ app.post('/runtime/getScores/:username', function(req,res) {
           console.log(result);
           res.send(result);
       });
-}
+});
   
 
 

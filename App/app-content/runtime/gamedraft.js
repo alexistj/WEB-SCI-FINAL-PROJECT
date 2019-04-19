@@ -102,11 +102,11 @@ window.onload = function() {
                 
                 game.load.spritesheet("buttons", "newbuttons.png", 128,36);
                 
-                game.load.image('mountains', 'country-platform-files/layers/country-platform-back-resize.PNG');
+                game.load.image('mountains', 'country-platform-files/layers/country-platform-back-resize.png');
                 
-                game.load.image('trees', 'country-platform-files/layers/country-platform-forest-resize.PNG');
+                game.load.image('trees', 'country-platform-files/layers/country-platform-forest-resize.png');
                 
-                 game.load.image('trail', 'country-platform-files/layers/country-platform-resize.PNG');
+                 game.load.image('trail', 'country-platform-files/layers/country-platform-resize.png');
                 
                 
                 
@@ -193,11 +193,11 @@ window.onload = function() {
                 
                 game.load.spritesheet("buttons", "newbuttons.png", 128,36);
                 
-                game.load.image('mountains', 'country-platform-files/layers/country-platform-back-resize.PNG');
+                game.load.image('mountains', 'country-platform-files/layers/country-platform-back-resize.png');
                 
-                game.load.image('trees', 'country-platform-files/layers/country-platform-forest-resize.PNG');
+                game.load.image('trees', 'country-platform-files/layers/country-platform-forest-resize.png');
                 
-                game.load.image('trail', 'country-platform-files/layers/country-platform-resize.PNG');
+                game.load.image('trail', 'country-platform-files/layers/country-platform-resize.png');
                 
                 
             },
