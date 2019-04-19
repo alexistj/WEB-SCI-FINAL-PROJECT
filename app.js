@@ -246,6 +246,7 @@ app.get('/runtime/getleaderboard', function(req,res) {
     });
 })
 
+
 app.post('/runtime/getScores/:username', function(req,res) {
     
     console.log("Hellllloooooo");
@@ -255,8 +256,8 @@ app.post('/runtime/getScores/:username', function(req,res) {
           console.log(result);
           res.send(result);
       });
+}
   
-});
 
 
 
