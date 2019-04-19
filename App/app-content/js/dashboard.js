@@ -1,3 +1,27 @@
+
+
+function convertToInt(data){
+
+	var result = [];
+	for (var y=0; y<data.length; y++ ){
+		var tmp = [];
+		var text= data[y].score;
+		var integer = parseInt(text, 10);
+
+		result.push(integer);
+
+	}
+
+	return (result);
+
+	
+
+
+
+}
+
+
+
 function getScores() {
 
 	document.getElementById("userScores").innerHTML = '';
@@ -7,7 +31,7 @@ function getScores() {
 
             error: function() {
                 //nothing to show play game first
-                console.log("it went..");
+
 
 
             },
@@ -20,12 +44,14 @@ function getScores() {
                  var div = document.createElement("div"); 
 
                    
-                    
+                 var inInt = convertToInt(response);
+                 inInt.sort(function(a, b){return b-a});
+
     
-                console.log("it went");
-                console.log(response);
+
+
                 if (response.length == 0 ){
-                	console.log("nothing");
+
                 	var text =  document.createElement("p"); 
                 	var textContent = document.createTextNode("You have not played any games yet."); 
 
@@ -36,17 +62,23 @@ function getScores() {
                 	document.getElementById("userScores").appendChild(div);
 
                 } else {
+
+                	var scoreTable = "<table> <tr id='tableHead'> <th>Rank</th> <th>Score</th> </tr>";
+
+
+
                 	for (var x=0; x<response.length; x++){
-                		var text =  document.createElement("h3"); 
-	                	var textContent = document.createTextNode((x+1) +  ") " +response[x].score); 
+                		scoreTable += "<tr> <th>" + (x+1) + "</th>";
+                		scoreTable += "<th>" + inInt[x]+ "</th></tr>";
+		
 
-	                	text.appendChild(textContent);
 
-	                	div.appendChild(text);
-
-	                	document.getElementById("userScores").appendChild(div);
+	                	
 
                 	}
+
+                	scoreTable += "</table>";
+                	document.getElementById("userScores").innerHTML= scoreTable;
                 }
               	//console.log(response);
                    //console.log("enter"); 

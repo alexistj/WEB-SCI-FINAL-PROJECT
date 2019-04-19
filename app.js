@@ -249,7 +249,7 @@ app.get('/runtime/getleaderboard', function(req,res) {
 app.post('/dashboard/getScores/:username', function(req,res) {
     var info = req.params;
     var name = info.username;
-    dbRuntime.collection("leaderBoard").find({username :name}).limit(10).toArray(function(err, result) {
+    dbRuntime.collection("leaderBoard").find({username :name}).sort({score:-1}).limit(10).toArray(function(err, result) {
         if (err) throw err;
 
         res.send(result);
