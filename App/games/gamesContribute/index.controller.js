@@ -7,6 +7,8 @@
 
     function Controller($state, $http, $scope, $localStorage, AuthenticationService) {
         var vm = this;
+        var API = 'http://localhost:3000';
+
         initController();
 
         function initController() {
@@ -17,6 +19,7 @@
 
           if (!window.localStorage.getItem('ngStorage-currentUser')) {
             alert("Please login to submit a question");
+            return false;
           }
           if (typeof $scope.question === "undefined" || $scope.question.length < 10) {
               alert("Please enter a question");
@@ -56,12 +59,11 @@
               }
 
               var req = {"contri": JSON.parse(window.localStorage.getItem('ngStorage-currentUser')).username, "q":$scope.question,"a": numAns};
-              console.log(req);
 
               $http.post(API + '/runtime/postQuestions/', req).then(function(response) {
                 var results = response.data;
                 alert("Question successfully added!");
-                console.log(responseData);
+                console.log(results);
               });
             }
           }

@@ -79,12 +79,6 @@ app.use(function(err, req, res, next) {
 require('./models/User');
 require('./config/passport');
 
-//Configure compileX
-const compiler = require('compilex');
-var option = {stats : true};
-compiler.init(option);
-
-
 app.get('/retrieveQuestion/:topic/:questionNum', function(req,res) {
     var count = parseInt(req.params.questionNum, 10);
     var query = { num: count };
@@ -146,63 +140,6 @@ app.post('/compilecode/:topic/:questionNum' , function (req , res, next ) {
 
         // Run all test inputs on the code
         processTests(tests);
-
-        // console.log(code);
-        // console.log(result[0]["testInputs"][0]);
-        // cpp.runSource(code, { stdin: result[0]["testInputs"][0]}, (err, result) => {
-        //   if(err){
-        //         console.log(err);
-        //         res.send(err);
-        //     }
-        //     else{
-        //         console.log(result);
-        //         allResults.push(result);
-        //         // res.send(allResults);
-        //     }
-        // });
-        // for (var i; i < result[0]["testInputs"].length; i++) {
-        //   cpp.runSource(code, { stdin: result[0]["testInputs"][i]}, (err, result) => {
-        //     if(err){
-        //           console.log(err);
-        //           res.send(err);
-        //       }
-        //       else{
-        //           console.log(result);
-        //           allResults.push(result);
-        //       }
-        //   });
-        // }
-        // resultPromise
-        //     .then(result => {
-        //         console.log(result);
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     });
-
-
-        // Begins the compilation. There will always be 5 inputs, and this is to
-        // maintain it being synchronous
-        // var envData = { OS : "windows" , cmd : "g++", options: {timeout:5000 } };
-        // var envData = { OS : "linux" , cmd : "gcc" };
-        // compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][0] , function (data) {
-        //     // Each of these adds the data to the list of results to return
-        //     allResults.push(data);
-        //     compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][1] , function (data) {
-        //         allResults.push(data);
-        //         compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][2] , function (data) {
-        //             allResults.push(data);
-        //             compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][3] , function (data) {
-        //                 allResults.push(data);
-        //                 compiler.compileCPPWithInput(envData , code , result[0]["testInputs"][4] , function (data) {
-        //                     allResults.push(data);
-        //                     console.log(allResults);
-        //                     res.send(allResults)
-        //                 });
-        //             });
-        //         });
-        //     });
-        // });
     });
 });
 
@@ -218,6 +155,12 @@ app.get('/runtime/getQuestions', function(req,res) {
     });
 })
 
+app.get('/runtime/getContributions/:user', function(req,res) {
+    dbRuntime.collection("questions").find({ contri: req.params.user }).toArray(function(err, result) {
+        if (err) throw err;
+        res.send(result);
+    });
+})
 app.post('/runtime/sendScore/:username/:score', function(req,res) {
     var info = req.params;
     console.log(info);
@@ -239,7 +182,7 @@ app.post('/runtime/postQuestions', function(req,res) {
 });
 
 app.get('/runtime/getleaderboard', function(req,res) {
-    
+
     dbRuntime.collection("leaderBoard").find().sort({score:-1}).limit(10).toArray(function(err, result) {
         if (err) throw err;
         res.send(result);
@@ -248,12 +191,15 @@ app.get('/runtime/getleaderboard', function(req,res) {
 
 
 app.get('/runtime/getScores/:username', function(req,res) {
-    dbRuntime.collection("leaderBoard").find( { "username": req.params.username } ).sort({score:-1}).limit(10).toArray(function(err, result) { 
+
+    dbRuntime.collection("leaderBoard").find( { "username": req.params.username } ).sort({score:-1}).limit(10).toArray(function(err, result) {
+
+
           if (err) throw err;
           res.send(result);
       });
 });
-  
+
 app.get('/runtime/contributions/:username', function(req,res) {
     dbRuntime.collection("questions").find( { "username": req.params.username } ).limit(10).toArray(function(err, result) {
           if (err) throw err;
@@ -261,7 +207,6 @@ app.get('/runtime/contributions/:username', function(req,res) {
           res.send(result);
       });
 });
-
 
 
 
