@@ -15,6 +15,32 @@
           getContributions();
         }
 
+
+
+
+        function convertToInt(data){
+
+            var result = [];
+            for (var y=0; y<data.length; y++ ){
+                var tmp = [];
+                var text= data[y].score;
+                var integer = parseInt(text, 10);
+
+                result.push(integer);
+
+            }
+
+            return (result);
+
+            
+
+
+
+        }
+
+
+
+
         function getContributions() {
           var contributionsTab = document.getElementById("pills-contributions");
           var user = window.localStorage.getItem('ngStorage-currentUser');
@@ -56,7 +82,10 @@
                 async:true,
                 dataType: 'json', // added data type
                 success: function(res) {
-                    console.log("Hello?");
+                  /*console.log("Hello?");
+
+                    document.getElementById("userScores").innerHTML = '';
+
 
 
                 var output =" <h1>My Scores</h1><ol>";
@@ -68,7 +97,47 @@
                  output+= "</ol>";
                 document.getElementById("pills-scores").innerHTML = output;
 
-                i=0;
+                i=0;*/
+
+
+
+                       
+                     var inInt = convertToInt(res);
+                     inInt.sort(function(a, b){return b-a});
+
+
+
+
+                    if (res.length == 0 ){
+
+                        var text =  document.createElement("p"); 
+                        var textContent = document.createTextNode("You have not played any games yet."); 
+
+                        text.appendChild(textContent);
+
+                        div.appendChild(text);
+
+                        document.getElementById("userScores").appendChild(div);
+
+                    } else {
+
+                        var scoreTable = "<table> <tr id='tableHead'> <th>Rank</th> <th>Score</th> </tr>";
+
+
+
+                        for (var x=0; x<res.length; x++){
+                            scoreTable += "<tr> <th>" + (x+1) + "</th>";
+                            scoreTable += "<th>" + inInt[x]+ "</th></tr>";
+            
+
+
+                            
+
+                        }
+
+                        scoreTable += "</table>";
+                        document.getElementById("userScores").innerHTML= scoreTable;
+                    }
 
                 }
         });

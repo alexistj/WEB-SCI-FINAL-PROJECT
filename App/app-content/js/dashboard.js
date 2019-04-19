@@ -24,7 +24,11 @@ function convertToInt(data){
 
 function getScores() {
 
-	document.getElementById("userScores").innerHTML = '';
+	//document.getElementById("userScores").innerHTML = '';
+
+	var test = $("#userScores");
+
+	console.log(test);
 	$.ajax({
             url: "http://localhost:3000/dashboard/getScores/"+JSON.parse(window.localStorage.getItem('ngStorage-currentUser')).username,
             type: "POST",
@@ -32,7 +36,7 @@ function getScores() {
             error: function() {
                 //nothing to show play game first
 
-
+                console.log("bad");
 
             },
             
@@ -47,7 +51,7 @@ function getScores() {
                  var inInt = convertToInt(response);
                  inInt.sort(function(a, b){return b-a});
 
-    
+
 
 
                 if (response.length == 0 ){
