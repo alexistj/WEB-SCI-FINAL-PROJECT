@@ -90,6 +90,13 @@
                 controller: 'GamesMain.IndexController',
                 controllerAs: 'vm'
               })
+              .state('runtimeContribute', {
+                  url: '/games/runtime/contribute',
+                  css: '',
+                  templateUrl: 'games/gamesContribute/index.view.html',
+                  controller: 'GamesContribute.IndexController',
+                  controllerAs: 'vm'
+                })
             .state('test1', {
                 url: '/topics/test1',
                 css: '',

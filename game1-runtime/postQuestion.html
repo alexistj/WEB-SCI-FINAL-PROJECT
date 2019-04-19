@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp" ng-controller="postQuestion">
   <head>
-      
+
       <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-      
+
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -12,27 +12,27 @@
       <meta charset="utf-8">
   </head>
 
-  <body> 
+  <body>
     <div class="container-fluid">
         <br/>
-     
+
         <div class="row justify-content-center">
 
                 <div class="col-12 col-md-10 col-lg-8">
-                    
+
                         <div class="card-body row no-gutters align-items-center">
-                            
-                            
+
+
                             <div class="col-auto">
                                 <i class="fas fa-search h4 text-body"></i>
                             </div>
-                          
+
                             <form ng-submit="submit()">
                                 <div class="col">
                                     <input ng-model ="question" class="form-control form-control-lg form-control-borderless" type="search" placeholder="Enter a runtime Question">
                                 </div>
-                                
-                            
+
+
                                   <div class="col">   
                                      <select class="form-control" ng-model="answer">
                                          <option selected="selected">Array</option>
@@ -44,10 +44,10 @@
                                          <option>Stack</option>
                                       </select>
                                 </div>
-                                
+
                                 <button class="btn btn-lg btn-info" confirmed-click="submit()" type="submit" >Send</button>
                             </form>
-                            
+
                         </div>
                 </div>
                 <!--end of col-->
