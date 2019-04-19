@@ -26,7 +26,12 @@
                 var text= data[y].score;
                 var integer = parseInt(text, 10);
 
-                result.push(integer);
+                tmp.push(integer);
+                tmp.push(data[y].username);
+
+
+                result.push(tmp);
+
 
             }
 
@@ -35,6 +40,13 @@
             
 
 
+
+        }
+
+        function sortArray (a,b){
+            if (a[0] > b[0]) return -1;
+           if (a[0] < b[0]) return 1;
+           return 0;
 
         }
 
@@ -58,8 +70,49 @@
                 dataType: 'json', // added data type
                 success: function(res) {
 
+                    console.log(res);
 
-                var output =" <h1>Leaderboard</h1><ol>";
+
+                    var inInt = convertToInt(res);
+                    inInt.sort(sortArray);
+
+
+
+
+                    if (res.length == 0 ){
+
+                        var text =  document.createElement("p"); 
+                        var textContent = document.createTextNode("You have not played any games yet."); 
+
+                        text.appendChild(textContent);
+
+                        div.appendChild(text);
+
+                        document.getElementById("leaderboardTable").appendChild(div);
+
+                    } else {
+
+                        var scoreTable = "<table> <tr class='tableHead'> <th>Rank</th> <th>Username </th><th>Score</th> </tr>";
+
+
+
+                        for (var x=0; x<res.length; x++){
+                            scoreTable += "<tr> <th>" + (x+1) + "</th>";
+                            scoreTable += "<th>" + inInt[x][0]+ "</th>";
+                            scoreTable += "<th>" + inInt[x][1]+ "</th></tr>";
+            
+
+
+                            
+
+                        }
+
+                        scoreTable += "</table>";
+                        document.getElementById("leaderboardTable").innerHTML= scoreTable;
+                    }
+
+                }
+                /*var output =" <h1>Leaderboard</h1><ol>";
                 while ( i< res.length){
                                 output+="<li>"+res[i].username+": "+ res[i].score+"</li> \n";
 
@@ -70,7 +123,7 @@
 
                 i=0;
 
-                }
+                }*/
         });
 
         i=0;
@@ -105,7 +158,7 @@
 
                        
                      var inInt = convertToInt(res);
-                     inInt.sort(function(a, b){return b-a});
+                     inInt.sort(sortArray);
 
 
 
@@ -123,13 +176,13 @@
 
                     } else {
 
-                        var scoreTable = "<table> <tr id='tableHead'> <th>Rank</th> <th>Score</th> </tr>";
+                        var scoreTable = "<table> <tr class='tableHead'> <th>Rank</th> <th>Score</th> </tr>";
 
 
 
                         for (var x=0; x<res.length; x++){
                             scoreTable += "<tr> <th>" + (x+1) + "</th>";
-                            scoreTable += "<th>" + inInt[x]+ "</th></tr>";
+                            scoreTable += "<th>" + inInt[x][0]+ "</th></tr>";
             
 
 

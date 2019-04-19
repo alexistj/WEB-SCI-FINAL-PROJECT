@@ -12,12 +12,20 @@
 	padding: 20px 25%;
 }
 
-#userScores tr:nth-child(even){background-color: #f2f2f2;}
 
-#userScores tr:nth-child(odd){background-color: #df7540;}
 
-#userScores tr:hover {background-color: #ddd;}
-#tableHead {
+#userScores tr:nth-child(even),
+#leaderboardTable tr:nth-child(even){background-color: #f2f2f2;}
+
+#userScores tr:nth-child(odd),
+#leaderboardTable tr:nth-child(odd){background-color: #df7540;}
+
+#userScores tr:hover,
+#leaderboardTable tr:hover {
+	background-color: #ddd;
+
+}
+.tableHead {
 	border-bottom: 5px solid black;
 	z-index: -1;
 	
@@ -27,12 +35,24 @@ table {
 	font-size: 20px;
 	border: 5px solid white;
 	z-index: 1;
+	color: black;
 }
 
 table th {
 	width: 30%;
 	padding: 20px;
 
+}
+
+
+#leaderboardTable{
+	margin-left: 80px;
+    margin-top: 30px;
+}
+    
+
+#pills-leaderboard h1 {
+	text-align: center;
 }
 
 
