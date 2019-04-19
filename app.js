@@ -183,7 +183,18 @@ app.get('/runtime/getleaderboard', function(req,res) {
         if (err) throw err;
         res.send(result);
     });
-})
+});
+
+
+app.post('/dashboard/getScores/:username', function(req,res) {
+    var info = req.params;
+    var name = info.username;
+    dbRuntime.collection("leaderBoard").find({username :name}).sort({score:-1}).limit(10).toArray(function(err, result) {
+        if (err) throw err;
+        res.send(result);
+
+    });
+});
 
 
 app.get('/runtime/getScores/:username', function(req,res) {
