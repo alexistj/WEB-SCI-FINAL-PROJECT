@@ -1,0 +1,58 @@
+<navbar></navbar>
+
+<div id="question-form" class="container">
+	<div class="jumbotron">
+		<h1>Runtime Question Submission</h1>
+		<form>
+			<label for="question">Question:</label>
+			<textarea class="form-control" rows="5" ng-model="question" id="quesiton">Enter a question text here</textarea>
+			<label for="answer">Answer:</label>
+			<select class="form-control" id="answer" ng-model="answer">
+					<option selected="selected">Array</option>
+					<option>Vector</option>
+					<option>Singly Linked List</option>
+					<option>Doubly Linked List</option>
+					<option>Hash Map</option>
+					<option>Queue</option>
+					<option>Stack</option>
+			 </select>
+			<button type="submit" ng-click="submit();" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+</div>
+
+	<!-- <div class="container-fluid">
+
+
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-10 col-lg-8">
+
+								<div class="card-body row no-gutters align-items-center">
+
+
+										<div class="col-auto">
+												<i class="fas fa-search h4 text-body"></i>
+										</div>
+
+										<form ng-submit="submit()">
+												<div class="col">
+														<input ng-model ="question" class="form-control form-control-lg form-control-borderless" type="search" placeholder="Enter a runtime Question">
+												</div>
+													<div class="col">
+														 <select class="form-control" ng-model="answer">
+																 <option selected="selected">Array</option>
+																 <option>Vector</option>
+																 <option>Singly Linked List</option>
+																 <option>Doubly Linked List</option>
+																 <option>Hash Map</option>
+																 <option>Queue</option>
+																 <option>Stack</option>
+															</select>
+												</div>
+
+												<button class="btn btn-lg btn-info" confirmed-click="submit()" type="submit" >Send</button>
+										</form>
+									</div>
+							</div>
+				</div>
+		</div> -->

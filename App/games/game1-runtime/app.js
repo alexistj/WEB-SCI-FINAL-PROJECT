@@ -1,25 +1,25 @@
 
 var app = angular.module("myApp", []).config(function($sceProvider) {
-        $sceProvider.enabled(false); 
+        $sceProvider.enabled(false);
     });
   app.controller('postQuestion', function($scope, $http){
-   
+
       $scope.submit = function (){
-        
+
         if (typeof $scope.question === "undefined") {
             alert("Please enter a question");
             return false;
         }
-        
+
         else if (typeof $scope.answer === "undefined") {
             alert("Please select an answer");
             return false;
         }
-     
+
         else{
-     
+
        //Make api call which will return all the JSON to twitter.json so the ajax can read and format
-            
+
         var numAns = 0;
         if($scope.answer == "Array"){
             numAns =0;
@@ -28,25 +28,32 @@ var app = angular.module("myApp", []).config(function($sceProvider) {
             numAns=1;
         }
         else if($scope.answer == "Singly Linked List") {
-           numAns=2 ;    
-        }    
+           numAns=2 ;
+        }
         else if($scope.answer == "Doubly Linked List") {
-            numAns=3 ;    
-        } 
+            numAns=3 ;
+        }
         else if($scope.answer == "Hash Map") {
-            numAns=4 ;    
+            numAns=4 ;
         }
         else if($scope.answer == "Queue") {
-            numAns=5 ;    
+            numAns=5 ;
         }
         else if($scope.answer == "Stack") {
-            numAns=6 ;    
+            numAns=6 ;
         }
+<<<<<<< HEAD:game1-runtime/app.js
+
+        var req = {"q":$scope.question,"a": numAns};
+
+
+=======
             
         var req = {"contri": JSON.parse(window.localStorage.getItem('ngStorage-currentUser')).username, "q":$scope.question,"a": numAns};
             
            
    
+>>>>>>> 9a0db503574bb3b4bc926de57f86f8a2c0c19d1d:App/games/game1-runtime/app.js
         $.ajax({
             
             
@@ -59,10 +66,8 @@ var app = angular.module("myApp", []).config(function($sceProvider) {
                         console.log(responseData);
                     }
         });
-                        
+
       }
     };
-   
-  });
-    
 
+  });
