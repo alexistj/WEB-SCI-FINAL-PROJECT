@@ -240,6 +240,18 @@ app.post('/runtime/postQuestions', function(req,res) {
 
 
 
+app.post('/dashboard/getScores', function(req,res) {
+    dbRuntime.collection("questions").aggregate( [ { $sample: { size: 5 } } ]).toArray(function(err, result) {
+          if (err) throw err;
+          console.log(result);
+          res.send(result);
+      });
+   
+   res.send('hello');
+});
+
+
+
 
 
 //  Serve static files like CSS to Express
