@@ -33,14 +33,44 @@
                 success: function(res) {
 
 
-                var output =" <h1>Leaderbaord</h1><ol>";
+                var output =" <h1>Leaderboard</h1><ol>";
                 while ( i< res.length){
-                                output+="<li>"+res[i].username+": "+ res[i].score+"<li>";
+                                output+="<li>"+res[i].username+": "+ res[i].score+"</li> \n";
 
                                 i++;
                 }
                  output+= "</ol>";
                 document.getElementById("pills-leaderboard").innerHTML = output;
+
+                i=0;
+
+                }
+        });
+
+
+
+
+        i=0;
+        console.log(JSON.parse(window.localStorage.getItem('ngStorage-currentUser')).username);
+        $.ajax({
+
+
+                type: "GET",
+                url: "http://localhost:3000/runtime/getScores/"+JSON.parse(window.localStorage.getItem('ngStorage-currentUser')).username,
+                async:true,
+                dataType: 'json', // added data type
+                success: function(res) {
+                    console.log("Hello?");
+
+
+                var output =" <h1>My Scores</h1><ol>";
+                while ( i< res.length){
+                                output+="<li>"+ res[i].score+"</li> \n";
+
+                                i++;
+                }
+                 output+= "</ol>";
+                document.getElementById("pills-scores").innerHTML = output;
 
                 i=0;
 
