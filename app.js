@@ -150,7 +150,6 @@ app.get('/runtime/getQuestions', function(req,res) {
 
     dbRuntime.collection("questions").aggregate( [ { $sample: { size: 5 } } ]).toArray(function(err, result) {
         if (err) throw err;
-        console.log(result);
         res.send(result);
     });
 })
@@ -173,8 +172,6 @@ app.post('/runtime/sendScore/:username/:score', function(req,res) {
 
 app.post('/runtime/postQuestions', function(req,res) {
     var info = JSON.parse(JSON.stringify(req.body));
-    console.log(info);
-    console.log(info.contri);
     dbRuntime.collection("questions").insertOne({contri:info.contri , q:info.q, a: info.a},function(err, info){
         if (err) throw err;
         res.send("question successfully added");
@@ -182,8 +179,7 @@ app.post('/runtime/postQuestions', function(req,res) {
 });
 
 app.get('/runtime/getleaderboard', function(req,res) {
-
-    dbRuntime.collection("leaderBoard").find().sort({score:-1}).limit(10).toArray(function(err, result) {
+ dbRuntime.collection("leaderBoard").find().sort({score:-1}).limit(10).toArray(function(err, result) {
         if (err) throw err;
         res.send(result);
     });
@@ -191,17 +187,14 @@ app.get('/runtime/getleaderboard', function(req,res) {
 
 
 app.get('/runtime/getScores/:username', function(req,res) {
-
-    dbRuntime.collection("leaderBoard").find( { "username": req.params.username } ).sort({score:-1}).limit(10).toArray(function(err, result) {
-
-
+  dbRuntime.collection("leaderBoard").find( { "username": req.params.username } ).sort({score:-1}).limit(10).toArray(function(err, result) {
           if (err) throw err;
           res.send(result);
       });
 });
 
 app.get('/runtime/contributions/:username', function(req,res) {
-    dbRuntime.collection("questions").find( { "username": req.params.username } ).limit(10).toArray(function(err, result) {
+    dbRuntime.collection("questions").find( { "contri": req.params.username } ).limit(10).toArray(function(err, result) {
           if (err) throw err;
           console.log(result);
           res.send(result);

@@ -56,9 +56,6 @@
                 async:true,
                 dataType: 'json', // added data type
                 success: function(res) {
-                    console.log("Hello?");
-
-
                 var output =" <h1>My Scores</h1><ol>";
                 while ( i< res.length){
                                 output+="<li>"+ res[i].score+"</li> \n";
@@ -85,9 +82,10 @@
                 async:true,
                 dataType: 'json', // added data type
                 success: function(res) {
-                    console.log("Hello?");
+                    console.log("contributions"); console.log(JSON.parse(window.localStorage.getItem('ngStorage-currentUser')).username);
+                    console.log(res);
 
-    
+            
                 var output ="<h1>My Contributions</h1><ol>";
                 while ( i< res.length){
                                 output+="<li>"+ res[i].q+"</li> \n";
