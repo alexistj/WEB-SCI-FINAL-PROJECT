@@ -248,16 +248,19 @@ app.get('/runtime/getleaderboard', function(req,res) {
 
 
 app.get('/runtime/getScores/:username', function(req,res) {
-    
-    console.log("Hellllloooooo");
-    dbRuntime.collection("leaderBoard").find( { "username": req.params.username } ).sort({score:-1}).limit(10).toArray(function(err, result) {
-        
+    dbRuntime.collection("leaderBoard").find( { "username": req.params.username } ).sort({score:-1}).limit(10).toArray(function(err, result) { 
+          if (err) throw err;
+          res.send(result);
+      });
+});
+  
+app.get('/runtime/contributions/:username', function(req,res) {
+    dbRuntime.collection("questions").find( { "username": req.params.username } ).limit(10).toArray(function(err, result) {
           if (err) throw err;
           console.log(result);
           res.send(result);
       });
 });
-  
 
 
 
