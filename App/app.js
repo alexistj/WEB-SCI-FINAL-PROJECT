@@ -10,14 +10,6 @@
         // default route
          $urlRouterProvider.otherwise("/");
 
-        // .state('dashboard', {
-        //     url: '/dashbaord/:userId',
-        //     css: '',
-        //     templateUrl: 'splash/index.view.html',
-        //     controller: 'Splash.IndexController',
-        //     controllerAs: 'vm'
-        //   })
-
         // app routes
         $stateProvider
             .state('splash', {

@@ -68,21 +68,6 @@
             </div>
           </div>
           `,
-          // <form name="codeInput">
-          //   <p>{{$ctrl.question}}</p>
-          //   <h3>Code</h3>
-          //   <button class="btn-primary" ng-click="$ctrl.checkCode()">Run >></button>
-          //   <textarea id="code" name="code"></textarea>
-          //   <br/>
-          //   Compile With Input :
-          //   <label><input type="radio" name="consoleInput" ng-change="$ctrl.input=true" ng-model="$ctrl.input" value="true" />Yes</label>
-          //   <label><input type="radio" name="consoleInput" ng-change="$ctrl.input=false" ng-model="$ctrl.input" value="false" checked="checked"/>No</label>
-          //   <h3 ng-show="$ctrl.input">Input</h3>
-          //   <textarea ng-show="$ctrl.input" id="input" name="input" class="form-control" style="min-width: 100%"></textarea>
-          //   <br/>
-          //   <center></center>
-          //   <br/>
-          // </form>
           controller: function($http, $scope) {
             var API = 'http://localhost:3000';
 

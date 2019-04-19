@@ -42,21 +42,14 @@ var app = angular.module("myApp", []).config(function($sceProvider) {
         else if($scope.answer == "Stack") {
             numAns=6 ;
         }
-<<<<<<< HEAD:game1-runtime/app.js
 
-        var req = {"q":$scope.question,"a": numAns};
-
-
-=======
-            
         var req = {"contri": JSON.parse(window.localStorage.getItem('ngStorage-currentUser')).username, "q":$scope.question,"a": numAns};
-            
-           
-   
->>>>>>> 9a0db503574bb3b4bc926de57f86f8a2c0c19d1d:App/games/game1-runtime/app.js
+
+
+
         $.ajax({
-            
-            
+
+
                     type: "POST",
                     url: "http://localhost:3000/runtime/postQuestions/",
                     contentType: "application/json; charset=utf-8",
