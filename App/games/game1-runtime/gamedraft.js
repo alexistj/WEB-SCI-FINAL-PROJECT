@@ -2,9 +2,7 @@ window.onload = function() {
 
     var isGameOver = false;
     var questions = [];
-   // var level1Q = ['I need a basket, where I can orgainize the contents to a spot (index) but I have all the time in the world so I dont care if searching in my basket takes a bit longer', 'I gotta get my items quickly, I do NOT have time to search for my stuff all the time,so please give me a container that works in my time! Make it snappy!', "I got this FAT plate of pancakes, but I'm a little confused on how to eat them. What structure should I use to eat these pancakes?*Hint last in first out* ","I have a long line at my shop. I want to quickly serve my customers first come first serverd, then guide them out of the line. What structure should I use?" ];
-    
-   // var level2Q = ["The train is coming! I need to just find the first empty seat in passengers rails carts, so im not looking back at any of the previous carts, only going to the NEXT. Which data structure is the best for this type of search? ", ""];
+
 
   
    
@@ -227,7 +225,7 @@ window.onload = function() {
                  
                 $.ajax({
                         type: "POST",
-                        url: "http://localhost:3000/runtime/sendScore/"+JSON.parse(window.localStorage.getItem('ngStorage-currentUser')).id+"/" +score ,
+                        url: "http://localhost:3000/runtime/sendScore/"+JSON.parse(window.localStorage.getItem('ngStorage-currentUser')).username+"/" +score ,
                         async:true,
                         success: function(){
                             console.log("Send score success");

@@ -43,10 +43,13 @@ var app = angular.module("myApp", []).config(function($sceProvider) {
             numAns=6 ;    
         }
             
-        var req = {"q":$scope.question,"a": numAns};
+        var req = {"contri": JSON.parse(window.localStorage.getItem('ngStorage-currentUser')).username, "q":$scope.question,"a": numAns};
+            
            
    
         $.ajax({
+            
+            
                     type: "POST",
                     url: "http://localhost:3000/runtime/postQuestions/",
                     contentType: "application/json; charset=utf-8",
