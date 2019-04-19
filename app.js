@@ -218,10 +218,10 @@ app.get('/runtime/getQuestions', function(req,res) {
     });
 })
 
-app.post('/runtime/sendScore/:userId/:score', function(req,res) {
+app.post('/runtime/sendScore/:username/:score', function(req,res) {
     var info = req.params;
     console.log(info);
-    dbRuntime.collection("leaderBoard").insertOne({ userId: info.userId, score: info.score },function(err, info){
+    dbRuntime.collection("leaderBoard").insertOne({ username: info.username, score: info.score },function(err, info){
         if (err) throw err;
         res.send("score successfully added");
     });
@@ -231,14 +231,20 @@ app.post('/runtime/sendScore/:userId/:score', function(req,res) {
 app.post('/runtime/postQuestions', function(req,res) {
     var info = JSON.parse(JSON.stringify(req.body));
     console.log(info);
-    console.log(info.q);
-    dbRuntime.collection("questions").insertOne({q:info.q, a: info.a},function(err, info){
+    console.log(info.contri);
+    dbRuntime.collection("questions").insertOne({contri:info.contri , q:info.q, a: info.a},function(err, info){
         if (err) throw err;
         res.send("question successfully added");
     });
 });
 
-
+app.get('/runtime/getleaderboard', function(req,res) {
+    
+    dbRuntime.collection("leaderBoard").find().sort({score:-1}).limit(10).toArray(function(err, result) {
+        if (err) throw err;
+        res.send(result);
+    });
+})
 
 app.post('/dashboard/getScores', function(req,res) {
     dbRuntime.collection("questions").aggregate( [ { $sample: { size: 5 } } ]).toArray(function(err, result) {
