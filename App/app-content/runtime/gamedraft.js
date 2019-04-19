@@ -102,12 +102,11 @@ window.onload = function() {
                 
                 game.load.spritesheet("buttons", "newbuttons.png", 128,36);
                 
-                game.load.image('mountains', 'country-platform-files/layers/country-platform-back-resize.PNG');
+                game.load.image('mountains', 'country-platform-files/layers/country-platform-back-resize.png');
                 
-                game.load.image('trees', 'country-platform-files/layers/country-platform-forest-resize.PNG');
+                game.load.image('trees', 'country-platform-files/layers/country-platform-forest-resize.png');
                 
-                
-                 game.load.image('trail', 'country-platform-files/layers/country-platform-resize.PNG');
+                 game.load.image('trail', 'country-platform-files/layers/country-platform-resize.png');
                 
                 
                 
@@ -134,7 +133,7 @@ window.onload = function() {
                 this.add.image(0,0, 'mountains');
                 this.add.image(0,250, 'trees');
                 this.add.image(0,300, 'trees');
-                 this.add.image(0,360, 'trees');
+                this.add.image(0,360, 'trees');
                 this.add.image(0,400, 'trail');
            
                 game.stage.backgroundColor = "#8CAFE7";
@@ -194,13 +193,11 @@ window.onload = function() {
                 
                 game.load.spritesheet("buttons", "newbuttons.png", 128,36);
                 
-                game.load.image('mountains', 'country-platform-files/layers/country-platform-back-resize.PNG');
+                game.load.image('mountains', 'country-platform-files/layers/country-platform-back-resize.png');
                 
-                game.load.image('trees', 'country-platform-files/layers/country-platform-forest-resize.PNG');
+                game.load.image('trees', 'country-platform-files/layers/country-platform-forest-resize.png');
                 
-                game.load.spritesheet("gameOButton", "restartLeadButton.PNG", 128,36);
-                
-                game.load.image('trail', 'country-platform-files/layers/country-platform-resize.PNG');
+                game.load.image('trail', 'country-platform-files/layers/country-platform-resize.png');
                 
                 
             },
