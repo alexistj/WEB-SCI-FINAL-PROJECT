@@ -82,7 +82,7 @@
                     if (res.length == 0 ){
 
                         var text =  document.createElement("p"); 
-                        var textContent = document.createTextNode("You have not played any games yet."); 
+                        var textContent = document.createTextNode("No data to show."); 
 
                         text.appendChild(textContent);
 
@@ -157,8 +157,7 @@
 
 
                        
-                     var inInt = convertToInt(res);
-                     inInt.sort(sortArray);
+                     
 
 
 
@@ -170,11 +169,14 @@
 
                         text.appendChild(textContent);
 
-                        div.appendChild(text);
 
-                        document.getElementById("userScores").appendChild(div);
+
+                        document.getElementById("userScores").appendChild(text);
 
                     } else {
+
+                        var inInt = convertToInt(res);
+                        inInt.sort(sortArray);
 
                         var scoreTable = "<table> <tr class='tableHead'> <th>Rank</th> <th>Score</th> </tr>";
 

@@ -3,9 +3,14 @@
   color: white;
 }
 
+#pills-scores h2{
+  padding: 30px 0px 10px 20px;
+}
+
 #pills-scores h3{
   color: white;
   text-align: center;
+  padding-top: 40px;
 }
 
 #userScores {
@@ -42,17 +47,25 @@ table th {
 	width: 30%;
 	padding: 20px;
 
+
 }
 
 
 #leaderboardTable{
-	margin-left: 80px;
-    margin-top: 30px;
+	    margin: 30px 12%;
 }
     
 
 #pills-leaderboard h1 {
 	text-align: center;
+	padding: 40px 0px 20px;
 }
 
+
+#userScores p {
+	color: black;
+	font-size: 20px;
+	text-align: center;
+	padding: 20px 30px;
+}
 
