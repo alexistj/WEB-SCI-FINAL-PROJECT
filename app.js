@@ -246,14 +246,16 @@ app.get('/runtime/getleaderboard', function(req,res) {
     });
 })
 
-app.post('/dashboard/getScores', function(req,res) {
-    dbRuntime.collection("questions").aggregate( [ { $sample: { size: 5 } } ]).toArray(function(err, result) {
-          if (err) throw err;
-          console.log(result);
-          res.send(result);
-      });
+app.post('/dashboard/getScores/:username', function(req,res) {
+    var info = req.params;
+    var name = info.username;
+    dbRuntime.collection("leaderBoard").find({username :name}).limit(10).toArray(function(err, result) {
+        if (err) throw err;
+
+        res.send(result);
+    });
    
-   res.send('hello');
+   //res.send('hello');
 });
 
 
