@@ -15,6 +15,9 @@
 
         $scope.submit = function () {
 
+          if (!window.localStorage.getItem('ngStorage-currentUser')) {
+            alert("Please login to submit a question");
+          }
           if (typeof $scope.question === "undefined" || $scope.question.length < 10) {
               alert("Please enter a question");
               return false;
@@ -52,7 +55,7 @@
                   numAns=6 ;
               }
 
-              var req = {"q":$scope.question,"a": numAns};
+              var req = {"contri": JSON.parse(window.localStorage.getItem('ngStorage-currentUser')).username, "q":$scope.question,"a": numAns};
               console.log(req);
 
               $http.post(API + '/runtime/postQuestions/', req).then(function(response) {
