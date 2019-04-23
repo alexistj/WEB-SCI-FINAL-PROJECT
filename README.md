@@ -10,4 +10,4 @@ To run our application:
 2. Install the necessary modules by using 'npm install'
 3. Set environment variables for the database. These incloud 
 3. Then run the server by using nodemon app.js
-4. Navigate to localhost:3000 in your browser to get started!
+4. Navigate to http://localhost:3000/App/#/ in your browser to get started!
