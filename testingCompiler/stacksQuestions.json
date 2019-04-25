@@ -1,0 +1,25 @@
+{
+    "questions": [
+        {
+            "description": "Take integer inputs and put them into an stack. The first input will be the length of the stack, and the rest of the numbers will be what's in the stack. Print out the stack after storing it.",
+            "testInputs": ["5 1 2 3 4 5", "2 99 12", "4 -5 -8 -3 4", "1 10", "8 1 2 3 4 5 6 7 8"],
+            "testOuputs": ["5 4 3 2 1", "12 99", "4 -3 -8 -5", "10", "8 7 6 5 4 3 2 1"],
+            "inputType": "int",
+            "num": 1
+        },
+        {
+            "description": "Use your code from question 1 to take in an integer stack as input. Print out the sum of all the elements.",
+            "testInputs": ["5 1 2 3 4 5", "2 99 12", "4 -5 -8 -3 4", "1 10", "8 1 2 3 4 5 6 7 8"],
+            "testOuputs": ["15", "111", "-12", "10", "36"],
+            "inputType": "int",
+            "num": 3
+        },
+        {
+            "description": "Use your code from question 1 to take in an integer stack as input. Print out the top element AFTER putting them all in.",
+            "testInputs": ["5 1 2 3 4 5", "2 99 12", "4 -5 -8 -3 4", "1 10", "8 1 2 3 4 5 6 7 8"],
+            "testOuputs": ["5", "12", "4", "10", "8"],
+            "inputType": "int",
+            "num": 2
+        }
+    ]
+}
