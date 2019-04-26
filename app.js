@@ -79,6 +79,7 @@ app.use(function(err, req, res, next) {
 require('./models/User');
 require('./config/passport');
 
+// Retrieve a question based on topic and question number, ex: "/retrieveQuestion/arrays/2"
 app.get('/retrieveQuestion/:topic/:questionNum', function(req,res) {
     var count = parseInt(req.params.questionNum, 10);
     var query = { num: count };

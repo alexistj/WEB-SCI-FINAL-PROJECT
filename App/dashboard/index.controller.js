@@ -37,7 +37,7 @@
 
             return (result);
 
-            
+
 
 
 
@@ -81,8 +81,8 @@
 
                     if (res.length == 0 ){
 
-                        var text =  document.createElement("p"); 
-                        var textContent = document.createTextNode("No data to show."); 
+                        var text =  document.createElement("p");
+                        var textContent = document.createTextNode("No data to show.");
 
                         text.appendChild(textContent);
 
@@ -92,7 +92,7 @@
 
                     } else {
 
-                        var scoreTable = "<table> <tr class='tableHead'> <th>Rank</th> <th>Username </th><th>Score</th> </tr>";
+                        var scoreTable = "<table> <tr class='tableHead'> <th>Rank</th> <th>Score</th> <th>Username </th></tr>";
 
 
 
@@ -100,10 +100,10 @@
                             scoreTable += "<tr> <th>" + (x+1) + "</th>";
                             scoreTable += "<th>" + inInt[x][0]+ "</th>";
                             scoreTable += "<th>" + inInt[x][1]+ "</th></tr>";
-            
 
 
-                            
+
+
 
                         }
 
@@ -156,16 +156,16 @@
 
 
 
-                       
-                     
+
+
 
 
 
 
                     if (res.length == 0 ){
 
-                        var text =  document.createElement("p"); 
-                        var textContent = document.createTextNode("You have not played any games yet."); 
+                        var text =  document.createElement("p");
+                        var textContent = document.createTextNode("You have not played any games yet.");
 
                         text.appendChild(textContent);
 
@@ -185,10 +185,10 @@
                         for (var x=0; x<res.length; x++){
                             scoreTable += "<tr> <th>" + (x+1) + "</th>";
                             scoreTable += "<th>" + inInt[x][0]+ "</th></tr>";
-            
 
 
-                            
+
+
 
                         }
 
@@ -198,14 +198,14 @@
 
                 }
         });
-        
-        
-        
-        
+
+
+
+
          i=0;
         $.ajax({
-            
-             
+
+
                 type: "GET",
                 url: "http://localhost:3000/runtime/contributions/"+JSON.parse(window.localStorage.getItem('ngStorage-currentUser')).username,
                 async:true,
@@ -214,18 +214,18 @@
                     console.log("contributions"); console.log(JSON.parse(window.localStorage.getItem('ngStorage-currentUser')).username);
                     console.log(res);
 
-            
+
                 var output ="<h1>My Contributions</h1><ol>";
                 while ( i< res.length){
                                 output+="<li>"+ res[i].q+"</li> \n";
-                                
+
                                 i++;
                 }
                  output+= "</ol>";
                 document.getElementById("pills-contributions").innerHTML = output;
-             
+
                 i=0;
-                   
+
                 }
         });
     }
