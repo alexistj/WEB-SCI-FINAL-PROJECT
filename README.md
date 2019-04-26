@@ -9,7 +9,8 @@ To run our application:
 1. Clone the repositiory
 2. Install the necessary modules by using 'npm install'
     - If you do not have node or npm installed please visit https://nodejs.org/en/, and download accordingly
-3. Set environment variables for the database within mongo atlus.
+3. Set environment variables for the database using credentials from mongo atlas.
     - To make an account: https://www.mongodb.com/cloud/atlas
+    - Set DBUSER, DBPASSWOD, AND SECRET in your local runtime environment 
 4. Then run the server by using nodemon app.js or node app.js
 5. Navigate to http://localhost:3000/App/#/ in your browser to get started!
